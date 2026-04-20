@@ -133,4 +133,242 @@
 
     .price-tag {
       display: inline-flex;
-      align
+      align-items: baseline;
+      gap: 0.25rem;
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin: 0.5rem 0 0.25rem;
+    }
+
+    .price-tag span {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--accent-soft);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: #fff7d6;
+      color: #7a5a00;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.4rem;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--highlight);
+    }
+
+    .section-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent-soft);
+      margin-bottom: 0.4rem;
+    }
+
+    .highlight {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .grid-two {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 0.75rem;
+    }
+
+    @media (max-width: 600px) {
+      .grid-two {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.4rem;
+    }
+
+    .pill {
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid #e0e0e0;
+      font-size: 0.8rem;
+      color: var(--accent-soft);
+      background: #fafafa;
+    }
+
+    .contact-block {
+      margin-top: 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    .contact-line {
+      margin-bottom: 0.35rem;
+    }
+
+    .contact-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-soft);
+      margin-bottom: 0.15rem;
+    }
+
+    .cta {
+      margin-top: 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn-primary {
+      border: none;
+      border-radius: 999px;
+      padding: 0.7rem 1.4rem;
+      background: var(--accent);
+      color: #ffffff;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn-secondary {
+      border-radius: 999px;
+      padding: 0.7rem 1.2rem;
+      border: 1px solid #d0d0d0;
+      background: transparent;
+      color: var(--accent-soft);
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--accent-soft);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-mark">
+      <div class="logo-icon">22</div>
+      <span>Gästehaus 22</span>
+    </div>
+    <h1>Zimmer für Arbeiter in Asten</h1>
+    <p class="subtitle">Praktische, saubere Unterkunft für Arbeiter, Monteure und Geschäftsreisende.</p>
+  </header>
+
+  <main>
+    <!-- Linke Spalte -->
+    <section class="card">
+      <div class="section-label">Übernachtung</div>
+      <h2>Preis & Konditionen</h2>
+      <p>Im Gästehaus 22 wohnen Sie unkompliziert, fair und komfortabel – ideal für längere Einsätze in der Region.</p>
+
+      <div class="price-tag">
+        35&nbsp;€
+        <span>/ Nacht pro Person</span>
+      </div>
+      <p class="highlight">Zuzüglich gesetzlicher Ortstaxe.</p>
+
+      <div class="badge">
+        <span class="badge-dot"></span>
+        <span>Attraktiv für Langzeitaufenthalte</span>
+      </div>
+
+      <div class="grid-two">
+        <div>
+          <h3 class="section-label">Ausstattung</h3>
+          <ul>
+            <li>Saubere, gepflegte Zimmer</li>
+            <li>Moderne Badezimmer</li>
+            <li>Voll ausgestattete Gemeinschaftsküche</li>
+            <li>Kostenloses WLAN</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="section-label">Für wen geeignet</h3>
+          <ul>
+            <li>Arbeiter und Monteure</li>
+            <li>Projekt- und Baustellenteams</li>
+            <li>Geschäftsreisende mit längerem Aufenthalt</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rechte Spalte -->
+    <aside>
+      <section class="card">
+        <div class="section-label">Adresse</div>
+        <h2>Lage in Asten</h2>
+        <p>
+          <span class="highlight">Gästehaus 22</span><br />
+          Eichenstraße 22<br />
+          4481 Asten, Oberösterreich
+        </p>
+
+        <p>Ruhige Wohngegend mit guter Anbindung an wichtige Verkehrswege und Betriebe in der Umgebung.</p>
+
+        <div class="pill-list">
+          <span class="pill">Nähe A1</span>
+          <span class="pill">Richtung Linz</span>
+          <span class="pill">Einkaufsmöglichkeiten in der Nähe</span>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-label">Kontakt</div>
+        <h2>Buchung & Anfrage</h2>
+        <p>Schreiben Sie uns oder rufen Sie an, um Verfügbarkeiten und Konditionen für Ihr Team zu klären.</p>
+
+        <div class="contact-block">
+          <div class="contact-line">
+            <div class="contact-label">Telefon</div>
+            <div>+43 &hellip; (bitte eintragen)</div>
+          </div>
+          <div class="contact-line">
+            <div class="contact-label">E‑Mail</div>
+            <div>info@gaestehaus22.at (Beispiel)</div>
+          </div>
+        </div>
+
+        <div class="cta">
+          <a href="tel:+43" class="btn-primary">
+            Jetzt anrufen
+          </a>
+          <a href="mailto:info@gaestehaus22.at" class="btn-secondary">
+            Anfrage per E‑Mail
+          </a>
+        </div>
+      </section>
+    </aside>
+  </main>
+
+  <footer>
+    © Gästehaus 22 – Zimmervermietung für Arbeiter in 4481 Asten, Oberösterreich
+  </footer>
+</body>
+</html>
