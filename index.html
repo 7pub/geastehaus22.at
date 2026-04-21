@@ -33,7 +33,7 @@
     body.lang-en span[lang="en"] { display: inline; }
     body.lang-en .section-label[lang="en"] { display: block; }
     body.lang-en .gallery-section [lang="en"] { display: block; }
-    
+
     /* Language Switcher */
     .lang-switch {
       position: absolute;
@@ -192,15 +192,23 @@
       </section>
 
       <section class="card" style="margin-top: 1.5rem;">
-        <div class="section-label" lang="de">Kontakt</div>
-        <div class="section-label" lang="en">Contact</div>
-        <div style="margin-top: 1rem;">
-            <a href="tel:+43" class="btn-primary">
-                <span lang="de">📞 Jetzt anrufen</span>
-                <span lang="en">📞 Call now</span>
-            </a>
-        </div>
-      </section>
+      <div class="section-label" lang="de">Kontakt & Anfahrt</div>
+      <div class="section-label" lang="en">Contact & Directions</div>
+      
+      <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.75rem;">
+        <a href="tel:+43123456789" class="btn-primary">
+          <span lang="de">📞 Jetzt anrufen</span>
+          <span lang="en">📞 Call now</span>
+        </a>
+
+        <a href="https://www.google.com/maps/dir/?api=1&destination=Eichenstraße+22+4481+Asten+Austria" 
+          target="_blank" class="btn-primary" style="background-color: #444;">
+          <span lang="de">📍 Jetzt navigieren</span>
+          <span lang="en">📍 Get directions</span>
+        </a>
+      </div>
+    </section>
+
     </aside>
 
     <section class="gallery-section card">
