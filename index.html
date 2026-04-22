@@ -413,32 +413,6 @@
         btn.classList.toggle('active', btn.innerText.toLowerCase() === lang);
       });
     }
-
-    // 2. Galerie befüllen
-      const container = document.getElementById('gallery-container');
-      const lightbox = document.getElementById('lightbox');
-      const lightboxImg = document.getElementById('lightbox-img');
-
-      images.gallery.forEach((src, index) => {
-        if (src) {
-          const item = document.createElement('div');
-          item.className = 'gallery-item';
-          
-          const img = document.createElement('img');
-          img.src = src;
-          img.alt = `Gästehaus 22 Innenansicht ${index + 1}`;
-          img.loading = "lazy";
-          
-          // CLICK FUNKTION HINZUFÜGEN
-          img.onclick = () => {
-            lightboxImg.src = src;
-            lightbox.style.display = 'flex';
-          };
-          
-          item.appendChild(img);
-          container.appendChild(item);
-        }
-      });
   </script>
 </body>
 </html>
