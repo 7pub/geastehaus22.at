@@ -5,7 +5,7 @@
   <title>Gästehaus 22 | Günstige Monteurzimmer & Arbeiterunterkunft in Asten</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Preiswerte Unterkunft für Arbeiter und Monteure in 4481 Asten nahe Linz. 35€ pro Nacht, WLAN, Parkplatz & Küche inklusive.">
- 
+
   <style>
     :root {
       --bg: #f5f5f5;
@@ -29,15 +29,12 @@
     body.lang-en [lang="de"] { display: none; }
     body.lang-en [lang="en"] { display: block; }
     
-    /* Erzwungene Block-Anzeige für korrekte Zentrierung im Header & Labels */
     body.lang-en h1[lang="en"], 
     body.lang-en p[lang="en"],
     body.lang-en .section-label[lang="en"] { display: block !important; }
     
-    /* Erzwungene Listen-Anzeige */
     body.lang-en li[lang="en"] { display: list-item !important; }
 
-    /* Inline-Anzeige für Preise und Buttons */
     body.lang-en span[lang="en"] { display: inline !important; }
 
     /* --- LAYOUT --- */
@@ -111,7 +108,7 @@
     ul { list-style: none; margin-top: 1rem; }
     li { margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
 
-/* Basis-Style für beide Buttons */
+    /* --- BUTTONS --- */
     .btn-primary {
       padding: 0.8rem 1.5rem;
       color: #fff;
@@ -128,26 +125,15 @@
       cursor: pointer;
     }
 
-    /* Grüner Anruf-Button */
-    .btn-call {
-      background-color: #28a745; /* Sattes Grün */
-    }
-    .btn-call:hover {
-      background-color: #218838;
-    }
+    .btn-call { background-color: #28a745; }
+    .btn-call:hover { background-color: #218838; }
 
-    /* Blauer Navigations-Button */
-    .btn-nav {
-      background-color: #007bff; /* Klassisches Blau */
-    }
-    .btn-nav:hover {
-      background-color: #0069d9;
-    }
+    .btn-nav { background-color: #007bff; }
+    .btn-nav:hover { background-color: #0069d9; }
 
     .btn-primary:active { transform: scale(0.98); }
 
-    .btn-primary:active { transform: scale(0.98); }
-
+    /* --- GALLERY --- */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -175,10 +161,8 @@
       <button class="lang-btn" onclick="setLang('en')">EN</button>
     </div>
     <img id="logo-placeholder" alt="Gästehaus 22" class="logo-img">
-    
     <h1 lang="de">Zimmer für Arbeiter in Asten</h1>
     <h1 lang="en">Rooms for workers in Asten</h1>
-    
     <p class="subtitle" lang="de">Praktische, saubere Unterkunft für Monteure und Teams.</p>
     <p class="subtitle" lang="en">Practical, clean accommodation for fitters and teams.</p>
   </header>
@@ -187,15 +171,11 @@
     <section class="card">
       <div class="section-label" lang="de">Übernachtung</div>
       <div class="section-label" lang="en">Accommodation</div>
-      
       <h2 lang="de">Preise & Konditionen</h2>
       <h2 lang="en">Prices & Conditions</h2>
-
       <div class="price-tag">35 € <span lang="de">/ Nacht pro Person</span><span lang="en">/ night per person</span></div>
-      
       <p lang="de">Inklusive WLAN, Parkplatz und Endreinigung.</p>
       <p lang="en">Including Wi-Fi, parking and final cleaning.</p>
-      
       <ul>
         <li>✅ <span lang="de">Saubere Einzelbetten</span><span lang="en">Clean single beds</span></li>
         <li>✅ <span lang="de">Voll ausgestattete Küche</span><span lang="en">Fully equipped kitchen</span></li>
@@ -218,12 +198,12 @@
         <div class="section-label" lang="de">Kontakt</div>
         <div class="section-label" lang="en">Contact</div>
         <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-top: 0.5rem;">
-          <a href="tel:+436801610618" class="btn-primary">
+          <a href="tel:+436801610618" class="btn-primary btn-call">
             📞 <span lang="de">Jetzt anrufen</span><span lang="en">Call now</span>
           </a>
-        <button onclick="openNavigation()" class="btn-primary" style="background: #444; border: none; cursor: pointer; width: 100%;">
-          📍 <span lang="de">Jetzt navigieren</span><span lang="en">Get directions</span>
-        </button>
+          <button onclick="openNavigation()" class="btn-primary btn-nav">
+            📍 <span lang="de">Jetzt navigieren</span><span lang="en">Get directions</span>
+          </button>
         </div>
       </section>
     </aside>
@@ -238,7 +218,7 @@
   </main>
 
   <footer>
-    &copy; 2026 Gästehaus 22 – 4481 Asten
+    © 2026 Gästehaus 22 – 4481 Asten
   </footer>
 
   <div id="lightbox" onclick="this.style.display='none'"><img id="lightbox-img"></div>
@@ -257,12 +237,11 @@
       const lb = document.getElementById('lightbox');
       const lbImg = document.getElementById('lightbox-img');
 
-      images.gallery.forEach((src, i) => {
+      images.gallery.forEach((src) => {
         const item = document.createElement('div');
         item.className = 'gallery-item';
         const img = document.createElement('img');
         img.src = src;
-        img.alt = "Gästehaus 22";
         img.onclick = () => { lbImg.src = src; lb.style.display = 'flex'; };
         item.appendChild(img);
         container.appendChild(item);
@@ -275,31 +254,20 @@
         btn.classList.toggle('active', btn.innerText.toLowerCase() === lang);
       });
     }
-    function openNavigation() {
-      const lat = 48.2114; // Breitengrad für Eichenstraße 22, Asten
-      const lng = 14.4147; // Längengrad
-      const addr = encodeURIComponent("Gästehaus 22, Eichenstraße 22, 4481 Asten");
-      
-      // URL Schemas
-      const googleMapsAppUrl = `comgooglemaps://?daddr=${addr}&directionsmode=driving`;
-      const appleMapsUrl = `https://maps.apple.com/?daddr=${addr}`;
-      const googleWebUrl = `https://www.google.com/maps/dir/?api=1&destination=${addr}`;
 
-      // Prüfen, ob es ein iOS Gerät ist
+    function openNavigation() {
+      const addr = encodeURIComponent("Gästehaus 22, Eichenstraße 22, 4481 Asten");
       const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
       if (isIOS) {
-        // Versuch, Google Maps App zu öffnen
-        window.location.href = googleMapsAppUrl;
-
-        // Falls Google Maps nicht installiert ist, nach 500ms Apple Maps öffnen
+        window.location.href = `comgooglemaps://?daddr=${addr}&directionsmode=driving`;
         setTimeout(function() {
-          if (document.hidden) return; // Wenn die App gewechselt hat, nichts tun
-          window.location.href = appleMapsUrl;
+          if (!document.hidden) {
+            window.location.href = `https://maps.apple.com/?daddr=${addr}`;
+          }
         }, 500);
       } else {
-        // Für Android oder Desktop: Google Maps Web/App
-        window.open(googleWebUrl, '_blank');
+        window.open(`https://www.google.com/maps/dir/?api=1&destination=${addr}`, '_blank');
       }
     }
   </script>
