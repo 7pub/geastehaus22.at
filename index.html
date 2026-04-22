@@ -4,13 +4,7 @@
   <meta charset="UTF-8" />
   <title>Gästehaus 22 | Günstige Monteurzimmer & Arbeiterunterkunft in Asten</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Preiswerte Unterkunft für Arbeiter und Monteure in 4481 Asten nahe Linz. 35€ pro Nacht, WLAN, Parkplatz & Küche inklusive. Jetzt direkt buchen!">
-  <meta name="keywords" content="Monteurzimmer Asten, Arbeiterunterkunft Linz, Baustellenunterkunft Oberösterreich, Zimmer mieten Asten, Gästehaus 22">
-  <meta name="robots" content="index, follow">
-
-  <meta property="og:title" content="Gästehaus 22 – Zimmer für Arbeiter in Asten">
-  <meta property="og:description" content="Saubere Zimmer ab 35€/Nacht. Ideal für Teams & Monteure. Inkl. Parkplatz & WLAN.">
-  <meta property="og:type" content="website">
+  <meta name="description" content="Preiswerte Unterkunft für Arbeiter und Monteure in 4481 Asten nahe Linz. 35€ pro Nacht, WLAN, Parkplatz & Küche inklusive.">
   
   <style>
     :root {
@@ -18,8 +12,7 @@
       --card: #ffffff;
       --accent: #222222;
       --accent-soft: #666666;
-      --highlight: #e0b400;
-      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-main: system-ui, -apple-system, sans-serif;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,29 +24,25 @@
       line-height: 1.6;
     }
 
-    /* Korrektur für die Sprachumschaltung & Listen-Layout */
+    /* --- SPRACHSTEUERUNG --- */
     [lang="en"] { display: none; }
     body.lang-en [lang="de"] { display: none; }
+    body.lang-en [lang="en"] { display: block; }
     
+    /* Erzwungene Block-Anzeige für korrekte Zentrierung im Header & Labels */
     body.lang-en h1[lang="en"], 
     body.lang-en p[lang="en"],
-    body.lang-en .subtitle[lang="en"],
-    body.lang-en .section-label[lang="en"] { 
-      display: block !important; 
-      text-align: center;
-    }
+    body.lang-en .section-label[lang="en"] { display: block !important; }
+    
+    /* Erzwungene Listen-Anzeige */
+    body.lang-en li[lang="en"] { display: list-item !important; }
 
-    body.lang-en li[lang="en"] { 
-      display: list-item !important; 
-    }
+    /* Inline-Anzeige für Preise und Buttons */
+    body.lang-en span[lang="en"] { display: inline !important; }
 
-    body.lang-en span[lang="en"],
-    body.lang-en .btn-primary span[lang="en"] { 
-      display: inline !important; 
-    }
-
+    /* --- LAYOUT --- */
     header {
-      padding: 3rem 1.5rem 1.5rem;
+      padding: 3.5rem 1.5rem 2rem;
       text-align: center;
       background: #ffffff;
       border-bottom: 1px solid #e3e3e3;
@@ -76,12 +65,10 @@
       cursor: pointer;
       font-size: 0.8rem;
       font-weight: 600;
+      transition: 0.2s;
     }
 
-    .lang-btn.active {
-      background: var(--accent);
-      color: white;
-    }
+    .lang-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
 
     .logo-img {
       width: 130px;
@@ -90,90 +77,87 @@
       border-radius: 50%;
       margin-bottom: 1rem;
       background: white;
-      border: 2px solid rgba(255, 255, 255, 0.8);
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15), inset 0 5px 10px rgba(255, 255, 255, 0.5);
-      transition: all 0.3s ease-out;
+      border: 2px solid #fff;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.1), inset 0 5px 10px rgba(255,255,255,0.5);
     }
 
-    .logo-img:hover { transform: translateY(-3px) scale(1.02); }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); line-height: 1.2; margin-bottom: 0.5rem; }
+    .subtitle { color: var(--accent-soft); font-size: 1rem; }
 
     main {
       max-width: 1040px;
-      margin: 2rem auto 3rem;
+      margin: 2rem auto;
       padding: 0 1.5rem;
       display: grid;
-      grid-template-columns: 2fr 1.4fr;
-      gap: 1.75rem;
+      grid-template-columns: 1.8fr 1.2fr;
+      gap: 1.5rem;
     }
 
-    @media (max-width: 800px) { 
-      main { grid-template-columns: 1fr; padding: 0 1rem; }
-      .card { margin: 0 auto; width: 100%; max-width: 500px; }
+    @media (max-width: 850px) { 
+      main { grid-template-columns: 1fr; }
     }
 
     .card {
       background: var(--card);
-      border-radius: 14px;
-      padding: 1.75rem 1.5rem;
-      box-shadow: 0 14px 30px rgba(0,0,0,0.04);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.03);
     }
 
-    .gallery-section { grid-column: 1 / -1; margin-top: 1rem; }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
+    .section-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-soft); margin-bottom: 0.5rem; }
+    .price-tag { font-size: 1.8rem; font-weight: 700; margin: 0.5rem 0; }
+    .price-tag span { font-size: 0.9rem; font-weight: 400; color: var(--accent-soft); }
 
-    .gallery-item {
-      border-radius: 10px;
-      overflow: hidden;
-      height: 250px;
-      background: #eee;
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      cursor: zoom-in;
-      transition: transform 0.3s ease;
-    }
-
-    .gallery-item img:hover { transform: scale(1.03); }
+    ul { list-style: none; margin-top: 1rem; }
+    li { margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
 
     .btn-primary {
       padding: 0.8rem 1.5rem;
       background: var(--accent);
       color: #fff;
-      border-radius: 999px;
+      border-radius: 50px;
       text-decoration: none;
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 0.5rem;
-      font-weight: 500;
       justify-content: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      transition: transform 0.2s;
     }
 
-    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: var(--accent-soft); }
-    
-    .price-tag { font-size: 1.6rem; font-weight: 600; margin: 0.5rem 0; }
-    .price-tag span { font-size: 0.9rem; font-weight: 400; color: var(--accent-soft); }
-    .section-label { font-size: 0.8rem; text-transform: uppercase; color: var(--accent-soft); margin-bottom: 0.4rem; }
+    .btn-primary:active { transform: scale(0.98); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .gallery-item { height: 220px; border-radius: 12px; overflow: hidden; background: #ddd; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; cursor: zoom-in; }
+
+    footer { text-align: center; padding: 3rem 1rem; color: var(--accent-soft); font-size: 0.85rem; }
+
+    #lightbox {
+      display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9); align-items: center; justify-content: center; cursor: zoom-out;
+    }
+    #lightbox img { max-width: 90%; max-height: 90%; border-radius: 4px; }
   </style>
 </head>
-<body>
+<body id="top">
 
   <header>
     <div class="lang-switch">
       <button class="lang-btn active" onclick="setLang('de')">DE</button>
       <button class="lang-btn" onclick="setLang('en')">EN</button>
     </div>
-    <img id="logo-placeholder" alt="Logo Gästehaus 22" class="logo-img">
+    <img id="logo-placeholder" alt="Gästehaus 22" class="logo-img">
+    
     <h1 lang="de">Zimmer für Arbeiter in Asten</h1>
     <h1 lang="en">Rooms for workers in Asten</h1>
+    
     <p class="subtitle" lang="de">Praktische, saubere Unterkunft für Monteure und Teams.</p>
     <p class="subtitle" lang="en">Practical, clean accommodation for fitters and teams.</p>
   </header>
@@ -182,49 +166,49 @@
     <section class="card">
       <div class="section-label" lang="de">Übernachtung</div>
       <div class="section-label" lang="en">Accommodation</div>
-      <h2 lang="de">Preis & Konditionen</h2>
+      
+      <h2 lang="de">Preise & Konditionen</h2>
       <h2 lang="en">Prices & Conditions</h2>
+
       <div class="price-tag">35 € <span lang="de">/ Nacht pro Person</span><span lang="en">/ night per person</span></div>
+      
       <p lang="de">Inklusive WLAN, Parkplatz und Endreinigung.</p>
-      <p lang="en">Includes Wi-Fi, parking and final cleaning.</p>
-      <ul style="list-style: none; margin-top: 1rem;">
-        <li lang="de">✅ Saubere Einzelbetten</li>
-        <li lang="en">✅ Clean single beds</li>
-        <li lang="de">✅ Voll ausgestattete Gemeinschaftsküche</li>
-        <li lang="en">✅ Fully equipped shared kitchen</li>
-        <li lang="de">✅ Modernes Badezimmer</li>
-        <li lang="en">✅ Modern bathroom</li>
+      <p lang="en">Including Wi-Fi, parking and final cleaning.</p>
+      
+      <ul>
+        <li>✅ <span lang="de">Saubere Einzelbetten</span><span lang="en">Clean single beds</span></li>
+        <li>✅ <span lang="de">Voll ausgestattete Küche</span><span lang="en">Fully equipped kitchen</span></li>
+        <li>✅ <span lang="de">Modernes Badezimmer</span><span lang="en">Modern bathroom</span></li>
       </ul>
     </section>
 
-    <aside>
+    <aside style="display: flex; flex-direction: column; gap: 1.5rem;">
       <section class="card">
         <div class="section-label" lang="de">Lage</div>
         <div class="section-label" lang="en">Location</div>
         <p><strong>Gästehaus 22</strong><br>Eichenstraße 22<br>4481 Asten, Austria</p>
-        <p style="margin-top:1rem;" lang="de">Nähe A1 Autobahn & Linz.</p>
-        <p style="margin-top:1rem;" lang="en">Close to A1 highway & Linz.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--accent-soft);">
+          <span lang="de">Direkt an der A1 Autobahn & nahe Linz.</span>
+          <span lang="en">Right by the A1 highway & near Linz.</span>
+        </p>
       </section>
 
-      <section class="card" style="margin-top: 1.5rem;">
-        <div class="section-label" lang="de">Kontakt & Anfahrt</div>
-        <div class="section-label" lang="en">Contact & Directions</div>
-        <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.75rem;">
+      <section class="card">
+        <div class="section-label" lang="de">Kontakt</div>
+        <div class="section-label" lang="en">Contact</div>
+        <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-top: 0.5rem;">
           <a href="tel:+436801610618" class="btn-primary">
-            <span lang="de">📞 Jetzt anrufen</span>
-            <span lang="en">📞 Call now</span>
+            📞 <span lang="de">Jetzt anrufen</span><span lang="en">Call now</span>
           </a>
-          <a href="https://www.google.com/maps/dir/?api=1&destination=Eichenstraße+22+4481+Asten" 
-             target="_blank" class="btn-primary" style="background-color: #444;">
-            <span lang="de">📍 Jetzt navigieren</span>
-            <span lang="en">📍 Get directions</span>
+          <a href="https://www.google.com/maps/search/?api=1&query=Eichenstraße+22+4481+Asten" target="_blank" class="btn-primary" style="background: #444;">
+            📍 <span lang="de">Jetzt navigieren</span><span lang="en">Get directions</span>
           </a>
         </div>
       </section>
     </aside>
 
     <section class="gallery-section card">
-      <div class="section-label" lang="de">Einblicke</div>
+      <div class="section-label" lang="de">Galerie</div>
       <div class="section-label" lang="en">Gallery</div>
       <h2 lang="de">Unsere Räumlichkeiten</h2>
       <h2 lang="en">Our Premises</h2>
@@ -232,13 +216,11 @@
     </section>
   </main>
 
-  <div id="lightbox" style="display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); cursor: zoom-out; align-items: center; justify-content: center;" onclick="this.style.display='none'">
-    <img id="lightbox-img" style="max-width: 90%; max-height: 90%; border-radius: 8px; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
-  </div>
-
   <footer>
-    © 2026 Gästehaus 22 – 4481 Asten
+    &copy; 2026 Gästehaus 22 – 4481 Asten
   </footer>
+
+  <div id="lightbox" onclick="this.style.display='none'"><img id="lightbox-img"></div>
 
   <script>
     const images = {
@@ -247,31 +229,22 @@
     };
 
     document.addEventListener('DOMContentLoaded', () => {
-      // Logo
       const logoEl = document.getElementById('logo-placeholder');
       if (images.logo) logoEl.src = images.logo;
 
-      // Galerie
       const container = document.getElementById('gallery-container');
-      const lightbox = document.getElementById('lightbox');
-      const lightboxImg = document.getElementById('lightbox-img');
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightbox-img');
 
-      container.innerHTML = ''; // Sicherstellen, dass leer
-
-      images.gallery.forEach((src, index) => {
-        if (src) {
-          const item = document.createElement('div');
-          item.className = 'gallery-item';
-          const img = document.createElement('img');
-          img.src = src;
-          img.alt = `Gästehaus 22 Impression ${index + 1}`;
-          img.onclick = () => {
-            lightboxImg.src = src;
-            lightbox.style.display = 'flex';
-          };
-          item.appendChild(img);
-          container.appendChild(item);
-        }
+      images.gallery.forEach((src, i) => {
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = "Gästehaus 22";
+        img.onclick = () => { lbImg.src = src; lb.style.display = 'flex'; };
+        item.appendChild(img);
+        container.appendChild(item);
       });
     });
 
