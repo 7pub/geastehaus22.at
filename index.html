@@ -11,6 +11,7 @@
   <meta property="og:title" content="Gästehaus 22 – Zimmer für Arbeiter in Asten">
   <meta property="og:description" content="Saubere Zimmer ab 35€/Nacht. Ideal für Teams & Monteure. Inkl. Parkplatz & WLAN.">
   <meta property="og:type" content="website">
+  
   <style>
     :root {
       --bg: #f5f5f5;
@@ -30,61 +31,35 @@
       line-height: 1.6;
     }
 
-    body.lang-en header h1, 
-    body.lang-en header .subtitle {
-      display: block !important;
-      width: 100%;
-      text-align: center;
-    }
-
-/* Korrektur für die Sprachumschaltung & Listen-Layout */
+    /* Korrektur für die Sprachumschaltung & Listen-Layout */
     [lang="en"] { display: none; }
     body.lang-en [lang="de"] { display: none; }
     
-    /* Block-Elemente für Zentrierung (Header, Labels) */
     body.lang-en h1[lang="en"], 
     body.lang-en p[lang="en"],
     body.lang-en .subtitle[lang="en"],
     body.lang-en .section-label[lang="en"] { 
       display: block !important; 
+      text-align: center;
     }
 
-    /* WICHTIG: Listen-Elemente müssen 'list-item' bleiben */
     body.lang-en li[lang="en"] { 
       display: list-item !important; 
     }
 
-    /* Preis-Details und Buttons bleiben inline */
     body.lang-en span[lang="en"],
     body.lang-en .btn-primary span[lang="en"] { 
       display: inline !important; 
     }
 
-    main {
-      max-width: 1040px;
-      margin: 2rem auto 3rem;
-      padding: 0 1.5rem;
-      display: grid;
-      grid-template-columns: 2fr 1.4fr; /* Feste Verhältnisse statt minmax für stabilere Zentrierung */
-      gap: 1.75rem;
-      justify-content: center; /* Zentriert das gesamte Grid */
+    header {
+      padding: 3rem 1.5rem 1.5rem;
+      text-align: center;
+      background: #ffffff;
+      border-bottom: 1px solid #e3e3e3;
+      position: relative;
     }
 
-    @media (max-width: 800px) { 
-      main { 
-        grid-template-columns: 1fr; /* Eine saubere Spalte auf Mobile */
-        padding: 0 1rem; /* Etwas weniger Seitenabstand auf kleinen Handys */
-        gap: 1.5rem;
-      }
-      
-      .card {
-        margin: 0 auto; /* Zentriert die Karte selbst */
-        width: 100%;    /* Nutzt die volle verfügbare Breite */
-        max-width: 500px; /* Verhindert, dass Karten auf Tablets zu breit werden */
-      }
-    }
-
-    /* Language Switcher */
     .lang-switch {
       position: absolute;
       top: 1rem;
@@ -101,75 +76,40 @@
       cursor: pointer;
       font-size: 0.8rem;
       font-weight: 600;
-      transition: all 0.2s;
     }
 
     .lang-btn.active {
       background: var(--accent);
       color: white;
-      border-color: var(--accent);
-    }
-
-    header {
-      padding: 3rem 1.5rem 1.5rem;
-      text-align: center;
-      background: #ffffff;
-      border-bottom: 1px solid #e3e3e3;
-      position: relative;
     }
 
     .logo-img {
-      width: 130px; /* Leicht vergrößert für den Effekt */
+      width: 130px;
       height: 130px;
       object-fit: cover;
       border-radius: 50%;
       margin-bottom: 1rem;
-      background: white; /* Basis-Hintergrund */
-      
-      /* --- 3D EFFEKT START --- */
-      
-      /* 1. Subtiler weißer Rand für Definition (wie eine Lichtkante) */
+      background: white;
       border: 2px solid rgba(255, 255, 255, 0.8);
-      
-      /* 2. Schatten für Tiefe (Kombination aus hartem und weichem Schatten) */
-      box-shadow: 
-        0 8px 15px rgba(0, 0, 0, 0.15), /* Äußerer, weicher Schatten */
-        0 4px 6px rgba(0, 0, 0, 0.1),  /* Innerer, härterer Schatten */
-        inset 0 -5px 10px rgba(0, 0, 0, 0.05), /* Innerer Schatten unten (Wölbung) */
-        inset 0 5px 10px rgba(255, 255, 255, 0.5); /* Innerer Glanz oben (Lichtquelle) */
-        
-      /* 3. Ein leichter, glänzender Überzug (optional, für "Glas"-Look) */
-      background-image: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 50%, rgba(0,0,0,0.03) 100%);
-      
-      /* 4. Sanfter Übergang für Hover-Effekt */
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15), inset 0 5px 10px rgba(255, 255, 255, 0.5);
       transition: all 0.3s ease-out;
     }
 
-    /* Kleiner Bonus: Interaktion beim Drüberfahren */
-    .logo-img:hover {
-      transform: translateY(-3px) scale(1.02); /* Leichtes Anheben und Vergrößern */
-      box-shadow: 
-        0 12px 20px rgba(0, 0, 0, 0.2), /* Schatten wird weicher */
-        0 6px 8px rgba(0, 0, 0, 0.15),
-        inset 0 -5px 10px rgba(0, 0, 0, 0.05),
-        inset 0 5px 10px rgba(255, 255, 255, 0.6); /* Glanz wird stärker */
-    }
-    
-    /* --- 3D EFFEKT ENDE --- */
-
-    h1 { font-size: clamp(1.8rem, 3vw, 2.6rem); margin-bottom: 0.5rem; }
-    .subtitle { color: var(--accent-soft); font-size: 0.95rem; }
+    .logo-img:hover { transform: translateY(-3px) scale(1.02); }
 
     main {
       max-width: 1040px;
       margin: 2rem auto 3rem;
       padding: 0 1.5rem;
       display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+      grid-template-columns: 2fr 1.4fr;
       gap: 1.75rem;
     }
 
-    @media (max-width: 800px) { main { grid-template-columns: 1fr; } }
+    @media (max-width: 800px) { 
+      main { grid-template-columns: 1fr; padding: 0 1rem; }
+      .card { margin: 0 auto; width: 100%; max-width: 500px; }
+    }
 
     .card {
       background: var(--card);
@@ -198,12 +138,12 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      cursor: zoom-in;
+      transition: transform 0.3s ease;
     }
 
-    .section-label { font-size: 0.8rem; text-transform: uppercase; color: var(--accent-soft); margin-bottom: 0.4rem; }
-    .price-tag { font-size: 1.6rem; font-weight: 600; margin: 0.5rem 0; }
-    .price-tag span { font-size: 0.9rem; font-weight: 400; color: var(--accent-soft); }
-    
+    .gallery-item img:hover { transform: scale(1.03); }
+
     .btn-primary {
       padding: 0.8rem 1.5rem;
       background: var(--accent);
@@ -214,25 +154,14 @@
       align-items: center;
       gap: 0.5rem;
       font-weight: 500;
+      justify-content: center;
     }
 
     footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: var(--accent-soft); }
-
-    /* Hide English by default */
-    [lang="en"] { display: none; }
-    body.lang-en [lang="de"] { display: none; }
-    body.lang-en [lang="en"] { display: inline; }
-    body.lang-en .gallery-section [lang="en"] { display: block; }
-
-    .gallery-item img {
-      /* ... deine bisherigen Styles ... */
-      cursor: zoom-in;
-      transition: transform 0.3s ease;
-    }
-
-    .gallery-item img:hover {
-      transform: scale(1.03); /* Kleiner Zoom-Effekt beim Drüberfahren */
-    }
+    
+    .price-tag { font-size: 1.6rem; font-weight: 600; margin: 0.5rem 0; }
+    .price-tag span { font-size: 0.9rem; font-weight: 400; color: var(--accent-soft); }
+    .section-label { font-size: 0.8rem; text-transform: uppercase; color: var(--accent-soft); margin-bottom: 0.4rem; }
   </style>
 </head>
 <body>
@@ -242,12 +171,9 @@
       <button class="lang-btn active" onclick="setLang('de')">DE</button>
       <button class="lang-btn" onclick="setLang('en')">EN</button>
     </div>
-    
     <img id="logo-placeholder" alt="Logo Gästehaus 22" class="logo-img">
-    
     <h1 lang="de">Zimmer für Arbeiter in Asten</h1>
     <h1 lang="en">Rooms for workers in Asten</h1>
-    
     <p class="subtitle" lang="de">Praktische, saubere Unterkunft für Monteure und Teams.</p>
     <p class="subtitle" lang="en">Practical, clean accommodation for fitters and teams.</p>
   </header>
@@ -256,15 +182,11 @@
     <section class="card">
       <div class="section-label" lang="de">Übernachtung</div>
       <div class="section-label" lang="en">Accommodation</div>
-      
       <h2 lang="de">Preis & Konditionen</h2>
       <h2 lang="en">Prices & Conditions</h2>
-
       <div class="price-tag">35 € <span lang="de">/ Nacht pro Person</span><span lang="en">/ night per person</span></div>
-      
       <p lang="de">Inklusive WLAN, Parkplatz und Endreinigung.</p>
       <p lang="en">Includes Wi-Fi, parking and final cleaning.</p>
-      
       <ul style="list-style: none; margin-top: 1rem;">
         <li lang="de">✅ Saubere Einzelbetten</li>
         <li lang="en">✅ Clean single beds</li>
@@ -285,23 +207,20 @@
       </section>
 
       <section class="card" style="margin-top: 1.5rem;">
-      <div class="section-label" lang="de">Kontakt & Anfahrt</div>
-      <div class="section-label" lang="en">Contact & Directions</div>
-      
-      <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.75rem;">
-        <a href="tel:+436801610618" class="btn-primary">
-          <span lang="de">📞 Jetzt anrufen</span>
-          <span lang="en">📞 Call now</span>
-        </a>
-
-        <a href="https://www.google.com/maps/dir/?api=1&destination=Eichenstraße+22+4481+Asten+Austria" 
-          target="_blank" class="btn-primary" style="background-color: #444;">
-          <span lang="de">📍 Jetzt navigieren</span>
-          <span lang="en">📍 Get directions</span>
-        </a>
-      </div>
-    </section>
-
+        <div class="section-label" lang="de">Kontakt & Anfahrt</div>
+        <div class="section-label" lang="en">Contact & Directions</div>
+        <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.75rem;">
+          <a href="tel:+436801610618" class="btn-primary">
+            <span lang="de">📞 Jetzt anrufen</span>
+            <span lang="en">📞 Call now</span>
+          </a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Eichenstraße+22+4481+Asten" 
+             target="_blank" class="btn-primary" style="background-color: #444;">
+            <span lang="de">📍 Jetzt navigieren</span>
+            <span lang="en">📍 Get directions</span>
+          </a>
+        </div>
+      </section>
     </aside>
 
     <section class="gallery-section card">
@@ -309,107 +228,56 @@
       <div class="section-label" lang="en">Gallery</div>
       <h2 lang="de">Unsere Räumlichkeiten</h2>
       <h2 lang="en">Our Premises</h2>
-      
-      <div class="gallery-grid" id="gallery-container">
-        <div id="lightbox" style="display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); cursor: zoom-out; align-items: center; justify-content: center;" onclick="this.style.display='none'">
-          <img id="lightbox-img" style="max-width: 90%; max-height: 90%; border-radius: 8px; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
-        </div>
-      </div>
+      <div class="gallery-grid" id="gallery-container"></div>
     </section>
   </main>
 
+  <div id="lightbox" style="display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); cursor: zoom-out; align-items: center; justify-content: center;" onclick="this.style.display='none'">
+    <img id="lightbox-img" style="max-width: 90%; max-height: 90%; border-radius: 8px; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
+  </div>
+
   <footer>
-    &copy; 2026 Gästehaus 22 – 4481 Asten
+    © 2026 Gästehaus 22 – 4481 Asten
   </footer>
 
-<script>
-    // Pfade zu deinen JPG-Dateien
+  <script>
     const images = {
       logo: "Logo.jpg", 
-      gallery: [
-        "Schlafräume.jpg",
-        "Wohnzimmer.jpg",
-        "Küche.jpg",
-        "Bad.jpg"
-      ]
+      gallery: ["Schlafräume.jpg", "Wohnzimmer.jpg", "Küche.jpg", "Bad.jpg"]
     };
-    // Bilder laden, sobald das DOM bereit ist
-    document.addEventListener('DOMContentLoaded', () => {
-      // 1. Logo setzen
-      const logoEl = document.getElementById('logo-placeholder');
-      if (images.logo) {
-        logoEl.src = images.logo;
-      }
 
-      // 2. Galerie befüllen
+    document.addEventListener('DOMContentLoaded', () => {
+      // Logo
+      const logoEl = document.getElementById('logo-placeholder');
+      if (images.logo) logoEl.src = images.logo;
+
+      // Galerie
       const container = document.getElementById('gallery-container');
       const lightbox = document.getElementById('lightbox');
       const lightboxImg = document.getElementById('lightbox-img');
 
-      // WICHTIG: Container leeren, um doppelte Bilder zu vermeiden
-      container.innerHTML = '';
+      container.innerHTML = ''; // Sicherstellen, dass leer
 
       images.gallery.forEach((src, index) => {
         if (src) {
           const item = document.createElement('div');
           item.className = 'gallery-item';
-          
           const img = document.createElement('img');
           img.src = src;
           img.alt = `Gästehaus 22 Impression ${index + 1}`;
-          img.loading = "lazy";
-          
-          // Click-Event für die Lightbox
           img.onclick = () => {
             lightboxImg.src = src;
             lightbox.style.display = 'flex';
           };
-          
-          item.appendChild(img);
-          container.appendChild(item);
-        }
-      });
-    });
-    // Bilder laden, sobald das DOM bereit ist
-    document.addEventListener('DOMContentLoaded', () => {
-      // 1. Logo setzen
-      const logoEl = document.getElementById('logo-placeholder');
-      if (images.logo) {
-        logoEl.src = images.logo;
-      } else {
-        logoEl.style.display = 'none';
-      }
-
-      // 2. Galerie befüllen
-      const container = document.getElementById('gallery-container');
-      images.gallery.forEach((src, index) => {
-        if (src) {
-          const item = document.createElement('div');
-          item.className = 'gallery-item';
-          
-          const img = document.createElement('img');
-          img.src = src;
-          img.alt = `Gästehaus 22 Innenansicht ${index + 1}`;
-          img.loading = "lazy"; // Verbessert die Performance
-          
           item.appendChild(img);
           container.appendChild(item);
         }
       });
     });
 
-    // Sprachumschaltung
     function setLang(lang) {
-      const body = document.body;
-      const buttons = document.querySelectorAll('.lang-btn');
-      
-      if (lang === 'en') {
-        body.classList.add('lang-en');
-      } else {
-        body.classList.remove('lang-en');
-      }
-
-      buttons.forEach(btn => {
+      document.body.classList.toggle('lang-en', lang === 'en');
+      document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.toggle('active', btn.innerText.toLowerCase() === lang);
       });
     }
