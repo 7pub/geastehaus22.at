@@ -111,9 +111,9 @@
     ul { list-style: none; margin-top: 1rem; }
     li { margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
 
+/* Basis-Style für beide Buttons */
     .btn-primary {
       padding: 0.8rem 1.5rem;
-      background: var(--accent);
       color: #fff;
       border-radius: 50px;
       text-decoration: none;
@@ -122,8 +122,29 @@
       justify-content: center;
       gap: 0.5rem;
       font-weight: 600;
-      transition: transform 0.2s;
+      transition: transform 0.2s, background-color 0.2s;
+      border: none;
+      width: 100%;
+      cursor: pointer;
     }
+
+    /* Grüner Anruf-Button */
+    .btn-call {
+      background-color: #28a745; /* Sattes Grün */
+    }
+    .btn-call:hover {
+      background-color: #218838;
+    }
+
+    /* Blauer Navigations-Button */
+    .btn-nav {
+      background-color: #007bff; /* Klassisches Blau */
+    }
+    .btn-nav:hover {
+      background-color: #0069d9;
+    }
+
+    .btn-primary:active { transform: scale(0.98); }
 
     .btn-primary:active { transform: scale(0.98); }
 
