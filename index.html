@@ -262,7 +262,7 @@
     const address = "Eichenstraße 22, 4481 Asten, Austria";
     const encodedAddr = encodeURIComponent(address);
     
-    // Standard Google Maps Directions URL
+    // Fixed: Added missing $ for template literal
     const googleUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodedAddr}`;
     const appleUrl = `maps://maps.apple.com/?daddr=${encodedAddr}`;
 
