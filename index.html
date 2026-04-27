@@ -227,62 +227,72 @@
   <div id="lightbox" onclick="this.style.display='none'"><img id="lightbox-img"></div>
 
 <script>
-    const images = {
-      logo: "Logo.webp", 
-      gallery: ["Schlafräume.webp", "Wohnzimmer.webp", "Küche.webp", "Bad.webp"]
-    };
+  const images = {
+    logo: "Logo.webp", 
+    gallery: [
+      { src: "Schlafräume.webp", alt: "Saubere Schlafräume für Monteure in Asten" },
+      { src: "Wohnzimmer.webp", alt: "Gemütliches Wohnzimmer Gästehaus 22" },
+      { src: "Küche.webp", alt: "Voll ausgestattete Gemeinschaftsküche" },
+      { src: "Bad.webp", alt: "Modernes Badezimmer" }
+    ]
+  };
 
-    document.addEventListener('DOMContentLoaded', () => {
-      const logoEl = document.getElementById('logo-placeholder');
-      if (images.logo) logoEl.src = images.logo;
+  document.addEventListener('DOMContentLoaded', () => {
+    const logoEl = document.getElementById('logo-placeholder');
+    if (images.logo) logoEl.src = images.logo;
 
-      const container = document.getElementById('gallery-container');
-      const lb = document.getElementById('lightbox');
-      const lbImg = document.getElementById('lightbox-img');
+    const container = document.getElementById('gallery-container');
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
 
-      images.gallery.forEach((src) => {
-        const item = document.createElement('div');
-        item.className = 'gallery-item';
-        const img = document.createElement('img');
-        img.src = src;
-        img.alt = "Unterkunft Gästehaus 22"; // Improved SEO/Accessibility
-        img.onclick = () => { lbImg.src = src; lb.style.display = 'flex'; };
-        item.appendChild(img);
-        container.appendChild(item);
-      });
-    });
-
-    function setLang(lang) {
-      document.body.classList.toggle('lang-en', lang === 'en');
-      document.documentElement.lang = lang; // Updates the HTML lang attribute
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.innerText.toLowerCase() === lang);
-      });
-    }
-
-    function openNavigation() {
-      const address = "Gästehaus 22, Eichenstraße 22, 4481 Asten, Austria";
-      const encodedAddr = encodeURIComponent(address);
+    images.gallery.forEach((imgData) => {
+      const item = document.createElement('div');
+      item.className = 'gallery-item';
       
-      // Standard Google Maps Directions URL
-      const googleUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodedAddr}`;
-      // Apple Maps Directions URL
-      const appleUrl = `maps://maps.apple.com/?daddr=${encodedAddr}`;
+      const img = document.createElement('img');
+      img.src = imgData.src;
+      img.alt = imgData.alt;
+      img.loading = "lazy"; // Performance boost
+      
+      img.onclick = () => { 
+        lbImg.src = imgData.src; 
+        lb.style.display = 'flex'; 
+      };
+      
+      item.appendChild(img);
+      container.appendChild(item);
+    });
+  });
 
-      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  function setLang(lang) {
+    document.body.classList.toggle('lang-en', lang === 'en');
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      // Check for button text or data-lang attribute
+      btn.classList.toggle('active', btn.innerText.toLowerCase() === lang);
+    });
+  }
 
-      if (isIOS) {
-        // Try Apple Maps first on iOS, it's the smoothest native experience
-        window.location.href = appleUrl;
-        
-        // Fallback to Google Maps in browser if they don't have Apple Maps
-        setTimeout(() => {
-          if (!document.hidden) window.location.href = googleUrl;
-        }, 500);
-      } else {
-        window.open(googleUrl, '_blank');
-      }
+  function openNavigation() {
+    const address = "Eichenstraße 22, 4481 Asten, Austria";
+    const encodedAddr = encodeURIComponent(address);
+    
+    // Official Google Maps Directions API
+    const googleUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodedAddr}`;
+    // Apple Maps Protocol
+    const appleUrl = `maps://maps.apple.com/?daddr=${encodedAddr}`;
+
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+    if (isIOS) {
+      window.location.href = appleUrl;
+      setTimeout(() => {
+        if (!document.hidden) window.location.href = googleUrl;
+      }, 500);
+    } else {
+      window.open(googleUrl, '_blank');
     }
-  </script>
+  }
+</script>
 </body>
 </html>
