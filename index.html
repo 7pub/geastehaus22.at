@@ -160,8 +160,8 @@
 
   <header>
     <div class="lang-switch">
-      <button class="lang-btn active" onclick="setLang('de')">DE</button>
-      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn active" data-lang="de" onclick="setLang('de')">DE</button>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
     </div>
     <img id="logo-placeholder" alt="Gästehaus 22" class="logo-img">
     <h1 lang="de">Zimmer für Arbeiter in Asten</h1>
@@ -203,6 +203,9 @@
         <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-top: 0.5rem;">
           <a href="tel:+436801610618" class="btn-primary btn-call">
             📞 <span lang="de">Anrufen</span><span lang="en">Call</span>
+          </a>
+          <a href="https://wa.me/436801610618" target="_blank" class="btn-primary" style="background-color: #25D366;">
+            💬 WhatsApp
           </a>
           <button onclick="openNavigation()" class="btn-primary btn-nav">
             📍 <span lang="de">Route anzeigen</span><span lang="en">Get directions</span>
@@ -248,17 +251,11 @@
     images.gallery.forEach((imgData) => {
       const item = document.createElement('div');
       item.className = 'gallery-item';
-      
       const img = document.createElement('img');
       img.src = imgData.src;
       img.alt = imgData.alt;
-      img.loading = "lazy"; // Performance boost
-      
-      img.onclick = () => { 
-        lbImg.src = imgData.src; 
-        lb.style.display = 'flex'; 
-      };
-      
+      img.loading = "lazy";
+      img.onclick = () => { lbImg.src = imgData.src; lb.style.display = 'flex'; };
       item.appendChild(img);
       container.appendChild(item);
     });
@@ -268,8 +265,8 @@
     document.body.classList.toggle('lang-en', lang === 'en');
     document.documentElement.lang = lang;
     document.querySelectorAll('.lang-btn').forEach(btn => {
-      // Check for button text or data-lang attribute
-      btn.classList.toggle('active', btn.innerText.toLowerCase() === lang);
+      // Cleaner matching using the data-lang attribute
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
     });
   }
 
@@ -277,18 +274,17 @@
     const address = "Eichenstraße 22, 4481 Asten, Austria";
     const encodedAddr = encodeURIComponent(address);
     
-    // Official Google Maps Directions API
+    // Standard Google Maps Directions URL (Best for App/Web cross-compatibility)
     const googleUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodedAddr}`;
-    // Apple Maps Protocol
+    // Apple Maps Directions URL
     const appleUrl = `maps://maps.apple.com/?daddr=${encodedAddr}`;
 
     const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
     if (isIOS) {
       window.location.href = appleUrl;
-      setTimeout(() => {
-        if (!document.hidden) window.location.href = googleUrl;
-      }, 500);
+      // Failover to Google if Apple Maps fails/isn't preferred
+      setTimeout(() => { if (!document.hidden) window.location.href = googleUrl; }, 500);
     } else {
       window.open(googleUrl, '_blank');
     }
