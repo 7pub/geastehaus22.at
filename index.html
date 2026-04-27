@@ -259,22 +259,23 @@
   }
 
   function openNavigation() {
-    const address = "Eichenstraße 22, 4481 Asten, Austria";
-    const encodedAddr = encodeURIComponent(address);
-    
-    // Official Google Maps URL Action
-    const googleUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddr}`;
-    const appleUrl = `maps://maps.apple.com/?daddr=${encodedAddr}`;
+      const address = "Eichenstraße 22, 4481 Asten, Austria";
+      const encodedAddr = encodeURIComponent(address);
+      
+      // Corrected Google Maps URL (Universal Link)
+      const googleUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodedAddr}`;
+      // Apple Maps Directions URL
+      const appleUrl = `maps://maps.apple.com/?daddr=${encodedAddr}`;
 
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
-    if (isIOS) {
-      window.location.href = appleUrl;
-      setTimeout(() => { if (!document.hidden) window.location.href = googleUrl; }, 500);
-    } else {
-      window.open(googleUrl, '_blank');
+      if (isIOS) {
+        window.location.href = appleUrl;
+        setTimeout(() => { if (!document.hidden) window.location.href = googleUrl; }, 500);
+      } else {
+        window.open(googleUrl, '_blank');
+      }
     }
-  }
 </script>
 </body>
 </html>
