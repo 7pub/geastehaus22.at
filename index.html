@@ -229,157 +229,103 @@
 
   <div id="lightbox" onclick="this.style.display='none'"><img id="lightbox-img"></div>
 
-  <script>
- const images = {
-    logo: "Logo.webp",
-    gallery: ["Schlafräume.webp", "Wohnzimmer.webp", "Küche.webp", "Bad.webp"]
-};
+<script>
+    // 1. Bilder-Konfiguration
+    // WICHTIG: Wenn möglich, benenne die Dateien auf dem Server um in:
+    // Schlafraeume.webp, Wohnzimmer.webp, Kueche.webp, Bad.webp
+    const images = {
+        logo: "Logo.webp",
+        gallery: ["Schlafräume.webp", "Wohnzimmer.webp", "Küche.webp", "Bad.webp"]
+    };
 
-document.addEventListener('DOMContentLoaded', () => {
-    const logoEl = document.getElementById('logo-placeholder');
-    if (images.logo) logoEl.src = images.logo;
+    document.addEventListener('DOMContentLoaded', () => {
+        // Logo setzen
+        const logoEl = document.getElementById('logo-placeholder');
+        if (logoEl && images.logo) logoEl.src = images.logo;
 
-    const container = document.getElementById('gallery-container');
-    const lb = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lightbox-img');
+        // Galerie aufbauen
+        const container = document.getElementById('gallery-container');
+        const lb = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lightbox-img');
 
-    images.gallery.forEach((src) => {
-        const item = document.createElement('div');
-        item.className = 'gallery-item';
-        const img = document.createElement('img');
-        img.src = src;
-        img.loading = "lazy"; // Better performance
-        img.onclick = () => { lbImg.src = src; lb.style.display = 'flex'; };
-        item.appendChild(img);
-        container.appendChild(item);
+        if (container) {
+            images.gallery.forEach((src) => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = "Unterkunft Asten";
+                img.loading = "lazy";
+                img.onclick = () => { lbImg.src = src; lb.style.display = 'flex'; };
+                item.appendChild(img);
+                container.appendChild(item);
+            });
+        }
     });
-});
 
-function setLang(lang) {
-    document.body.classList.toggle('lang-en', lang === 'en');
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.innerText.toLowerCase() === lang);
-    });
-}
-
-function openNavigation() {
-    const addr = encodeURIComponent("Gästehaus 22, Eichenstraße 22, 4481 Asten");
-    const googleUniversalUrl = `https://www.google.com/maps/dir/?api=1&destination=${addr}`;
-    const appleMapsUrl = `https://maps.apple.com/?daddr=${addr}`;
-
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-
-    if (isIOS) {
-        window.location.href = googleUniversalUrl;
-        // Fallback to Apple Maps if Google doesn't open after 2.5 seconds
-        setTimeout(function() {
-            if (!document.hidden) {
-                window.location.href = appleMapsUrl;
-            }
-        }, 2500);
-    } else {
-        window.open(googleUniversalUrl, '_blank');
+    // 2. Sprache umschalten
+    function setLang(lang) {
+        document.body.classList.toggle('lang-en', lang === 'en');
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.innerText.toLowerCase() === lang);
+        });
     }
-}
 
-// PWA Logic
-let deferredPrompt;
-const installBtn = document.getElementById('install-button');
+    // 3. Navigation (Google & Apple Maps)
+    function openNavigation() {
+        const addr = encodeURIComponent("Gästehaus 22, Eichenstraße 22, 4481 Asten");
+        const googleUrl = `https://www.google.com/maps/dir/?api=1&destination=${addr}`;
+        const appleUrl = `https://maps.apple.com/?daddr=${addr}`;
 
-window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    installBtn.style.display = 'flex'; // Show button when ready
-});
-
-installBtn.addEventListener('click', async () => {
-    if (deferredPrompt) {
-        deferredPrompt.prompt();
-        const { outcome } = await deferredPrompt.userChoice;
-        if (outcome === 'accepted') installBtn.style.display = 'none';
-        deferredPrompt = null;
-    } else {
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
         if (isIOS) {
-            const msg = document.documentElement.lang === 'de' 
-                ? "Installation: Tippen Sie auf 'Teilen' und dann auf 'Zum Home-Bildschirm hinzufügen'." 
-                : "To install: Tap 'Share' and then 'Add to Home Screen'.";
-            alert(msg);
+            window.location.href = googleUrl;
+            setTimeout(() => {
+                if (!document.hidden) window.location.href = appleUrl;
+            }, 2500);
+        } else {
+            window.open(googleUrl, '_blank');
         }
     }
-});
 
-    function openNavigation() {
-      // Koordinaten und Adresse für Asten
-      const addr = encodeURIComponent("Gästehaus 22, Eichenstraße 22, 4481 Asten");
-      
-      // Dieser Link-Typ (dir=1) triggert in der Google Maps App sofort den Routen-Modus
-      const googleUniversalUrl = `https://www.google.com/maps/dir/?api=1&destination=${addr}&travelmode=driving`;
-      
-      // Apple Maps Link für iOS-Nutzer, die kein Google Maps haben
-      const appleMapsUrl = `https://maps.apple.com/?daddr=${addr}&dirflg=d`;
+    // 4. PWA Installation
+    let deferredPrompt;
+    const installBtn = document.getElementById('install-button');
 
-      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-
-      if (isIOS) {
-        // Auf iOS versuchen wir zuerst den Google Link. 
-        // Safari fragt hier meist einmalig: "In Google Maps öffnen?" 
-        // Das ist die sicherste Methode ohne Fehlermeldung.
-        window.location.href = googleUniversalUrl;
-        
-        // Fallback: Nach 2 Sekunden Apple Maps öffnen, falls der Nutzer nicht wegspringt
-        setTimeout(function() {
-          if (!document.hidden) {
-            window.location.href = appleMapsUrl;
-          }
-        }, 2);
-      } else {
-        // Auf Android/Desktop öffnet dieser Link direkt die App oder den Routenplaner
-        window.open(googleUniversalUrl, '_blank');
-      }
-    }
-      let deferredPrompt;
-const installSection = document.getElementById('install-section');
-const installBtn = document.getElementById('install-button');
-
-// 1. Android & Desktop: Catch the browser's install prompt
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault(); // Prevent the mini-infobar from appearing on mobile
-  deferredPrompt = e;
-  installSection.style.display = 'block'; // Show our custom button
-});
-
-installBtn.addEventListener('click', async () => {
-  if (deferredPrompt) {
-    deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-    if (outcome === 'accepted') {
-      installSection.style.display = 'none';
-    }
-    deferredPrompt = null;
-  } else {
-    // 2. iOS Logic: Manual instructions (Apple doesn't support the auto-prompt)
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-    if (isIOS) {
-      const msg = document.documentElement.lang === 'de' 
-        ? "Um diese App zu installieren: Tippen Sie auf 'Teilen' und dann auf 'Zum Home-Bildschirm hinzufügen'." 
-        : "To install this app: Tap 'Share' and then 'Add to Home Screen'.";
-      alert(msg);
-    }
-  }
-});
-
-  // Hide button if already installed
-  window.addEventListener('appinstalled', () => {
-    installSection.style.display = 'none';
-  });
-
-  // 3. Register Service Worker (Required for PWA)
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW failed', err));
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        if (installBtn) installBtn.style.display = 'flex';
     });
-  }
-  </script>
+
+    if (installBtn) {
+        installBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') installBtn.style.display = 'none';
+                deferredPrompt = null;
+            } else {
+                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+                if (isIOS) {
+                    const msg = document.body.classList.contains('lang-en') 
+                        ? "To install: Tap 'Share' and then 'Add to Home Screen'." 
+                        : "Installation: Tippen Sie auf 'Teilen' und dann auf 'Zum Home-Bildschirm hinzufügen'.";
+                    alert(msg);
+                }
+            }
+        });
+    }
+
+    // 5. Service Worker registrieren
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js')
+                .then(reg => console.log('SW aktiv'))
+                .catch(err => console.log('SW Fehler', err));
+        });
+    }
+</script>
 </body>
 </html>
