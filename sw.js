@@ -1,18 +1,46 @@
 const CACHE_NAME = 'gastehaus-v1';
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/Logo.webp',
-  '/Schlafräume.webp',
-  '/Wohnzimmer.webp',
-  '/Küche.webp',
-  '/Bad.webp'
+  './',
+  './index.html',
+  './Logo.webp',
+  // Use encodeURI for files with umlauts to ensure compatibility
+  encodeURI('./Schlafräume.webp'),
+  encodeURI('./Wohnzimmer.webp'),
+  encodeURI('./Küche.webp'),
+  encodeURI('./Bad.webp')
 ];
 
+// Install: Standard caching
 self.addEventListener('install', (e) => {
-  e.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)));
+  self.skipWaiting(); // Force the waiting service worker to become active
+  e.waitUntil(
+    caches.open(CACHE_NAME).then(cache => {
+      return cache.addAll(ASSETS);
+    })
+  );
 });
 
+// Activate: Clean up old caches
+self.addEventListener('activate', (e) => {
+  e.waitUntil(
+    caches.keys().then(keys => {
+      return Promise.all(
+        keys.map(key => {
+          if (key !== CACHE_NAME) {
+            return caches.delete(key);
+          }
+        })
+      );
+    })
+  );
+});
+
+// Fetch: Network-First (Recommended for simple landing pages)
+// This ensures they see the latest prices/info if online, but works offline too.
 self.addEventListener('fetch', (e) => {
-  e.respondWith(caches.match(e.request).then(res => res || fetch(e.request)));
+  e.respondWith(
+    fetch(e.request).catch(() => {
+      return caches.match(e.request);
+    })
+  );
 });

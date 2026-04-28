@@ -15,6 +15,7 @@
       --card: #ffffff;
       --accent: #222222;
       --accent-soft: #666666;
+      --whatsapp: #25D366;
       --font-main: system-ui, -apple-system, sans-serif;
     }
 
@@ -25,19 +26,15 @@
       background: var(--bg);
       color: #111;
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* --- SPRACHSTEUERUNG --- */
+    /* --- LANGUAGE CONTROL --- */
     [lang="en"] { display: none; }
     body.lang-en [lang="de"] { display: none; }
     body.lang-en [lang="en"] { display: block; }
-    
-    body.lang-en h1[lang="en"], 
-    body.lang-en p[lang="en"],
-    body.lang-en .section-label[lang="en"] { display: block !important; }
-    
+    body.lang-en h1[lang="en"], body.lang-en p[lang="en"], body.lang-en .section-label[lang="en"] { display: block !important; }
     body.lang-en li[lang="en"] { display: list-item !important; }
-
     body.lang-en span[lang="en"] { display: inline !important; }
 
     /* --- LAYOUT --- */
@@ -71,14 +68,11 @@
     .lang-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
 
     .logo-img {
-      width: 130px;
-      height: 130px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin-bottom: 1rem;
-      background: white;
+      width: 130px; height: 130px;
+      object-fit: cover; border-radius: 50%;
+      margin-bottom: 1rem; background: white;
       border: 2px solid #fff;
-      box-shadow: 0 8px 15px rgba(0,0,0,0.1), inset 0 5px 10px rgba(255,255,255,0.5);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
     }
 
     h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); line-height: 1.2; margin-bottom: 0.5rem; }
@@ -93,9 +87,7 @@
       gap: 1.5rem;
     }
 
-    @media (max-width: 850px) { 
-      main { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 850px) { main { grid-template-columns: 1fr; } }
 
     .card {
       background: var(--card);
@@ -122,18 +114,17 @@
       justify-content: center;
       gap: 0.5rem;
       font-weight: 600;
-      transition: transform 0.2s, background-color 0.2s;
+      transition: transform 0.2s, opacity 0.2s;
       border: none;
       width: 100%;
       cursor: pointer;
+      font-family: inherit;
     }
 
     .btn-call { background-color: #28a745; }
-    .btn-call:hover { background-color: #218838; }
-
     .btn-nav { background-color: #007bff; }
-    .btn-nav:hover { background-color: #0069d9; }
-
+    .btn-whatsapp { background-color: var(--whatsapp); }
+    .btn-primary:hover { opacity: 0.9; }
     .btn-primary:active { transform: scale(0.98); }
 
     /* --- GALLERY --- */
@@ -153,15 +144,15 @@
       display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(0,0,0,0.9); align-items: center; justify-content: center; cursor: zoom-out;
     }
-    #lightbox img { max-width: 90%; max-height: 90%; border-radius: 4px; }
+    #lightbox img { max-width: 90%; max-height: 90%; border-radius: 4px; border: 2px solid #fff; }
   </style>
 </head>
-<body id="top">
+<body>
 
   <header>
     <div class="lang-switch">
-      <button class="lang-btn active" onclick="setLang('de')">DE</button>
-      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn active" data-lang="de" onclick="setLang('de')">DE</button>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
     </div>
     <img id="logo-placeholder" alt="Gästehaus 22" class="logo-img">
     <h1 lang="de">Zimmer für Arbeiter in Asten</h1>
@@ -185,7 +176,6 @@
         <li>✅ <span lang="de">Modernes Badezimmer</span><span lang="en">Modern bathroom</span></li>
       </ul>
     </section>
-
     <aside style="display: flex; flex-direction: column; gap: 1.5rem;">
       <section class="card">
         <div class="section-label" lang="de">Lage</div>
@@ -195,23 +185,28 @@
           <span lang="de">Direkt an der A1 Autobahn & nahe Linz.</span>
           <span lang="en">Right by the A1 highway & near Linz.</span>
         </p>
-      </section>
-
-      <section class="card">
         <div class="section-label" lang="de">Kontakt</div>
         <div class="section-label" lang="en">Contact</div>
         <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-top: 0.5rem;">
           <a href="tel:+436801610618" class="btn-primary btn-call">
             📞 <span lang="de">Anrufen</span><span lang="en">Call</span>
           </a>
+          <a href="https://wa.me/436801610618" target="_blank" class="btn-primary btn-whatsapp">
+            💬 WhatsApp
+          </a>
           <button onclick="openNavigation()" class="btn-primary btn-nav">
             📍 <span lang="de">Route anzeigen</span><span lang="en">Get directions</span>
           </button>
-                <button id="install-button" class="btn-primary" style="background-color: #333;">
+        </div>          
+        <section class="card" id="install-section" style="display: none;">
+      <div class="section-label" lang="de">App Installieren</div>
+      <div class="section-label" lang="en">Install App</div>
+      <button id="install-button" class="btn-primary" style="background-color: #333;">
         📲 <span lang="de">App hinzufügen</span><span lang="en">Add to Home Screen</span>
       </button>
-        </div>
+    </section>
       </section>
+
     </aside>
 
     <section class="gallery-section card">
@@ -227,15 +222,20 @@
     © 2026 Gästehaus 22 – 4481 Asten
   </footer>
 
-  <div id="lightbox" onclick="this.style.display='none'"><img id="lightbox-img"></div>
+  <div id="lightbox" onclick="this.style.display='none'"><img id="lightbox-img" alt="Enlarged view"></div>
 
-  <script>
- const images = {
-    logo: "Logo.webp",
-    gallery: ["Schlafräume.webp", "Wohnzimmer.webp", "Küche.webp", "Bad.webp"]
-};
+<script>
+  const images = {
+    logo: "Logo.webp", 
+    gallery: [
+      { src: "Schlafräume.webp", alt: "Saubere Schlafräume für Monteure" },
+      { src: "Wohnzimmer.webp", alt: "Gemütliches Wohnzimmer" },
+      { src: "Küche.webp", alt: "Ausgestattete Küche" },
+      { src: "Bad.webp", alt: "Badezimmer" }
+    ]
+  };
 
-document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', () => {
     const logoEl = document.getElementById('logo-placeholder');
     if (images.logo) logoEl.src = images.logo;
 
@@ -243,102 +243,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const lb = document.getElementById('lightbox');
     const lbImg = document.getElementById('lightbox-img');
 
-    images.gallery.forEach((src) => {
-        const item = document.createElement('div');
-        item.className = 'gallery-item';
-        const img = document.createElement('img');
-        img.src = src;
-        img.loading = "lazy"; // Better performance
-        img.onclick = () => { lbImg.src = src; lb.style.display = 'flex'; };
-        item.appendChild(img);
-        container.appendChild(item);
+    images.gallery.forEach((imgData) => {
+      const item = document.createElement('div');
+      item.className = 'gallery-item';
+      const img = document.createElement('img');
+      img.src = imgData.src;
+      img.alt = imgData.alt;
+      img.loading = "lazy";
+      img.onclick = () => { lbImg.src = imgData.src; lb.style.display = 'flex'; };
+      item.appendChild(img);
+      container.appendChild(item);
     });
-});
+  });
 
-function setLang(lang) {
+  function setLang(lang) {
     document.body.classList.toggle('lang-en', lang === 'en');
+    document.documentElement.lang = lang;
     document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.innerText.toLowerCase() === lang);
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
     });
-}
+  }
 
-function openNavigation() {
-    const addr = encodeURIComponent("Gästehaus 22, Eichenstraße 22, 4481 Asten");
-    const googleUniversalUrl = `https://www.google.com/maps/dir/?api=1&destination=${addr}`;
-    const appleMapsUrl = `https://maps.apple.com/?daddr=${addr}`;
+  function openNavigation() {
+    const address = "Eichenstraße 22, 4481 Asten, Austria";
+    const encodedAddr = encodeURIComponent(address);
+    
+    // Fixed: Corrected template literal variable injection
+    const googleUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodedAddr}`;
+    const appleUrl = `maps://maps.apple.com/?daddr=${encodedAddr}`;
 
     const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
     if (isIOS) {
-        window.location.href = googleUniversalUrl;
-        // Fallback to Apple Maps if Google doesn't open after 2.5 seconds
-        setTimeout(function() {
-            if (!document.hidden) {
-                window.location.href = appleMapsUrl;
-            }
-        }, 2500);
+      window.location.href = appleUrl;
+      setTimeout(() => { if (!document.hidden) window.location.href = googleUrl; }, 500);
     } else {
-        window.open(googleUniversalUrl, '_blank');
+      window.open(googleUrl, '_blank');
     }
-}
-
-// PWA Logic
-let deferredPrompt;
-const installBtn = document.getElementById('install-button');
-
-window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    installBtn.style.display = 'flex'; // Show button when ready
-});
-
-installBtn.addEventListener('click', async () => {
-    if (deferredPrompt) {
-        deferredPrompt.prompt();
-        const { outcome } = await deferredPrompt.userChoice;
-        if (outcome === 'accepted') installBtn.style.display = 'none';
-        deferredPrompt = null;
-    } else {
-        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-        if (isIOS) {
-            const msg = document.documentElement.lang === 'de' 
-                ? "Installation: Tippen Sie auf 'Teilen' und dann auf 'Zum Home-Bildschirm hinzufügen'." 
-                : "To install: Tap 'Share' and then 'Add to Home Screen'.";
-            alert(msg);
-        }
-    }
-});
-
-    function openNavigation() {
-      // Koordinaten und Adresse für Asten
-      const addr = encodeURIComponent("Gästehaus 22, Eichenstraße 22, 4481 Asten");
-      
-      // Dieser Link-Typ (dir=1) triggert in der Google Maps App sofort den Routen-Modus
-      const googleUniversalUrl = `https://www.google.com/maps/dir/?api=1&destination=${addr}&travelmode=driving`;
-      
-      // Apple Maps Link für iOS-Nutzer, die kein Google Maps haben
-      const appleMapsUrl = `https://maps.apple.com/?daddr=${addr}&dirflg=d`;
-
-      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-
-      if (isIOS) {
-        // Auf iOS versuchen wir zuerst den Google Link. 
-        // Safari fragt hier meist einmalig: "In Google Maps öffnen?" 
-        // Das ist die sicherste Methode ohne Fehlermeldung.
-        window.location.href = googleUniversalUrl;
-        
-        // Fallback: Nach 2 Sekunden Apple Maps öffnen, falls der Nutzer nicht wegspringt
-        setTimeout(function() {
-          if (!document.hidden) {
-            window.location.href = appleMapsUrl;
-          }
-        }, 2);
-      } else {
-        // Auf Android/Desktop öffnet dieser Link direkt die App oder den Routenplaner
-        window.open(googleUniversalUrl, '_blank');
-      }
-    }
-      let deferredPrompt;
+  }
+  let deferredPrompt;
 const installSection = document.getElementById('install-section');
 const installBtn = document.getElementById('install-button');
 
@@ -380,6 +323,6 @@ installBtn.addEventListener('click', async () => {
       navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW failed', err));
     });
   }
-  </script>
+</script>
 </body>
 </html>
