@@ -4,10 +4,10 @@ const ASSETS = [
   './index.html',
   './Logo.webp',
   // Use encodeURI for files with umlauts to ensure compatibility
-  encodeURI('./Schlafräume.webp'),
-  encodeURI('./Wohnzimmer.webp'),
-  encodeURI('./Küche.webp'),
-  encodeURI('./Bad.webp')
+  encodeURI('./bedrooms.webp'),
+  encodeURI('./livingroom.webp'),
+  encodeURI('./kitchen.webp'),
+  encodeURI('./bathroom.webp')
 ];
 
 // Install: Standard caching
