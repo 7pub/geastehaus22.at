@@ -45,7 +45,61 @@
       border-bottom: 1px solid #e3e3e3;
       position: relative;
     }
+/* --- PAIRDROP STYLE HEADER --- */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Trennung von Logo und Buttons */
+    background: rgba(255, 255, 255, 0.8); /* Transparenz */
+    backdrop-filter: blur(12px); /* Glas-Effekt */
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
 
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-img {
+    width: 45px; /* Kleineres, modernes Logo im Header */
+    height: 45px;
+    margin-bottom: 0; /* Reset für Header-Layout */
+    box-shadow: none;
+    border: none;
+}
+
+.brand-info {
+    text-align: left;
+}
+
+header h1 {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+    font-weight: 700;
+}
+
+header .subtitle {
+    font-size: 0.75rem;
+    display: block;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Anpassung für Mobile: Titel ausblenden wenn zu wenig Platz */
+@media (max-width: 400px) {
+    header .subtitle { display: none; }
+    header h1 { font-size: 1rem; }
+}
     .lang-switch {
       position: absolute;
       top: 1rem;
@@ -150,6 +204,67 @@
 <body>
 
   <header>
+    <header class="row-reverse wrap">
+        <a href="#about" class="icon-button" data-i18n-key="header.about" data-i18n-attrs="title aria-label" title="Über PairDrop" aria-label="Über PairDrop öffnen">
+            <svg class="icon">
+                <use xlink:href="#info-outline"></use>
+            </svg>
+        </a>
+        <div id="language-selector" class="icon-button" data-i18n-key="header.language-selector" data-i18n-attrs="title" title="Sprache Wählen">
+            <svg class="icon">
+                <use xlink:href="#icon-language-selector"></use>
+            </svg>
+        </div>
+        <div id="theme-wrapper">
+            <div id="theme-auto" class="icon-button selected" data-i18n-key="header.theme-auto" data-i18n-attrs="title" title="Systemstil verwenden">
+                <svg class="icon">
+                    <use xlink:href="#icon-theme-auto"></use>
+                </svg>
+            </div>
+            <div>
+                <div id="theme-light" class="icon-button" data-i18n-key="header.theme-light" data-i18n-attrs="title" title="Immer hellen Stil verwenden">
+                    <svg class="icon">
+                        <use xlink:href="#icon-theme-light"></use>
+                    </svg>
+                </div>
+                <div id="theme-dark" class="icon-button" data-i18n-key="header.theme-dark" data-i18n-attrs="title" title="Immer dunklen Stil verwenden">
+                    <svg class="icon">
+                        <use xlink:href="#icon-theme-dark"></use>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div id="notification" class="icon-button" data-i18n-key="header.notification" data-i18n-attrs="title" title="Benachrichtigungen aktivieren">
+            <svg class="icon">
+                <use xlink:href="#notifications"></use>
+            </svg>
+        </div>
+        <div id="install" class="icon-button" data-i18n-key="header.install" data-i18n-attrs="title" title="PairDrop installieren">
+            <svg class="icon">
+                <use xlink:href="#homescreen"></use>
+            </svg>
+        </div>
+        <div id="pair-device" class="icon-button" data-i18n-key="header.pair-device" data-i18n-attrs="title" title="Kopple deine Geräte dauerhaft">
+            <svg class="icon">
+                <use xlink:href="#pair-device-icon"></use>
+            </svg>
+        </div>
+        <div id="edit-paired-devices" class="icon-button" data-i18n-key="header.edit-paired-devices" data-i18n-attrs="title" title="Gekoppelte Geräte bearbeiten">
+            <svg class="icon">
+                <use xlink:href="#edit-pair-devices-icon"></use>
+            </svg>
+        </div>
+        <div id="join-public-room" class="icon-button" data-i18n-key="header.join-public-room" data-i18n-attrs="title" title="Öffentlichen Raum temporär betreten">
+            <svg class="icon">
+                <use xlink:href="#public-room-icon"></use>
+            </svg>
+        </div>
+        <div id="expand" class="icon-button flipped" data-i18n-key="header.expand" data-i18n-attrs="title" hidden="true" title="Schaltflächenzeile ausklappen">
+            <svg class="icon">
+                <use xlink:href="#caret"></use>
+            </svg>
+        </div>
+    </header>
     <div class="lang-switch">
       <button class="lang-btn active" data-lang="de" onclick="setLang('de')">DE</button>
       <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>

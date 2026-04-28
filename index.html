@@ -48,7 +48,61 @@
       border-bottom: 1px solid #e3e3e3;
       position: relative;
     }
+    /* --- PAIRDROP STYLE HEADER --- */
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        padding: 1rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* Trennung von Logo und Buttons */
+        background: rgba(255, 255, 255, 0.8); /* Transparenz */
+        backdrop-filter: blur(12px); /* Glas-Effekt */
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
 
+    .header-left {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .logo-img {
+        width: 45px; /* Kleineres, modernes Logo im Header */
+        height: 45px;
+        margin-bottom: 0; /* Reset für Header-Layout */
+        box-shadow: none;
+        border: none;
+    }
+
+    .brand-info {
+        text-align: left;
+    }
+
+    header h1 {
+        font-size: 1.2rem;
+        margin-bottom: 0;
+        font-weight: 700;
+    }
+
+    header .subtitle {
+        font-size: 0.75rem;
+        display: block;
+    }
+
+    .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    /* Anpassung für Mobile: Titel ausblenden wenn zu wenig Platz */
+    @media (max-width: 400px) {
+        header .subtitle { display: none; }
+        header h1 { font-size: 1rem; }
+    }
     .lang-switch {
       position: absolute;
       top: 1rem;
