@@ -1,5 +1,12 @@
 index.htm
 index*.html
+index.*.html
+index.*.htm
+index.*.xhtml
+index.*.xml
+index.*.json
+index.*.yaml
+index.*.yml
 *.log
 *.tmp
 *.bak
