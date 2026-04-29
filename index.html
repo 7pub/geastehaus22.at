@@ -33,19 +33,30 @@
     }
 
     /* --- SPRACHSTEUERUNG --- */
-    [lang="en"], [lang="ig"] { display: none; }
+    /* Verstecke alle Sprachen standardmäßig */
+    [lang="en"], [lang="ig"], [lang="ru"], [lang="hu"], [lang="pl"], [lang="my"], [lang="es"], [lang="cs"], [lang="ro"], [lang="fr"], [lang="it"] { 
+      display: none; 
+    }
     
-    body.lang-en [lang="de"], body.lang-en [lang="ig"] { display: none; }
-    body.lang-en [lang="en"] { display: block; }
-    body.lang-en h1[lang="en"], body.lang-en p[lang="en"], body.lang-en .section-label[lang="en"] { display: block !important; }
-    body.lang-en li[lang="en"] { display: flex !important; }
-    body.lang-en span[lang="en"] { display: inline !important; }
+    /* Logik für die Anzeige der aktiven Sprache */
+    body.lang-en [lang="en"], body.lang-ig [lang="ig"], body.lang-ru [lang="ru"], 
+    body.lang-hu [lang="hu"], body.lang-pl [lang="pl"], body.lang-my [lang="my"],
+    body.lang-es [lang="es"], body.lang-cs [lang="cs"], body.lang-ro [lang="ro"],
+    body.lang-fr [lang="fr"], body.lang-it [lang="it"] { 
+      display: block !important; 
+    }
 
-    body.lang-ig [lang="de"], body.lang-ig [lang="en"] { display: none; }
-    body.lang-ig [lang="ig"] { display: block; }
-    body.lang-ig h1[lang="ig"], body.lang-ig p[lang="ig"], body.lang-ig .section-label[lang="ig"] { display: block !important; }
-    body.lang-ig li[lang="ig"] { display: flex !important; }
-    body.lang-ig span[lang="ig"] { display: inline !important; }
+    /* Spezialfall für Flex-Items (Listen-Icons) */
+    body.lang-en li[lang="en"], body.lang-ig li[lang="ig"], body.lang-ru li[lang="ru"],
+    body.lang-hu li[lang="hu"], body.lang-pl li[lang="pl"], body.lang-my li[lang="my"],
+    body.lang-es li[lang="es"], body.lang-cs li[lang="cs"], body.lang-ro li[lang="ro"],
+    body.lang-fr li[lang="fr"], body.lang-it li[lang="it"] { 
+      display: flex !important; 
+    }
+
+    /* Deutsch als Default (wenn keine Klasse gesetzt ist) */
+    body:not([class*="lang-"]) [lang="de"] { display: block; }
+    body:not([class*="lang-"]) li[lang="de"] { display: flex; }
 
     header {
       padding: 4.5rem 1.5rem 2rem;
@@ -63,31 +74,36 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 1rem;
     }
 
-    .lang-switch { display: flex; gap: 0.5rem; }
+    .lang-switch { 
+      display: flex; 
+      gap: 0.4rem; 
+      flex-wrap: wrap; 
+      justify-content: flex-end;
+    }
 
     .lang-btn, .install-btn-top {
-      padding: 0.4rem 0.8rem;
+      padding: 0.3rem 0.6rem;
       border: 1px solid #ddd;
       background: white;
       border-radius: 6px;
       cursor: pointer;
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       font-weight: 600;
       transition: 0.2s;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
       color: inherit;
     }
 
     .lang-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
 
     .logo-img {
-      width: 130px;
-      height: 130px;
+      width: 120px;
+      height: 120px;
       object-fit: cover;
       border-radius: 50%;
       margin-bottom: 1rem;
@@ -96,8 +112,8 @@
       box-shadow: 0 8px 15px rgba(0,0,0,0.1);
     }
 
-    h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); line-height: 1.2; margin-bottom: 0.5rem; }
-    .subtitle { color: var(--accent-soft); font-size: 1rem; }
+    h1 { font-size: clamp(1.5rem, 4vw, 2.2rem); line-height: 1.2; margin-bottom: 0.5rem; }
+    .subtitle { color: var(--accent-soft); font-size: 0.95rem; }
 
     main {
       max-width: 1040px;
@@ -137,7 +153,7 @@
       justify-content: center;
       gap: 0.6rem;
       font-weight: 600;
-      transition: transform 0.2s, background-color 0.2s;
+      transition: transform 0.2s;
       border: none;
       width: 100%;
       cursor: pointer;
@@ -157,7 +173,6 @@
     .gallery-item img { width: 100%; height: 100%; object-fit: cover; cursor: zoom-in; }
 
     footer { text-align: center; padding: 3rem 1rem; color: var(--accent-soft); font-size: 0.85rem; }
-    .footer-heart { margin-top: 0.5rem; }
     .emoji { vertical-align: middle; }
 
     #lightbox {
@@ -175,19 +190,47 @@
         </button>
 
         <div class="lang-switch">
-          <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
-          <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
-          <button class="lang-btn" id="btn-ig" onclick="setLang('ig')">IG</button>
+          <button class="lang-btn active" onclick="setLang('de')">DE</button>
+          <button class="lang-btn" onclick="setLang('en')">EN</button>
+          <button class="lang-btn" onclick="setLang('ru')">RU</button>
+          <button class="lang-btn" onclick="setLang('hu')">HU</button>
+          <button class="lang-btn" onclick="setLang('pl')">PL</button>
+          <button class="lang-btn" onclick="setLang('my')">MY</button>
+          <button class="lang-btn" onclick="setLang('es')">ES</button>
+          <button class="lang-btn" onclick="setLang('cs')">CS</button>
+          <button class="lang-btn" onclick="setLang('ro')">RO</button>
+          <button class="lang-btn" onclick="setLang('fr')">FR</button>
+          <button class="lang-btn" onclick="setLang('it')">IT</button>
+          <button class="lang-btn" onclick="setLang('ig')">IG</button>
         </div>
       </div>
       
       <img id="logo-placeholder" alt="Gästehaus 22" class="logo-img">
+      
       <h1 lang="de">Zimmer für Arbeiter in Asten</h1>
       <h1 lang="en">Rooms for workers in Asten</h1>
+      <h1 lang="ru">Жилье для рабочих в Астене</h1>
+      <h1 lang="hu">Munkásszállás Astenben</h1>
+      <h1 lang="pl">Pokoje dla pracowników w Asten</h1>
+      <h1 lang="my">Asten ရှိ အလုပ်သမားများအတွက် အခန်းများ</h1>
+      <h1 lang="es">Habitaciones para trabajadores en Asten</h1>
+      <h1 lang="cs">Ubytování pro pracovníky v Asten</h1>
+      <h1 lang="ro">Cazare pentru muncitori în Asten</h1>
+      <h1 lang="fr">Chambres pour travailleurs à Asten</h1>
+      <h1 lang="it">Camere per lavoratori a Asten</h1>
       <h1 lang="ig">Ụlọ maka ndị ọrụ na Asten</h1>
       
       <p class="subtitle" lang="de">Praktische, saubere Unterkunft für Monteure und Teams.</p>
       <p class="subtitle" lang="en">Practical, clean accommodation for fitters and teams.</p>
+      <p class="subtitle" lang="ru">Удобное и чистое жилье для монтажников и бригад.</p>
+      <p class="subtitle" lang="hu">Praktikus, tiszta szállás szerelőknek és csapatoknak.</p>
+      <p class="subtitle" lang="pl">Praktyczne, czyste zakwaterowanie dla monterów i zespołów.</p>
+      <p class="subtitle" lang="my">တပ်ဆင်ရေးသမားများနှင့် အဖွဲ့များအတွက် သန့်ရှင်းအဆင်ပြေသော နေရာထိုင်ခင်း။</p>
+      <p class="subtitle" lang="es">Alojamiento práctico y limpio para técnicos y equipos.</p>
+      <p class="subtitle" lang="cs">Praktické a čisté ubytování pro montéry a týmy.</p>
+      <p class="subtitle" lang="ro">Cazare practică și curată pentru echipe și muncitori.</p>
+      <p class="subtitle" lang="fr">Logement pratique et propre pour monteurs et équipes.</p>
+      <p class="subtitle" lang="it">Alloggio pratico e pulito per trasfertisti e team.</p>
       <p class="subtitle" lang="ig">Ebe obibi dị mma ma dị ọcha maka ndị ọrụ na ndị otu.</p>
     </header>
 
@@ -195,38 +238,84 @@
       <section class="card">
         <div class="section-label" lang="de">Übernachtung</div>
         <div class="section-label" lang="en">Accommodation</div>
+        <div class="section-label" lang="ru">Проживание</div>
+        <div class="section-label" lang="hu">Szállás</div>
+        <div class="section-label" lang="pl">Zakwaterowanie</div>
+        <div class="section-label" lang="my">နေရာထိုင်ခင်း</div>
+        <div class="section-label" lang="es">Alojamiento</div>
+        <div class="section-label" lang="cs">Ubytování</div>
+        <div class="section-label" lang="ro">Cazare</div>
+        <div class="section-label" lang="fr">Hébergement</div>
+        <div class="section-label" lang="it">Pernottamento</div>
         <div class="section-label" lang="ig">Ebe obibi</div>
 
         <h2 lang="de">Preise & Konditionen</h2>
         <h2 lang="en">Prices & Conditions</h2>
+        <h2 lang="ru">Цены и условия</h2>
+        <h2 lang="hu">Árak és feltételek</h2>
+        <h2 lang="pl">Ceny i warunki</h2>
+        <h2 lang="my">ဈေးနှုန်းနှင့် စည်းကမ်းချက်များ</h2>
+        <h2 lang="es">Precios y condiciones</h2>
+        <h2 lang="cs">Ceny a podmínky</h2>
+        <h2 lang="ro">Prețuri și condiții</h2>
+        <h2 lang="fr">Prix et conditions</h2>
+        <h2 lang="it">Prezzi e condizioni</h2>
         <h2 lang="ig">Ọnụ ego & Ọnọdụ</h2>
 
         <div class="price-tag">35 € 
           <span lang="de">/ Nacht pro Person</span>
           <span lang="en">/ night per person</span>
+          <span lang="ru">/ за ночь с человека</span>
+          <span lang="hu">/ éjszaka / fő</span>
+          <span lang="pl">/ noc za osobę</span>
+          <span lang="my">/ တစ်ညလျှင် တစ်ဦးလျှင်</span>
+          <span lang="es">/ noche por persona</span>
+          <span lang="cs">/ noc za osobu</span>
+          <span lang="ro">/ noapte de persoană</span>
+          <span lang="fr">/ nuit par personne</span>
+          <span lang="it">/ notte a persona</span>
           <span lang="ig">/ n'abalị maka otu onye</span>
         </div>
 
         <p lang="de">Inklusive WLAN, Parkplatz und Endreinigung.</p>
         <p lang="en">Including Wi-Fi, parking and final cleaning.</p>
+        <p lang="ru">Включая Wi-Fi, парковку и финальную уборку.</p>
+        <p lang="hu">Ingyenes WiFi, parkolás és végtakarítás.</p>
+        <p lang="pl">W cenie Wi-Fi, parking i sprzątanie końcowe.</p>
+        <p lang="my">Wi-Fi၊ ကားပါကင်နှင့် အခန်းသန့်ရှင်းရေး အခမဲ့ပါဝင်သည်။</p>
+        <p lang="es">Incluye Wi-Fi, aparcamiento y limpieza final.</p>
+        <p lang="cs">Včetně Wi-Fi, parkování a závěrečného úklidu.</p>
+        <p lang="ro">Include Wi-Fi, parcare și curățenie finală.</p>
+        <p lang="fr">Inclus Wi-Fi, parking et ménage final.</p>
+        <p lang="it">Incluso Wi-Fi, parcheggio e pulizia finale.</p>
         <p lang="ig">Gụnyere Wi-Fi, ebe a na-adọba ụgbọala na nhicha ikpeazụ.</p>
 
         <ul>
-          <li><i data-lucide="check-circle-2" class="check-icon"></i> 
-            <span lang="de">Saubere Einzelbetten</span>
-            <span lang="en">Clean single beds</span>
-            <span lang="ig">Àkwà ndina dị ọcha</span>
-          </li>
-          <li><i data-lucide="check-circle-2" class="check-icon"></i> 
-            <span lang="de">Voll ausgestattete Küche</span>
-            <span lang="en">Fully equipped kitchen</span>
-            <span lang="ig">Ebe nri nwere ngwa niile</span>
-          </li>
-          <li><i data-lucide="check-circle-2" class="check-icon"></i> 
-            <span lang="de">Modernes Badezimmer</span>
-            <span lang="en">Modern bathroom</span>
-            <span lang="ig">Ụlọ ịsa ahụ ọgbara ọhụrụ</span>
-          </li>
+          <li lang="de"><i data-lucide="check-circle-2" class="check-icon"></i> Saubere Einzelbetten</li>
+          <li lang="en"><i data-lucide="check-circle-2" class="check-icon"></i> Clean single beds</li>
+          <li lang="ru"><i data-lucide="check-circle-2" class="check-icon"></i> Чистые односпальные кровати</li>
+          <li lang="hu"><i data-lucide="check-circle-2" class="check-icon"></i> Tiszta egyszemélyes ágyak</li>
+          <li lang="pl"><i data-lucide="check-circle-2" class="check-icon"></i> Czyste pojedyncze łóżka</li>
+          <li lang="my"><i data-lucide="check-circle-2" class="check-icon"></i> သန့်ရှင်းသော တစ်ဦးတည်းအိပ်ကုတင်များ</li>
+          <li lang="es"><i data-lucide="check-circle-2" class="check-icon"></i> Camas individuales limpias</li>
+          <li lang="cs"><i data-lucide="check-circle-2" class="check-icon"></i> Čistá samostatná lůžka</li>
+          <li lang="ro"><i data-lucide="check-circle-2" class="check-icon"></i> Paturi individuale curate</li>
+          <li lang="fr"><i data-lucide="check-circle-2" class="check-icon"></i> Lits simples propres</li>
+          <li lang="it"><i data-lucide="check-circle-2" class="check-icon"></i> Letti singoli puliti</li>
+          <li lang="ig"><i data-lucide="check-circle-2" class="check-icon"></i> Àkwà ndina dị ọcha</li>
+          
+          <li lang="de"><i data-lucide="check-circle-2" class="check-icon"></i> Voll ausgestattete Küche</li>
+          <li lang="en"><i data-lucide="check-circle-2" class="check-icon"></i> Fully equipped kitchen</li>
+          <li lang="ru"><i data-lucide="check-circle-2" class="check-icon"></i> Полностью оборудованная кухня</li>
+          <li lang="hu"><i data-lucide="check-circle-2" class="check-icon"></i> Teljesen felszerelt konyha</li>
+          <li lang="pl"><i data-lucide="check-circle-2" class="check-icon"></i> W pełni wyposażona kuchnia</li>
+          <li lang="my"><i data-lucide="check-circle-2" class="check-icon"></i> အစုံအလင်ပါဝင်သော မီးဖိုချောင်</li>
+          <li lang="es"><i data-lucide="check-circle-2" class="check-icon"></i> Cocina totalmente equipada</li>
+          <li lang="cs"><i data-lucide="check-circle-2" class="check-icon"></i> Plně vybavená kuchyně</li>
+          <li lang="ro"><i data-lucide="check-circle-2" class="check-icon"></i> Bucătărie complet echipată</li>
+          <li lang="fr"><i data-lucide="check-circle-2" class="check-icon"></i> Cuisine entièrement équipée</li>
+          <li lang="it"><i data-lucide="check-circle-2" class="check-icon"></i> Cucina completamente attrezzata</li>
+          <li lang="ig"><i data-lucide="check-circle-2" class="check-icon"></i> Ebe nri nwere ngwa niile</li>
         </ul>
       </section>
 
@@ -234,7 +323,17 @@
         <section class="card">
           <div class="section-label" lang="de">Kontakt</div>
           <div class="section-label" lang="en">Contact</div>
+          <div class="section-label" lang="ru">Контакт</div>
+          <div class="section-label" lang="hu">Kapcsolat</div>
+          <div class="section-label" lang="pl">Kontakt</div>
+          <div class="section-label" lang="my">ဆက်သွယ်ရန်</div>
+          <div class="section-label" lang="es">Contacto</div>
+          <div class="section-label" lang="cs">Kontakt</div>
+          <div class="section-label" lang="ro">Contact</div>
+          <div class="section-label" lang="fr">Contact</div>
+          <div class="section-label" lang="it">Contatti</div>
           <div class="section-label" lang="ig">Kpọtụrụ anyị</div>
+          
           <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-top: 0.5rem;">
             <a href="https://wa.me/436801610618" class="btn-primary btn-whatsapp" target="_blank">
               <i data-lucide="message-circle"></i> WhatsApp
@@ -248,12 +347,31 @@
         <section class="card">
           <div class="section-label" lang="de">Lage</div>
           <div class="section-label" lang="en">Location</div>
+          <div class="section-label" lang="ru">Расположение</div>
+          <div class="section-label" lang="hu">Elhelyezkedés</div>
+          <div class="section-label" lang="pl">Lokalizacja</div>
+          <div class="section-label" lang="my">တည်နေရာ</div>
+          <div class="section-label" lang="es">Ubicación</div>
+          <div class="section-label" lang="cs">Poloha</div>
+          <div class="section-label" lang="ro">Locație</div>
+          <div class="section-label" lang="fr">Emplacement</div>
+          <div class="section-label" lang="it">Posizione</div>
           <div class="section-label" lang="ig">Ebe anyị dị</div>
+
           <p><strong>Gästehaus 22</strong><br>Eichenstraße 22<br>4481 Asten, Austria</p>
           <button onclick="openNavigation()" class="btn-primary btn-nav" style="margin-top:1rem;">
             <i data-lucide="map-pin"></i> 
             <span lang="de">Route anzeigen</span>
             <span lang="en">Get directions</span>
+            <span lang="ru">Проложить маршрут</span>
+            <span lang="hu">Útvonaltervezés</span>
+            <span lang="pl">Pokaż trasę</span>
+            <span lang="my">လမ်းညွှန်ပြပါ</span>
+            <span lang="es">Cómo llegar</span>
+            <span lang="cs">Zobrazit trasu</span>
+            <span lang="ro">Indicații traseu</span>
+            <span lang="fr">Itinéraire</span>
+            <span lang="it">Ottieni indicazioni</span>
             <span lang="ig">Gosi ụzọ</span>
           </button>
         </section>
@@ -262,6 +380,15 @@
       <section class="gallery-section card" style="grid-column: 1 / -1;">
         <div class="section-label" lang="de">Galerie</div>
         <div class="section-label" lang="en">Gallery</div>
+        <div class="section-label" lang="ru">Галерея</div>
+        <div class="section-label" lang="hu">Galéria</div>
+        <div class="section-label" lang="pl">Galeria</div>
+        <div class="section-label" lang="my">ဓာတ်ပုံများ</div>
+        <div class="section-label" lang="es">Galería</div>
+        <div class="section-label" lang="cs">Galerie</div>
+        <div class="section-label" lang="ro">Galerie</div>
+        <div class="section-label" lang="fr">Galerie</div>
+        <div class="section-label" lang="it">Galleria</div>
         <div class="section-label" lang="ig">Foto nlele</div>
         <div class="gallery-grid" id="gallery-container"></div>
       </section>
@@ -269,11 +396,6 @@
 
   <footer>
     © 2026 Gästehaus 22 – 4481 Asten
-    <p class="footer-heart">Build with 
-      <g-emoji class="g-emoji" alias="heart" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png">
-        <img class="emoji" alt="heart" height="20" width="20" src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png">
-      </g-emoji>
-    </p>
   </footer>
 
   <div id="lightbox" onclick="this.style.display='none'"><img id="lightbox-img"></div>
@@ -286,22 +408,39 @@
     };
 
     function setLang(lang) {
-      document.body.classList.remove('lang-en', 'lang-ig');
+      // Alle Klassen entfernen
+      const langs = ['en', 'ig', 'ru', 'hu', 'pl', 'my', 'es', 'cs', 'ro', 'fr', 'it'];
+      langs.forEach(l => document.body.classList.remove('lang-' + l));
+      
+      // Neue Klasse setzen, falls nicht Deutsch
       if(lang !== 'de') {
         document.body.classList.add('lang-' + lang);
       }
       
-      document.getElementById('btn-de').classList.toggle('active', lang === 'de');
-      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-      document.getElementById('btn-ig').classList.toggle('active', lang === 'ig');
+      // Aktiven Button markieren
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if(btn.textContent.toLowerCase() === lang || (lang==='my' && btn.textContent==='MY')) {
+            btn.classList.add('active');
+        }
+      });
+      // Spezialfall Button Text Matching Fix
+      const btns = document.querySelectorAll('.lang-btn');
+      btns.forEach(b => {
+          b.classList.toggle('active', b.getAttribute('onclick').includes(`'${lang}'`));
+      });
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+      // Spracherkennung
       const userLang = navigator.language || navigator.userLanguage; 
-      if (userLang.startsWith('ig')) {
-        setLang('ig');
-      } else if (!userLang.startsWith('de')) {
-        setLang('en');
+      const code = userLang.split('-')[0];
+      const supported = ['de', 'en', 'ru', 'hu', 'pl', 'my', 'es', 'cs', 'ro', 'fr', 'it', 'ig'];
+      
+      if (supported.includes(code)) {
+          setLang(code);
+      } else {
+          setLang('en');
       }
       
       lucide.createIcons();
@@ -320,46 +459,13 @@
       });
     });
 
-  function openNavigation() {
-        const addr = encodeURIComponent("Gästehaus 22, Eichenstraße 22, 4481 Asten");
-        
-        // Prüfen, ob es ein Apple-Gerät ist
-        if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-          window.location.href = `maps://maps.apple.com/?daddr=${addr}`;
-        } else {
-          // Korrekter, universeller Link für Google Maps (funktioniert überall ohne Fehler)
-          window.open(`https://www.google.com/maps/dir/?api=1&destination=${addr}`, '_blank');
-        }
+    function openNavigation() {
+      const addr = encodeURIComponent("Gästehaus 22, Eichenstraße 22, 4481 Asten");
+      if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+        window.location.href = `maps://maps.apple.com/?daddr=${addr}`;
+      } else {
+        window.open(`https://www.google.com/maps/dir/?api=1&destination=${addr}`, '_blank');
       }
-    let deferredPrompt;
-    const installBtn = document.getElementById('install-button');
-
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      installBtn.style.display = 'flex';
-    });
-
-    installBtn.addEventListener('click', async () => {
-      if (!deferredPrompt) {
-        if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-          let msg = "Installation: Tippen Sie auf 'Teilen' und 'Zum Home-Bildschirm'.";
-          if(document.body.classList.contains('lang-en')) msg = "To install: Tap 'Share' and 'Add to Home Screen'.";
-          if(document.body.classList.contains('lang-ig')) msg = "Iji tinye ya: Pịa 'Share' ma họrọ 'Add to Home Screen'.";
-          alert(msg);
-        }
-        return;
-      }
-      deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
-      if (outcome === 'accepted') installBtn.style.display = 'none';
-      deferredPrompt = null;
-    });
-
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').catch(console.error);
-      });
     }
   </script>
 </body>
