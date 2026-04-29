@@ -32,8 +32,7 @@
       line-height: 1.6;
     }
 
-    /* --- SPRACHSTEUERUNG --- */
-    /* Igbo ist standardmäßig ausgeblendet und es gibt keine Klasse 'lang-ig', die es einblendet */
+    /* --- SPRACHSTEUERUNG (Igbo versteckt) --- */
     [lang="en"], [lang="ig"] { display: none; }
     
     body.lang-en [lang="de"], body.lang-en [lang="ig"] { display: none; }
@@ -52,12 +51,8 @@
     
     .top-bar {
       position: absolute;
-      top: 1rem;
-      left: 1rem;
-      right: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      top: 1rem; left: 1rem; right: 1rem;
+      display: flex; justify-content: space-between; align-items: center;
     }
 
     .lang-switch { display: flex; gap: 0.5rem; }
@@ -71,48 +66,34 @@
       font-size: 0.85rem;
       font-weight: 600;
       transition: 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      color: inherit;
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
     }
 
     .lang-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
 
     .logo-img {
-      width: 130px;
-      height: 130px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin-bottom: 1rem;
-      background: white;
-      border: 2px solid #fff;
-      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+      width: 130px; height: 130px;
+      object-fit: cover; border-radius: 50%;
+      margin-bottom: 1rem; background: white;
+      border: 2px solid #fff; box-shadow: 0 8px 15px rgba(0,0,0,0.1);
     }
 
     h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); line-height: 1.2; margin-bottom: 0.5rem; }
     .subtitle { color: var(--accent-soft); font-size: 1rem; }
 
     main {
-      max-width: 1040px;
-      margin: 2rem auto;
-      padding: 0 1.5rem;
-      display: grid;
-      grid-template-columns: 1.8fr 1.2fr;
-      gap: 1.5rem;
+      max-width: 1040px; margin: 2rem auto; padding: 0 1.5rem;
+      display: grid; grid-template-columns: 1.8fr 1.2fr; gap: 1.5rem;
     }
 
     @media (max-width: 850px) { main { grid-template-columns: 1fr; } }
 
     .card {
-      background: var(--card);
-      border-radius: 16px;
-      padding: 1.5rem;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+      background: var(--card); border-radius: 16px;
+      padding: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.03);
     }
 
-    .section-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-soft); margin-bottom: 0.5rem; }
+    .section-label { font-size: 0.75rem; text-transform: uppercase; color: var(--accent-soft); margin-bottom: 0.5rem; }
     .price-tag { font-size: 1.8rem; font-weight: 700; margin: 0.5rem 0; }
     .price-tag span { font-size: 0.9rem; font-weight: 400; color: var(--accent-soft); }
 
@@ -123,19 +104,10 @@
     .check-icon { color: var(--success); }
 
     .btn-primary {
-      padding: 0.8rem 1.5rem;
-      color: #fff;
-      border-radius: 50px;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
-      font-weight: 600;
-      transition: transform 0.2s, background-color 0.2s;
-      border: none;
-      width: 100%;
-      cursor: pointer;
+      padding: 0.8rem 1.5rem; color: #fff; border-radius: 50px;
+      text-decoration: none; display: flex; align-items: center;
+      justify-content: center; gap: 0.6rem; font-weight: 600;
+      transition: transform 0.2s; border: none; width: 100%; cursor: pointer;
     }
 
     .btn-call { background-color: var(--success); }
@@ -143,21 +115,16 @@
     .btn-nav { background-color: var(--link); }
 
     .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem; margin-top: 1rem;
     }
     .gallery-item { height: 200px; border-radius: 12px; overflow: hidden; background: #ddd; }
     .gallery-item img { width: 100%; height: 100%; object-fit: cover; cursor: zoom-in; }
 
     footer { text-align: center; padding: 3rem 1rem; color: var(--accent-soft); font-size: 0.85rem; }
-    .footer-heart { margin-top: 0.5rem; }
-    .emoji { vertical-align: middle; }
-
     #lightbox {
       display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.9); align-items: center; justify-content: center; cursor: zoom-out;
+      background: rgba(0,0,0,0.9); align-items: center; justify-content: center;
     }
     #lightbox img { max-width: 90%; max-height: 90%; border-radius: 4px; }
   </style>
@@ -216,11 +183,6 @@
             <span lang="en">Fully equipped kitchen</span>
             <span lang="ig">Ebe nri nwere ngwa niile</span>
           </li>
-          <li><i data-lucide="check-circle-2" class="check-icon"></i> 
-            <span lang="de">Modernes Badezimmer</span>
-            <span lang="en">Modern bathroom</span>
-            <span lang="ig">Ụlọ ịsa ahụ ọgbara ọhụrụ</span>
-          </li>
         </ul>
       </section>
 
@@ -228,9 +190,8 @@
         <section class="card">
           <div class="section-label" lang="de">Kontakt</div>
           <div class="section-label" lang="en">Contact</div>
-          <div class="section-label" lang="ig">Kpọtụrụ anyị</div>
           <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-top: 0.5rem;">
-            <a href="https://wa.me/436801610618" class="btn-primary btn-whatsapp" target="_blank">
+            <a href="https://wa.me/436801610618?text=Hallo%20G%C3%A4stehaus%2022%2C%20ich%20h%C3%A4tte%20gerne%20Informationen%20zu%20einem%20Zimmer." class="btn-primary btn-whatsapp" target="_blank">
               <i data-lucide="message-circle"></i> WhatsApp
             </a>
             <a href="tel:+436801610618" class="btn-primary btn-call">
@@ -241,33 +202,22 @@
 
         <section class="card">
           <div class="section-label" lang="de">Lage</div>
-          <div class="section-label" lang="en">Location</div>
-          <div class="section-label" lang="ig">Ebe anyị dị</div>
           <p><strong>Gästehaus 22</strong><br>Eichenstraße 22<br>4481 Asten, Austria</p>
           <button onclick="openNavigation()" class="btn-primary btn-nav" style="margin-top:1rem;">
             <i data-lucide="map-pin"></i> 
             <span lang="de">Route anzeigen</span>
             <span lang="en">Get directions</span>
-            <span lang="ig">Gosi ụzọ</span>
           </button>
         </section>
       </aside>
 
       <section class="gallery-section card" style="grid-column: 1 / -1;">
-        <div class="section-label" lang="de">Galerie</div>
-        <div class="section-label" lang="en">Gallery</div>
-        <div class="section-label" lang="ig">Foto nlele</div>
         <div class="gallery-grid" id="gallery-container"></div>
       </section>
     </main>
 
   <footer>
     © 2026 Gästehaus 22 – 4481 Asten
-    <p class="footer-heart">Build with 
-      <g-emoji class="g-emoji" alias="heart" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png">
-        <img class="emoji" alt="heart" height="20" width="20" src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png">
-      </g-emoji>
-    </p>
   </footer>
 
   <div id="lightbox" onclick="this.style.display='none'"><img id="lightbox-img"></div>
@@ -280,20 +230,17 @@
     };
 
     function setLang(lang) {
-      document.body.classList.remove('lang-en');
-      // Igbo wird hier ignoriert, selbst wenn es aufgerufen würde
-      if(lang === 'en') {
-        document.body.classList.add('lang-en');
+      document.body.classList.remove('lang-en', 'lang-ig');
+      if(lang !== 'de') {
+        document.body.classList.add('lang-' + lang);
       }
-      
       document.getElementById('btn-de').classList.toggle('active', lang === 'de');
       document.getElementById('btn-en').classList.toggle('active', lang === 'en');
     }
 
     document.addEventListener('DOMContentLoaded', () => {
       const userLang = navigator.language || navigator.userLanguage; 
-      
-      // Automatische Erkennung für Igbo entfernt.
+      // Keine automatische Aktivierung von Igbo mehr
       if (!userLang.startsWith('de')) {
         setLang('en');
       }
@@ -314,42 +261,13 @@
       });
     });
 
-  function openNavigation() {
-        const addr = encodeURIComponent("Gästehaus 22, Eichenstraße 22, 4481 Asten");
-        if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-          window.location.href = `maps://maps.apple.com/?daddr=${addr}`;
-        } else {
-          window.open(`https://www.google.com/maps/dir/?api=1&destination=${addr}`, '_blank');
-        }
+    function openNavigation() {
+      const addr = encodeURIComponent("Gästehaus 22, Eichenstraße 22, 4481 Asten");
+      if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+        window.location.href = `maps://maps.apple.com/?daddr=${addr}`;
+      } else {
+        window.open(`https://www.google.com/maps/dir/?api=1&destination=${addr}`, '_blank');
       }
-    let deferredPrompt;
-    const installBtn = document.getElementById('install-button');
-
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      installBtn.style.display = 'flex';
-    });
-
-    installBtn.addEventListener('click', async () => {
-      if (!deferredPrompt) {
-        if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-          let msg = "Installation: Tippen Sie auf 'Teilen' und 'Zum Home-Bildschirm'.";
-          if(document.body.classList.contains('lang-en')) msg = "To install: Tap 'Share' and 'Add to Home Screen'.";
-          alert(msg);
-        }
-        return;
-      }
-      deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
-      if (outcome === 'accepted') installBtn.style.display = 'none';
-      deferredPrompt = null;
-    });
-
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').catch(console.error);
-      });
     }
   </script>
 </body>
