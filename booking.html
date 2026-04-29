@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belegungsplan - Gästehaus</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css">
+
+    <style>
+        body { background-color: #f5f5f5; padding: 20px; }
+        .calendar-container { 
+            max-width: 400px; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+        }
+        /* Styling für belegte Tage */
+        .booked-day {
+            background-color: #ff3860 !important;
+            color: white !important;
+            border-radius: 5px !important;
+            text-decoration: line-through;
+        }
+        .legend { margin-top: 15px; font-size: 0.9em; }
+        .legend-item { display: inline-block; margin-right: 10px; }
+        .dot { height: 10px; width: 10px; border-radius: 50%; display: inline-block; }
+    </style>
+</head>
+<body>
+
+<section class="section">
+    <div class="container">
+        <div class="calendar-container">
+            <h2 class="title is-4 has-text-centered">Belegungskalender</h2>
+            
+            <div id="calendar"></div>
+
+            <div class="legend">
+                <div class="legend-item"><span class="dot" style="background-color: #ff3860;"></span> Belegt</div>
+                <div class="legend-item"><span class="dot" style="background-color: #209cee;"></span> Heute</div>
+                <div class="legend-item"><span class="dot" style="background-color: #f0f0f0; border: 1px solid #ccc;"></span> Frei</div>
+            </div>
+
+            <hr>
+            <p class="help">Kontaktieren Sie uns für Buchungsanfragen direkt unter <strong>office@gästehaus.at</strong></p>
+        </div>
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/de.js"></script>
+
+<script>
+    // --- KONFIGURATION: HIER DIE DATEN EINTRAGEN ---
+    // Format: YYYY-MM-DD
+    const belegteDaten = [
+        "2026-05-01", "2026-05-02", "2026-05-03",
+        "2026-05-15", "2026-05-16",
+        "2026-06-10", "2026-06-11", "2026-06-12"
+    ];
+    // ----------------------------------------------
+
+    flatpickr("#calendar", {
+        inline: true,            // Immer sichtbar (kein Input-Feld nötig)
+        locale: "de",            // Deutsche Sprache
+        dateFormat: "Y-m-d",
+        minDate: "today",        // Vergangenheit ausblenden (optional)
+        
+        onDayCreate: function(dObj, dStr, fp, dayElem) {
+            // Wir wandeln das Datum des aktuellen Tags im Kalender in den String-Format um
+            const dateStr = dayElem.dateObj.toISOString().split('T')[0];
+            
+            // Wenn das Datum in unserer Liste ist, fügen wir die CSS-Klasse "booked-day" hinzu
+            if (belegteDaten.includes(dateStr)) {
+                dayElem.classList.add("booked-day");
+            }
+        },
+        
+        // Verhindert, dass belegte Tage angeklickt werden können
+        disable: [
+            function(date) {
+                const dateStr = date.toISOString().split('T')[0];
+                return belegteDaten.includes(dateStr);
+            }
+        ]
+    });
+</script>
+
+</body>
+</html>
