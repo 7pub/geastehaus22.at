@@ -236,7 +236,7 @@
           <div class="section-label" lang="en">Contact</div>
           <div class="section-label" lang="ig">Kpọtụrụ anyị</div>
           <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-top: 0.5rem;">
-            <a id="whatsapp-link" href="https://wa.me/436801610618?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20ein%20Zimmer%20im%20G%C3%A4stehaus%2022." class="btn-primary btn-whatsapp" target="_blank">
+            <a id="whatsapp-link" href="#" class="btn-primary btn-whatsapp" target="_blank">
               <i data-lucide="message-circle"></i> WhatsApp
             </a>
             <a href="tel:+436801610618" class="btn-primary btn-call">
@@ -285,16 +285,15 @@
       gallery: ["bedrooms.webp", "livingroom.webp", "kitchen.webp", "bathroom.webp"]
     };
 
-    // Funktion zum Aktualisieren des WhatsApp-Links
     function updateWhatsAppLink(lang) {
       const waLink = document.getElementById('whatsapp-link');
       const phone = "436801610618";
       let text = "";
 
       if (lang === 'de') {
-        text = "Hallo, ich interessiere mich für ein Zimmer im Gästehaus 22.";
+        text = "Ich suche eine Unterkunft. Ist im Gästehaus22 noch etwas frei?";
       } else {
-        text = "Hello, I am interested in a room at Gästehaus 22.";
+        text = "I am looking for accommodation. Is there anything available at Gästehaus22?";
       }
 
       waLink.href = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
@@ -310,17 +309,13 @@
       document.getElementById('btn-en').classList.toggle('active', lang === 'en');
       document.getElementById('btn-ig').classList.toggle('active', lang === 'ig');
 
-      // WhatsApp Nachricht anpassen
       updateWhatsAppLink(lang);
     }
 
     document.addEventListener('DOMContentLoaded', () => {
       const userLang = navigator.language || navigator.userLanguage; 
-      
       let startLang = 'de';
-      if (!userLang.startsWith('de')) {
-        startLang = 'en';
-      }
+      if (!userLang.startsWith('de')) { startLang = 'en'; }
       
       setLang(startLang);
       lucide.createIcons();
@@ -348,7 +343,6 @@
       }
     }
 
-    // PWA & Install Logik...
     let deferredPrompt;
     const installBtn = document.getElementById('install-button');
     window.addEventListener('beforeinstallprompt', (e) => {
