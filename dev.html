@@ -2,15 +2,14 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <title>Gästehaus 22 | Monteurzimmer & Arbeiterunterkunft in Asten</title>
+  <title>Gästehaus 22 | Günstige Monteurzimmer & Arbeiterunterkunft in Asten</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
+  <meta name="description" content="[+43 680 1610618] [Unterkunft für Arbeiter & Monteure in Asten nahe Linz] [Voll ausgestattete Küche] [Eigenes Wohnzimmer] [Garten m. Grillplatz] [Leihscooter].">
+
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/manifest.json">
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
   <style>
     :root {
@@ -22,180 +21,294 @@
       --success: #28a745;
       --whatsapp: #25D366;
       --link: #007bff;
-      
-      /* Farblogik für Betten & Zimmer */
-      --color-free: #ffffff;    /* 0 belegt: Alles frei */
-      --color-low: #c8e6c9;     /* 1-3 belegt: 2 Zimmer + Betten frei */
-      --color-med: #fff9c4;     /* 4-6 belegt: 1 Zimmer + Betten frei */
-      --color-high: #ffcc80;    /* 7-8 belegt: Nur noch Einzelbetten */
-      --color-full: #ff5252;    /* 9 belegt: Ausgebucht */
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: var(--font-main); background: var(--bg); color: #111; line-height: 1.6; }
 
-    /* Sprachsteuerung */
+    body {
+      font-family: var(--font-main);
+      background: var(--bg);
+      color: #111;
+      line-height: 1.6;
+    }
+
+    /* --- SPRACHSTEUERUNG --- */
     [lang="en"], [lang="ig"] { display: none; }
+    
     body.lang-en [lang="de"], body.lang-en [lang="ig"] { display: none; }
     body.lang-en [lang="en"] { display: block; }
-    body.lang-ig [lang="de"], body.lang-ig [lang="en"] { display: none; }
-    body.lang-ig [lang="ig"] { display: block; }
+    body.lang-en h1[lang="en"], body.lang-en p[lang="en"], body.lang-en .section-label[lang="en"] { display: block !important; }
+    body.lang-en li[lang="en"] { display: flex !important; }
+    body.lang-en span[lang="en"] { display: inline !important; }
 
-    header { padding: 4rem 1.5rem 2rem; text-align: center; background: #ffffff; border-bottom: 1px solid #e3e3e3; position: relative; }
-    .top-bar { position: absolute; top: 1rem; left: 1rem; right: 1rem; display: flex; justify-content: space-between; }
-    .lang-btn { padding: 0.4rem 0.8rem; border: 1px solid #ddd; background: white; border-radius: 6px; cursor: pointer; font-weight: 600; }
+    header {
+      padding: 4.5rem 1.5rem 2rem;
+      text-align: center;
+      background: #ffffff;
+      border-bottom: 1px solid #e3e3e3;
+      position: relative;
+    }
+    
+    .top-bar {
+      position: absolute;
+      top: 1rem; left: 1rem; right: 1rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    .lang-switch { display: flex; gap: 0.5rem; }
+
+    .lang-btn, .install-btn-top {
+      padding: 0.4rem 0.8rem;
+      border: 1px solid #ddd;
+      background: white;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: 0.2s;
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    }
+
     .lang-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
-    .logo-img { width: 120px; height: 120px; object-fit: cover; border-radius: 50%; margin-bottom: 1rem; box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
 
-    main { max-width: 1040px; margin: 2rem auto; padding: 0 1.5rem; display: grid; grid-template-columns: 1.8fr 1.2fr; gap: 1.5rem; }
+    .logo-img {
+      width: 130px; height: 130px;
+      object-fit: cover; border-radius: 50%;
+      margin-bottom: 1rem; background: white;
+      border: 2px solid #fff; box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    }
+
+    h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); line-height: 1.2; margin-bottom: 0.5rem; }
+    .subtitle { color: var(--accent-soft); font-size: 1rem; }
+
+    main {
+      max-width: 1040px; margin: 2rem auto; padding: 0 1.5rem;
+      display: grid; grid-template-columns: 1.8fr 1.2fr; gap: 1.5rem;
+    }
+
     @media (max-width: 850px) { main { grid-template-columns: 1fr; } }
 
-    .card { background: var(--card); border-radius: 16px; padding: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.03); }
-    .section-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-soft); margin-bottom: 0.5rem; }
+    .card {
+      background: var(--card); border-radius: 16px;
+      padding: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+    }
+
+    .section-label { font-size: 0.75rem; text-transform: uppercase; color: var(--accent-soft); margin-bottom: 0.5rem; }
     .price-tag { font-size: 1.8rem; font-weight: 700; margin: 0.5rem 0; }
-    
+    .price-tag span { font-size: 0.9rem; font-weight: 400; color: var(--accent-soft); }
+
     ul { list-style: none; margin-top: 1rem; }
     li { margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.75rem; }
+    
+    .lucide { width: 20px; height: 20px; stroke-width: 2.5; }
     .check-icon { color: var(--success); }
 
-    /* Kalender Status Farben */
-    .flatpickr-calendar { margin: 0 auto; border: none !important; box-shadow: none !important; }
-    .occ-low { background-color: var(--color-low) !important; color: #1b5e20 !important; border-radius: 5px; }
-    .occ-med { background-color: var(--color-med) !important; color: #000 !important; border-radius: 5px; }
-    .occ-high { background-color: var(--color-high) !important; color: #000 !important; border-radius: 5px; }
-    .occ-full { background-color: var(--color-full) !important; color: white !important; border-radius: 5px; text-decoration: line-through; }
+    .btn-primary {
+      padding: 0.8rem 1.5rem; color: #fff; border-radius: 50px;
+      text-decoration: none; display: flex; align-items: center;
+      justify-content: center; gap: 0.6rem; font-weight: 600;
+      transition: transform 0.2s; border: none; width: 100%; cursor: pointer;
+    }
 
-    .legend { display: flex; flex-direction: column; gap: 8px; margin-top: 15px; font-size: 0.85rem; }
-    .legend-item { display: flex; align-items: center; gap: 10px; line-height: 1.2; }
-    .dot { width: 16px; height: 16px; border-radius: 4px; border: 1px solid rgba(0,0,0,0.1); flex-shrink: 0; }
-
-    .btn-primary { padding: 0.8rem 1.5rem; color: #fff; border-radius: 50px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 0.6rem; font-weight: 600; border: none; width: 100%; cursor: pointer; }
     .btn-call { background-color: var(--success); }
     .btn-whatsapp { background-color: var(--whatsapp); }
+    .btn-nav { background-color: var(--link); }
+
+    /* Standort-Badge */
+    #dist-info {
+        display: none;
+        background: #f0f7ff;
+        color: var(--link);
+        padding: 0.5rem;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        margin-top: 0.5rem;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .gallery-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem; margin-top: 1rem;
+    }
+    .gallery-item { height: 200px; border-radius: 12px; overflow: hidden; background: #ddd; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; cursor: zoom-in; }
 
     footer { text-align: center; padding: 3rem 1rem; color: var(--accent-soft); font-size: 0.85rem; }
+    #lightbox {
+      display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9); align-items: center; justify-content: center;
+    }
+    #lightbox img { max-width: 90%; max-height: 90%; border-radius: 4px; }
   </style>
 </head>
-<body>
-
+<body id="top">
     <header>
       <div class="top-bar">
+        <button id="install-button" class="install-btn-top" style="display:none;">
+          <i data-lucide="download-cloud"></i>
+        </button>
+
         <div class="lang-switch">
           <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
           <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
-          <button class="lang-btn" id="btn-ig" onclick="setLang('ig')">IG</button>
         </div>
       </div>
+      
       <img id="logo-placeholder" alt="Gästehaus 22" class="logo-img">
-      <h1 lang="de">Unterkunft Gästehaus 22</h1>
-      <h1 lang="en">Guesthouse 22 Accommodation</h1>
-      <p class="subtitle" lang="de">Asten | 3 Zimmer à 3 Betten (9 Betten gesamt)</p>
+      <h1 lang="de">Zimmer für Arbeiter in Asten</h1>
+      <h1 lang="en">Rooms for workers in Asten</h1>
+      <h1 lang="ig">Ụlọ maka ndị ọrụ na Asten</h1>
+      
+      <p class="subtitle" lang="de">Praktische, saubere Unterkunft für Monteure und Teams.</p>
+      <p class="subtitle" lang="en">Practical, clean accommodation for fitters and teams.</p>
+      <p class="subtitle" lang="ig">Ebe obibi dị mma ma dị ọcha maka ndị ọrụ na ndị otu.</p>
     </header>
 
     <main>
-      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-        <section class="card">
-          <div class="section-label" lang="de">Preise</div>
-          <div class="price-tag">35 € <span lang="de" style="font-size: 0.9rem; font-weight: 400;">/ Nacht pro Person</span></div>
-          <ul>
-            <li><i data-lucide="check-circle-2" class="check-icon"></i> <span lang="de">Zimmer-Gruppierung möglich</span></li>
-            <li><i data-lucide="check-circle-2" class="check-icon"></i> <span lang="de">9 Einzelbetten insgesamt</span></li>
-            <li><i data-lucide="check-circle-2" class="check-icon"></i> <span lang="de">WLAN, Parkplatz & Reinigung inkl.</span></li>
-          </ul>
-        </section>
+      <section class="card">
+        <div class="section-label" lang="de">Übernachtung</div>
+        <div class="section-label" lang="en">Accommodation</div>
 
-        <section class="card">
-          <div class="section-label" lang="de">Belegungsplan</div>
-          <h2 style="font-size: 1.1rem; margin-bottom: 10px;" lang="de">Zimmer & Betten Verfügbarkeit</h2>
-          <div id="calendar-inline"></div>
-          
-          <div class="legend">
-            <div class="legend-item">
-              <span class="dot" style="background: white;"></span> 
-              <div><strong lang="de">3 Zimmer frei</strong><br><small lang="de">Alle 9 Betten verfügbar</small></div>
-            </div>
-            <div class="legend-item">
-              <span class="dot" style="background: var(--color-low);"></span> 
-              <div><strong lang="de">2 Zimmer + Betten frei</strong><br><small lang="de">1-3 Betten belegt</small></div>
-            </div>
-            <div class="legend-item">
-              <span class="dot" style="background: var(--color-med);"></span> 
-              <div><strong lang="de">1 Zimmer + Betten frei</strong><br><small lang="de">4-6 Betten belegt</small></div>
-            </div>
-            <div class="legend-item">
-              <span class="dot" style="background: var(--color-high);"></span> 
-              <div><strong lang="de">Nur Einzelbetten frei</strong><br><small lang="de">7-8 Betten belegt (Kein ganzes Zimmer mehr)</small></div>
-            </div>
-            <div class="legend-item">
-              <span class="dot" style="background: var(--color-full);"></span> 
-              <div><strong lang="de">Ausgebucht</strong><br><small lang="de">Alle 9 Betten belegt</small></div>
-            </div>
-          </div>
-        </section>
-      </div>
+        <h2 lang="de">Preise & Konditionen</h2>
+        <h2 lang="en">Prices & Conditions</h2>
+
+        <div class="price-tag">35 € 
+          <span lang="de">/ Nacht pro Person</span>
+          <span lang="en">/ night per person</span>
+        </div>
+
+        <p lang="de">Inklusive WLAN, Parkplatz und Endreinigung.</p>
+        <p lang="en">Including Wi-Fi, parking and final cleaning.</p>
+
+        <ul>
+          <li><i data-lucide="check-circle-2" class="check-icon"></i> 
+            <span lang="de">Saubere Einzelbetten</span>
+            <span lang="en">Clean single beds</span>
+          </li>
+          <li><i data-lucide="check-circle-2" class="check-icon"></i> 
+            <span lang="de">Voll ausgestattete Küche</span>
+            <span lang="en">Fully equipped kitchen</span>
+          </li>
+        </ul>
+      </section>
 
       <aside style="display: flex; flex-direction: column; gap: 1.5rem;">
         <section class="card">
-          <div class="section-label">Kontakt</div>
-          <a id="whatsapp-link" href="https://wa.me/436801610618" class="btn-primary btn-whatsapp" target="_blank"><i data-lucide="message-circle"></i> WhatsApp</a>
-          <a href="tel:+436801610618" class="btn-primary btn-call" style="margin-top:10px;"><i data-lucide="phone"></i> +43 680 1610618</a>
+          <div class="section-label" lang="de">Kontakt</div>
+          <div class="section-label" lang="en">Contact</div>
+          <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-top: 0.5rem;">
+            <a href="https://wa.me/436801610618?text=Hallo%20G%C3%A4stehaus%2022%2C%20ich%20h%C3%A4tte%20gerne%20Informationen%20zu%20einem%20Zimmer." class="btn-primary btn-whatsapp" target="_blank">
+              <i data-lucide="message-circle"></i> WhatsApp
+            </a>
+            <a href="tel:+436801610618" class="btn-primary btn-call">
+              <i data-lucide="phone"></i> +43 680 1610618
+            </a>
+          </div>
         </section>
+
         <section class="card">
-          <div class="section-label">Lage</div>
-          <p><strong>Gästehaus 22</strong><br>Eichenstraße 22, 4481 Asten</p>
-          <button onclick="openNavigation()" class="btn-primary btn-nav" style="margin-top:1rem;"><i data-lucide="map-pin"></i> Route anzeigen</button>
+          <div class="section-label" lang="de">Lage</div>
+          <div class="section-label" lang="en">Location</div>
+          <p><strong>Gästehaus 22</strong><br>Eichenstraße 22<br>4481 Asten, Austria</p>
+          
+          <div id="dist-info"></div>
+
+          <button onclick="openNavigation()" class="btn-primary btn-nav" style="margin-top:1rem;">
+            <i data-lucide="map-pin"></i> 
+            <span lang="de">Route anzeigen</span>
+            <span lang="en">Get directions</span>
+          </button>
         </section>
       </aside>
+
+      <section class="gallery-section card" style="grid-column: 1 / -1;">
+        <div class="gallery-grid" id="gallery-container"></div>
+      </section>
     </main>
 
+  <footer>
+    © 2026 Gästehaus 22 – 4481 Asten
+  </footer>
+
+  <div id="lightbox" onclick="this.style.display='none'"><img id="lightbox-img"></div>
+
   <script src="https://unpkg.com/lucide@latest"></script>
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/de.js"></script>
-
   <script>
-    const jsonUrl = 'occupancy.json'; 
+    const images = {
+      logo: "Logo.webp",
+      gallery: ["bedrooms.webp", "livingroom.webp", "kitchen.webp", "bathroom.webp"]
+    };
 
-    async function initCalendar() {
-      let belegung = {};
-      try {
-        const response = await fetch(jsonUrl);
-        if (response.ok) belegung = await response.json();
-      } catch (e) { console.error("Fehler", e); }
-
-      flatpickr("#calendar-inline", {
-        inline: true,
-        locale: "de",
-        minDate: "today",
-        onDayCreate: function(dObj, dStr, fp, dayElem) {
-          const dt = dayElem.dateObj;
-          const s = dt.getFullYear() + "-" + String(dt.getMonth() + 1).padStart(2, '0') + "-" + String(dt.getDate()).padStart(2, '0');
-          const n = belegung[s];
-
-          if (n >= 1 && n <= 3) dayElem.classList.add("occ-low");
-          else if (n >= 4 && n <= 6) dayElem.classList.add("occ-med");
-          else if (n >= 7 && n <= 8) dayElem.classList.add("occ-high");
-          else if (n >= 9) dayElem.classList.add("occ-full");
-        }
-      });
-    }
+    // Koordinaten Gästehaus (Asten)
+    const DEST_LAT = 48.2166; 
+    const DEST_LNG = 14.4167;
+    let userCoords = null;
 
     function setLang(lang) {
       document.body.classList.remove('lang-en', 'lang-ig');
       if(lang !== 'de') document.body.classList.add('lang-' + lang);
       document.getElementById('btn-de').classList.toggle('active', lang === 'de');
       document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-      document.getElementById('btn-ig').classList.toggle('active', lang === 'ig');
+    }
+
+    // Hilfsfunktion für Entfernung (Haversine Formel)
+    function calculateDistance(lat1, lon1, lat2, lon2) {
+        const R = 6371; // Erdradius in km
+        const dLat = (lat2 - lat1) * Math.PI / 180;
+        const dLon = (lon2 - lon1) * Math.PI / 180;
+        const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                  Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * Math.sin(dLon/2) * Math.sin(dLon/2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        return R * c;
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+      const userLang = navigator.language || navigator.userLanguage; 
+      if (!userLang.startsWith('de')) setLang('en');
+      
       lucide.createIcons();
-      initCalendar();
-      document.getElementById('logo-placeholder').src = "Logo.webp";
+
+      // Logo & Galerie laden
+      document.getElementById('logo-placeholder').src = images.logo;
+      const container = document.getElementById('gallery-container');
+      images.gallery.forEach(src => {
+        const div = document.createElement('div');
+        div.className = 'gallery-item';
+        div.innerHTML = `<img src="${src}" alt="Zimmer" loading="lazy">`;
+        div.onclick = () => { 
+            document.getElementById('lightbox-img').src = src; 
+            document.getElementById('lightbox').style.display = 'flex'; 
+        };
+        container.appendChild(div);
+      });
+
+      // Effiziente Standorterkennung beim Laden (leise im Hintergrund)
+      if ("geolocation" in navigator) {
+          navigator.geolocation.getCurrentPosition(position => {
+              userCoords = position.coords;
+              const dist = calculateDistance(userCoords.latitude, userCoords.longitude, DEST_LAT, DEST_LNG);
+              const distEl = document.getElementById('dist-info');
+              distEl.style.display = 'block';
+              distEl.innerText = `Nur ${dist.toFixed(1)} km von Ihrem Standort entfernt`;
+          }, null, { enableHighAccuracy: false, timeout: 5000 });
+      }
     });
 
     function openNavigation() {
       const addr = encodeURIComponent("Gästehaus 22, Eichenstraße 22, 4481 Asten");
-      window.open(`https://www.google.com/maps/dir/?api=1&destination=${addr}`, '_blank');
+      let url = "";
+
+      // Wenn Standort bekannt, Route von dort berechnen
+      const startPoint = userCoords ? `${userCoords.latitude},${userCoords.longitude}` : "";
+
+      if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+        url = `maps://maps.apple.com/?daddr=${addr}&saddr=${startPoint}`;
+      } else {
+        // Modernes Google Maps URL Schema
+        url = `https://www.google.com/maps/dir/?api=1&destination=${addr}&origin=${startPoint}`;
+      }
+      window.open(url, '_blank');
     }
   </script>
 </body>
