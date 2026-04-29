@@ -11,6 +11,8 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/manifest.json">
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
   <style>
     :root {
       --bg: #f5f5f5;
@@ -21,6 +23,7 @@
       --success: #28a745;
       --whatsapp: #25D366;
       --link: #007bff;
+      --booked: #ff4d4d; /* Rot für belegt */
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -156,6 +159,18 @@
     .gallery-item { height: 200px; border-radius: 12px; overflow: hidden; background: #ddd; }
     .gallery-item img { width: 100%; height: 100%; object-fit: cover; cursor: zoom-in; }
 
+    /* KALENDER CUSTOM STYLES */
+    .flatpickr-calendar { margin: 0 auto; box-shadow: none !important; border: none !important; }
+    .booked-day { 
+        background-color: var(--booked) !important; 
+        color: white !important; 
+        border-radius: 50% !important;
+        text-decoration: line-through;
+    }
+    .legend { display: flex; gap: 1rem; justify-content: center; margin-top: 10px; font-size: 0.8rem; }
+    .legend-item { display: flex; align-items: center; gap: 5px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+
     footer { text-align: center; padding: 3rem 1rem; color: var(--accent-soft); font-size: 0.85rem; }
     .footer-heart { margin-top: 0.5rem; }
     .emoji { vertical-align: middle; }
@@ -192,43 +207,57 @@
     </header>
 
     <main>
-      <section class="card">
-        <div class="section-label" lang="de">Übernachtung</div>
-        <div class="section-label" lang="en">Accommodation</div>
-        <div class="section-label" lang="ig">Ebe obibi</div>
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <section class="card">
+          <div class="section-label" lang="de">Übernachtung</div>
+          <div class="section-label" lang="en">Accommodation</div>
+          <div class="section-label" lang="ig">Ebe obibi</div>
 
-        <h2 lang="de">Preise & Konditionen</h2>
-        <h2 lang="en">Prices & Conditions</h2>
-        <h2 lang="ig">Ọnụ ego & Ọnọdụ</h2>
+          <h2 lang="de">Preise & Konditionen</h2>
+          <h2 lang="en">Prices & Conditions</h2>
+          <h2 lang="ig">Ọnụ ego & Ọnọdụ</h2>
 
-        <div class="price-tag">35 € 
-          <span lang="de">/ Nacht pro Person</span>
-          <span lang="en">/ night per person</span>
-          <span lang="ig">/ n'abalị maka otu onye</span>
-        </div>
+          <div class="price-tag">35 € 
+            <span lang="de">/ Nacht pro Person</span>
+            <span lang="en">/ night per person</span>
+            <span lang="ig">/ n'abalị maka otu onye</span>
+          </div>
 
-        <p lang="de">Inklusive WLAN, Parkplatz und Endreinigung.</p>
-        <p lang="en">Including Wi-Fi, parking and final cleaning.</p>
-        <p lang="ig">Gụnyere Wi-Fi, ebe a na-adọba ụgbọala na nhicha ikpeazụ.</p>
+          <p lang="de">Inklusive WLAN, Parkplatz und Endreinigung.</p>
+          <p lang="en">Including Wi-Fi, parking and final cleaning.</p>
+          <p lang="ig">Gụnyere Wi-Fi, ebe a na-adọba ụgbọala na nhicha ikpeazụ.</p>
 
-        <ul>
-          <li><i data-lucide="check-circle-2" class="check-icon"></i> 
-            <span lang="de">Saubere Einzelbetten</span>
-            <span lang="en">Clean single beds</span>
-            <span lang="ig">Àkwà ndina dị ọcha</span>
-          </li>
-          <li><i data-lucide="check-circle-2" class="check-icon"></i> 
-            <span lang="de">Voll ausgestattete Küche</span>
-            <span lang="en">Fully equipped kitchen</span>
-            <span lang="ig">Ebe nri nwere ngwa niile</span>
-          </li>
-          <li><i data-lucide="check-circle-2" class="check-icon"></i> 
-            <span lang="de">Modernes Badezimmer</span>
-            <span lang="en">Modern bathroom</span>
-            <span lang="ig">Ụlọ ịsa ahụ ọgbara ọhụrụ</span>
-          </li>
-        </ul>
-      </section>
+          <ul>
+            <li><i data-lucide="check-circle-2" class="check-icon"></i> 
+              <span lang="de">Saubere Einzelbetten</span>
+              <span lang="en">Clean single beds</span>
+              <span lang="ig">Àkwà ndina dị ọcha</span>
+            </li>
+            <li><i data-lucide="check-circle-2" class="check-icon"></i> 
+              <span lang="de">Voll ausgestattete Küche</span>
+              <span lang="en">Fully equipped kitchen</span>
+              <span lang="ig">Ebe nri nwere ngwa niile</span>
+            </li>
+            <li><i data-lucide="check-circle-2" class="check-icon"></i> 
+              <span lang="de">Modernes Badezimmer</span>
+              <span lang="en">Modern bathroom</span>
+              <span lang="ig">Ụlọ ịsa ahụ ọgbara ọhụrụ</span>
+            </li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <div class="section-label" lang="de">Verfügbarkeit</div>
+          <div class="section-label" lang="en">Availability</div>
+          <h2 lang="de">Belegungsplan</h2>
+          <h2 lang="en">Occupancy Plan</h2>
+          <div id="calendar-inline"></div>
+          <div class="legend">
+            <div class="legend-item"><span class="dot" style="background: var(--booked);"></span> <span lang="de">Belegt</span><span lang="en">Booked</span></div>
+            <div class="legend-item"><span class="dot" style="background: #e9e9e9; border: 1px solid #ccc;"></span> <span lang="de">Frei</span><span lang="en">Free</span></div>
+          </div>
+        </section>
+      </div>
 
       <aside style="display: flex; flex-direction: column; gap: 1.5rem;">
         <section class="card">
@@ -279,7 +308,15 @@
   <div id="lightbox" onclick="this.style.display='none'"><img id="lightbox-img"></div>
 
   <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/de.js"></script>
+
   <script>
+    // --- KALENDER KONFIGURATION ---
+    const belegteDaten = [
+        "2026-05-01", "2026-05-02", "2026-05-10" // Hier belegte Tage im Format YYYY-MM-DD eintragen
+    ];
+
     const images = {
       logo: "Logo.webp",
       gallery: ["bedrooms.webp", "livingroom.webp", "kitchen.webp", "bathroom.webp"]
@@ -319,6 +356,18 @@
       
       setLang(startLang);
       lucide.createIcons();
+
+      // Kalender Initialisierung
+      flatpickr("#calendar-inline", {
+          inline: true,
+          locale: "de",
+          onDayCreate: function(dObj, dStr, fp, dayElem) {
+              const dateStr = dayElem.dateObj.toISOString().split('T')[0];
+              if (belegteDaten.includes(dateStr)) {
+                  dayElem.classList.add("booked-day");
+              }
+          }
+      });
 
       document.getElementById('logo-placeholder').src = images.logo;
       const container = document.getElementById('gallery-container');
