@@ -23,10 +23,10 @@
       --success: #28a745;
       --whatsapp: #25D366;
       --link: #007bff;
-      /* Farben für Betten-Status */
-      --status-1: #ffeb3b; /* 1 Bett belegt (Gelb) */
-      --status-2: #ff9800; /* 2 Betten belegt (Orange) */
-      --status-3: #ff4d4d; /* 3 Betten belegt (Rot) */
+      /* Kalender Status Farben */
+      --status-1: #ffeb3b; 
+      --status-2: #ff9800; 
+      --status-3: #ff4d4d; 
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -40,11 +40,18 @@
 
     /* --- SPRACHSTEUERUNG --- */
     [lang="en"], [lang="ig"] { display: none; }
+    
     body.lang-en [lang="de"], body.lang-en [lang="ig"] { display: none; }
     body.lang-en [lang="en"] { display: block; }
     body.lang-en h1[lang="en"], body.lang-en p[lang="en"], body.lang-en .section-label[lang="en"] { display: block !important; }
     body.lang-en li[lang="en"] { display: flex !important; }
     body.lang-en span[lang="en"] { display: inline !important; }
+
+    body.lang-ig [lang="de"], body.lang-ig [lang="en"] { display: none; }
+    body.lang-ig [lang="ig"] { display: block; }
+    body.lang-ig h1[lang="ig"], body.lang-ig p[lang="ig"], body.lang-ig .section-label[lang="ig"] { display: block !important; }
+    body.lang-ig li[lang="ig"] { display: flex !important; }
+    body.lang-ig span[lang="ig"] { display: inline !important; }
 
     header {
       padding: 4.5rem 1.5rem 2rem;
@@ -56,12 +63,8 @@
     
     .top-bar {
       position: absolute;
-      top: 1rem;
-      left: 1rem;
-      right: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      top: 1rem; left: 1rem; right: 1rem;
+      display: flex; justify-content: space-between; align-items: center;
     }
 
     .lang-switch { display: flex; gap: 0.5rem; }
@@ -75,40 +78,31 @@
       font-size: 0.85rem;
       font-weight: 600;
       transition: 0.2s;
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
     }
 
     .lang-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
 
     .logo-img {
-      width: 130px;
-      height: 130px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin-bottom: 1rem;
-      background: white;
-      border: 2px solid #fff;
-      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+      width: 130px; height: 130px;
+      object-fit: cover; border-radius: 50%;
+      margin-bottom: 1rem; background: white;
+      border: 2px solid #fff; box-shadow: 0 8px 15px rgba(0,0,0,0.1);
     }
 
     h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); line-height: 1.2; margin-bottom: 0.5rem; }
     .subtitle { color: var(--accent-soft); font-size: 1rem; }
 
     main {
-      max-width: 1040px;
-      margin: 2rem auto;
-      padding: 0 1.5rem;
-      display: grid;
-      grid-template-columns: 1.8fr 1.2fr;
-      gap: 1.5rem;
+      max-width: 1040px; margin: 2rem auto; padding: 0 1.5rem;
+      display: grid; grid-template-columns: 1.8fr 1.2fr; gap: 1.5rem;
     }
 
     @media (max-width: 850px) { main { grid-template-columns: 1fr; } }
 
     .card {
-      background: var(--card);
-      border-radius: 16px;
-      padding: 1.5rem;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+      background: var(--card); border-radius: 16px;
+      padding: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.03);
     }
 
     .section-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-soft); margin-bottom: 0.5rem; }
@@ -122,19 +116,9 @@
     .check-icon { color: var(--success); }
 
     .btn-primary {
-      padding: 0.8rem 1.5rem;
-      color: #fff;
-      border-radius: 50px;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
-      font-weight: 600;
-      transition: transform 0.2s;
-      border: none;
-      width: 100%;
-      cursor: pointer;
+      padding: 0.8rem 1.5rem; color: #fff; border-radius: 50px;
+      text-decoration: none; display: flex; align-items: center; justify-content: center;
+      gap: 0.6rem; font-weight: 600; border: none; width: 100%; cursor: pointer;
     }
 
     .btn-call { background-color: var(--success); }
@@ -151,37 +135,39 @@
     .legend-item { display: flex; align-items: center; gap: 8px; }
     .dot { width: 12px; height: 12px; border-radius: 3px; border: 1px solid rgba(0,0,0,0.1); }
 
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem; }
     .gallery-item { height: 200px; border-radius: 12px; overflow: hidden; background: #ddd; }
     .gallery-item img { width: 100%; height: 100%; object-fit: cover; cursor: zoom-in; }
 
     footer { text-align: center; padding: 3rem 1rem; color: var(--accent-soft); font-size: 0.85rem; }
-    #lightbox { display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; cursor: zoom-out; }
+    #lightbox {
+      display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9); align-items: center; justify-content: center; cursor: zoom-out;
+    }
     #lightbox img { max-width: 90%; max-height: 90%; border-radius: 4px; }
   </style>
 </head>
 <body id="top">
-
     <header>
       <div class="top-bar">
-        <button id="install-button" class="install-btn-top" style="display:none;"><i data-lucide="download-cloud"></i></button>
+        <button id="install-button" class="install-btn-top" style="display:none;">
+          <i data-lucide="download-cloud"></i>
+        </button>
         <div class="lang-switch">
           <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
           <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+          <button class="lang-btn" id="btn-ig" onclick="setLang('ig')">IG</button>
         </div>
       </div>
       
       <img id="logo-placeholder" alt="Gästehaus 22" class="logo-img">
       <h1 lang="de">Zimmer für Arbeiter in Asten</h1>
       <h1 lang="en">Rooms for workers in Asten</h1>
+      <h1 lang="ig">Ụlọ maka ndị ọrụ na Asten</h1>
       
       <p class="subtitle" lang="de">Praktische, saubere Unterkunft für Monteure und Teams.</p>
       <p class="subtitle" lang="en">Practical, clean accommodation for fitters and teams.</p>
+      <p class="subtitle" lang="ig">Ebe obibi dị mma ma dị ọcha maka ndị ọrụ na ndị otu.</p>
     </header>
 
     <main>
@@ -189,10 +175,38 @@
         <section class="card">
           <div class="section-label" lang="de">Übernachtung</div>
           <div class="section-label" lang="en">Accommodation</div>
-          <div class="price-tag">35 € <span lang="de">/ Nacht pro Person</span><span lang="en">/ night per person</span></div>
+          <div class="section-label" lang="ig">Ebe obibi</div>
+
+          <h2 lang="de">Preise & Konditionen</h2>
+          <h2 lang="en">Prices & Conditions</h2>
+          <h2 lang="ig">Ọnụ ego & Ọnọdụ</h2>
+
+          <div class="price-tag">35 € 
+            <span lang="de">/ Nacht pro Person</span>
+            <span lang="en">/ night per person</span>
+            <span lang="ig">/ n'abalị maka otu onye</span>
+          </div>
+
+          <p lang="de">Inklusive WLAN, Parkplatz und Endreinigung.</p>
+          <p lang="en">Including Wi-Fi, parking and final cleaning.</p>
+          <p lang="ig">Gụnyere Wi-Fi, ebe a na-adọba ụgbọala na nhicha ikpeazụ.</p>
+
           <ul>
-            <li><i data-lucide="check-circle-2" class="check-icon"></i> <span lang="de">3 Einzelbetten verfügbar</span><span lang="en">3 single beds available</span></li>
-            <li><i data-lucide="check-circle-2" class="check-icon"></i> <span lang="de">WLAN & Parkplatz inkl.</span><span lang="en">Wi-Fi & parking incl.</span></li>
+            <li><i data-lucide="check-circle-2" class="check-icon"></i> 
+              <span lang="de">Saubere Einzelbetten</span>
+              <span lang="en">Clean single beds</span>
+              <span lang="ig">Àkwà ndina dị ọcha</span>
+            </li>
+            <li><i data-lucide="check-circle-2" class="check-icon"></i> 
+              <span lang="de">Voll ausgestattete Küche</span>
+              <span lang="en">Fully equipped kitchen</span>
+              <span lang="ig">Ebe nri nwere ngwa niile</span>
+            </li>
+            <li><i data-lucide="check-circle-2" class="check-icon"></i> 
+              <span lang="de">Modernes Badezimmer</span>
+              <span lang="en">Modern bathroom</span>
+              <span lang="ig">Ụlọ ịsa ahụ ọgbara ọhụrụ</span>
+            </li>
           </ul>
         </section>
 
@@ -217,8 +231,9 @@
         <section class="card">
           <div class="section-label" lang="de">Kontakt</div>
           <div class="section-label" lang="en">Contact</div>
+          <div class="section-label" lang="ig">Kpọtụrụ anyị</div>
           <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-top: 0.5rem;">
-            <a id="whatsapp-link" href="#" class="btn-primary btn-whatsapp" target="_blank">
+            <a id="whatsapp-link" href="https://wa.me/436801610618" class="btn-primary btn-whatsapp" target="_blank">
               <i data-lucide="message-circle"></i> WhatsApp
             </a>
             <a href="tel:+436801610618" class="btn-primary btn-call">
@@ -230,9 +245,13 @@
         <section class="card">
           <div class="section-label" lang="de">Lage</div>
           <div class="section-label" lang="en">Location</div>
+          <div class="section-label" lang="ig">Ebe anyị dị</div>
           <p><strong>Gästehaus 22</strong><br>Eichenstraße 22<br>4481 Asten, Austria</p>
           <button onclick="openNavigation()" class="btn-primary btn-nav" style="margin-top:1rem;">
-            <i data-lucide="map-pin"></i> <span lang="de">Route anzeigen</span><span lang="en">Get directions</span>
+            <i data-lucide="map-pin"></i> 
+            <span lang="de">Route anzeigen</span>
+            <span lang="en">Get directions</span>
+            <span lang="ig">Gosi ụzọ</span>
           </button>
         </section>
       </aside>
@@ -240,11 +259,15 @@
       <section class="gallery-section card" style="grid-column: 1 / -1;">
         <div class="section-label" lang="de">Galerie</div>
         <div class="section-label" lang="en">Gallery</div>
+        <div class="section-label" lang="ig">Foto nlele</div>
         <div class="gallery-grid" id="gallery-container"></div>
       </section>
     </main>
 
-  <footer>© 2026 Gästehaus 22 – 4481 Asten</footer>
+  <footer>
+    © 2026 Gästehaus 22 – 4481 Asten
+  </footer>
+
   <div id="lightbox" onclick="this.style.display='none'"><img id="lightbox-img"></div>
 
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -279,22 +302,30 @@
       });
     }
 
+    function setLang(lang) {
+      document.body.classList.remove('lang-en', 'lang-ig');
+      if(lang !== 'de') {
+        document.body.classList.add('lang-' + lang);
+      }
+      document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-ig').classList.toggle('active', lang === 'ig');
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
+      const userLang = navigator.language || navigator.userLanguage; 
+      if (userLang.startsWith('ig')) setLang('ig');
+      else if (!userLang.startsWith('de')) setLang('en');
+      
       lucide.createIcons();
       initCalendar();
-      
-      // Sprache beim Start erkennen
-      const userLang = navigator.language || navigator.userLanguage; 
-      setLang(userLang.startsWith('de') ? 'de' : 'en');
 
-      // Bilder & Logo
       document.getElementById('logo-placeholder').src = "Logo.webp";
-      const images = ["bedrooms.webp", "livingroom.webp", "kitchen.webp", "bathroom.webp"];
       const container = document.getElementById('gallery-container');
       const lb = document.getElementById('lightbox');
       const lbImg = document.getElementById('lightbox-img');
 
-      images.forEach(src => {
+      ["bedrooms.webp", "livingroom.webp", "kitchen.webp", "bathroom.webp"].forEach(src => {
         const div = document.createElement('div');
         div.className = 'gallery-item';
         div.innerHTML = `<img src="${src}" alt="Zimmer" loading="lazy">`;
@@ -303,18 +334,35 @@
       });
     });
 
-    function setLang(lang) {
-      document.body.classList.toggle('lang-en', lang === 'en');
-      document.getElementById('btn-de').classList.toggle('active', lang === 'de');
-      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-      
-      const txt = lang === 'de' ? "Ich suche eine Unterkunft. Sind noch Betten frei?" : "I am looking for accommodation. Are there any beds available?";
-      document.getElementById('whatsapp-link').href = `https://wa.me/436801610618?text=${encodeURIComponent(txt)}`;
-    }
-
     function openNavigation() {
       const addr = encodeURIComponent("Gästehaus 22, Eichenstraße 22, 4481 Asten");
-      window.open(`https://www.google.com/maps/dir/?api=1&destination=${addr}`, '_blank');
+      if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+        window.location.href = `maps://maps.apple.com/?daddr=${addr}`;
+      } else {
+        window.open(`https://www.google.com/maps/dir/?api=1&destination=$${addr}`, '_blank');
+      }
+    }
+
+    // PWA Install Logic
+    let deferredPrompt;
+    const installBtn = document.getElementById('install-button');
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBtn.style.display = 'flex';
+    });
+    installBtn.addEventListener('click', async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') installBtn.style.display = 'none';
+      deferredPrompt = null;
+    });
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(console.error);
+      });
     }
   </script>
 </body>
