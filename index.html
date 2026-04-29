@@ -320,15 +320,17 @@
       });
     });
 
-    function openNavigation() {
-      const addr = encodeURIComponent("Gästehaus 22, Eichenstraße 22, 4481 Asten");
-      if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-        window.location.href = `maps://maps.apple.com/?daddr=${addr}`;
-      } else {
-        window.open(`https://www.google.com/maps/dir/?api=1&destination=${addr}`, '_blank');
+  function openNavigation() {
+        const addr = encodeURIComponent("Gästehaus 22, Eichenstraße 22, 4481 Asten");
+        
+        // Prüfen, ob es ein Apple-Gerät ist
+        if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+          window.location.href = `maps://maps.apple.com/?daddr=${addr}`;
+        } else {
+          // Korrekter, universeller Link für Google Maps (funktioniert überall ohne Fehler)
+          window.open(`https://www.google.com/maps/dir/?api=1&destination=${addr}`, '_blank');
+        }
       }
-    }
-
     let deferredPrompt;
     const installBtn = document.getElementById('install-button');
 
