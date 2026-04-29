@@ -177,7 +177,7 @@
         <div class="lang-switch">
           <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
           <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
-          <button class="lang-btn" id="btn-ig" onclick="setLang('ig')">IG</button>
+          <button class="lang-btn" id="btn-ig" onclick="setLang('ig')" style="display: none !important;">IG</button>
         </div>
       </div>
       
@@ -298,9 +298,15 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       const userLang = navigator.language || navigator.userLanguage; 
+      
+      // Automatic IG detection disabled
+      /*
       if (userLang.startsWith('ig')) {
         setLang('ig');
-      } else if (!userLang.startsWith('de')) {
+      } else 
+      */
+      
+      if (!userLang.startsWith('de')) {
         setLang('en');
       }
       
@@ -343,7 +349,6 @@
         if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
           let msg = "Installation: Tippen Sie auf 'Teilen' und 'Zum Home-Bildschirm'.";
           if(document.body.classList.contains('lang-en')) msg = "To install: Tap 'Share' and 'Add to Home Screen'.";
-          if(document.body.classList.contains('lang-ig')) msg = "Iji tinye ya: Pịa 'Share' ma họrọ 'Add to Home Screen'.";
           alert(msg);
         }
         return;
