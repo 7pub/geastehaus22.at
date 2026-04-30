@@ -6,6 +6,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Unterkunft für Arbeiter & Monteure in Asten nahe Linz. Starlink Internet, YouTube Premium und Parkplätze direkt vorm Haus.">
 
+  <!-- SEO / Schema.org für Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Gästehaus 22",
+    "image": "https://gaestehaus22.at/Logo.webp",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Eichenstraße 22",
+      "addressLocality": "Asten",
+      "postalCode": "4481",
+      "addressCountry": "AT"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 48.2163,
+      "longitude": 14.4144
+    },
+    "url": "https://gaestehaus22.at",
+    "telephone": "+436801610618",
+    "priceRange": "€€",
+    "description": "Günstige Monteurzimmer und Arbeiterunterkunft in Asten bei Linz mit Highspeed-Internet und Parkplätzen."
+  }
+  </script>
+
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -156,7 +182,7 @@
         </div>
       </div>
       
-      <img src="Logo.webp" alt="Gästehaus 22" class="logo-img">
+      <img src="Logo.webp" alt="Gästehaus 22 Logo - Monteurunterkunft Asten" class="logo-img">
       <h1 lang="de">Monteurzimmer in Asten</h1>
       <h1 lang="en">Worker Rooms in Asten</h1>
       <p class="subtitle" lang="de">Praktisch. Sauber. Günstig.</p>
@@ -200,13 +226,33 @@
         <section class="card">
           <div class="section-label" lang="de">Lage</div>
           <div class="section-label" lang="en">Location</div>
-          <p><strong>Gästehaus 22</strong><br>Eichenstraße 22, 4481 Asten</p>
-          <div id="dist-info"></div>
-          <button onclick="openNavigation()" class="btn-primary btn-nav">
-            <i data-lucide="map-pin"></i> <span lang="de">Route berechnen</span><span lang="en">Get directions</span>
+          <p><strong>Gästehaus 22</strong><br>Eichenstraße 22<br>4481 Asten, Austria</p>
+          <button onclick="openNavigation()" class="btn-primary btn-nav" style="margin-top:1rem;">
+            <i data-lucide="map-pin"></i> <span lang="de">Route anzeigen</span><span lang="en">Get directions</span>
           </button>
         </section>
+        
       </aside>
+
+      <!-- SEO TEXT BLOCK FÜR GOOGLE RANKING -->
+      <section class="card" style="grid-column: 1 / -1;">
+        <h2 style="font-size: 1.2rem; margin-bottom: 0.5rem;" lang="de">Günstige Monteurzimmer & Arbeiterunterkunft in Asten</h2>
+        <h2 style="font-size: 1.2rem; margin-bottom: 0.5rem;" lang="en">Affordable Worker Accommodation in Asten</h2>
+        <p style="font-size: 0.9rem; color: var(--accent-soft);" lang="de">
+          Suchen Sie eine saubere und preiswerte Unterkunft für Monteure oder Arbeiter im Bezirk Linz-Land? 
+          Das Gästehaus 22 in Asten bietet die perfekte Lösung. Durch die ideale Lage nahe der Autobahn A1 
+          und kurzen Wegen nach Linz, Enns und St. Florian sind wir ein beliebter Stützpunkt für Firmen. 
+          Unsere Zimmer sind modern ausgestattet und bieten dank Starlink Highspeed-Internet sowie 
+          YouTube Premium den nötigen Komfort nach dem Feierabend. Parkplätze direkt vorm Haus inklusive.
+        </p>
+        <p style="font-size: 0.9rem; color: var(--accent-soft);" lang="en">
+          Looking for clean and affordable accommodation for workers in the Linz-Land district? 
+          Gästehaus 22 in Asten is the perfect solution. Ideally located near the A1 motorway 
+          with short distances to Linz, Enns, and St. Florian, we are a preferred choice for companies. 
+          Our rooms are modernly equipped and offer comfort after work with Starlink Highspeed-Internet 
+          and YouTube Premium. Parking is available directly in front of the house.
+        </p>
+      </section>
 
       <section class="gallery-section card" style="grid-column: 1 / -1;">
         <div class="section-label" lang="de">Galerie</div>
@@ -227,11 +273,6 @@
       <span onclick="toggleModal('privacy')" lang="en">Privacy</span>
     </div>
     <p>© 2026 Gästehaus 22 – 4481 Asten</p>
-    <p class="footer-heart">Build with 
-      <g-emoji class="g-emoji" alias="heart">
-        <img class="emoji" alt="heart" height="20" width="20" src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png">
-      </g-emoji>
-    </p>
   </footer>
 
   <!-- MODAL: IMPRESSUM -->
@@ -239,31 +280,23 @@
     <div class="modal-content">
       <span class="close-modal" onclick="toggleModal('legal')">×</span>
       <h2 lang="de">Impressum</h2><h2 lang="en">Legal Notice</h2>
-      
       <div class="modal-body-text" lang="de">
-        <p><strong>Informationspflicht gemäß § 5 E-Commerce Gesetz und Offenlegungspflicht gemäß § 25 Mediengesetz</strong></p><br>
+        <p><strong>Informationspflicht gemäß § 5 ECG & § 25 Mediengesetz</strong></p><br>
         <p><strong>Gästehaus 22</strong></p>
         <p>Privatzimmervermietung (Häusliche Nebenbeschäftigung)</p>
         <p>Inhaber: [Dein Name]</p>
         <p>Eichenstraße 22, 4481 Asten, Österreich</p><br>
-        <p><strong>Kontakt:</strong></p>
         <p>Tel: +43 680 1610618</p>
         <p>E-Mail: office@gaestehaus22.at</p><br>
-        <p><strong>Aufsichtsbehörde:</strong> Bezirkshauptmannschaft Linz-Land</p>
-        <p><strong>Online-Streitbeilegung:</strong> Verbraucher haben die Möglichkeit, Beschwerden an die Online-Streitbeilegungsplattform der EU zu richten: <a href="http://ec.europa.eu/odr" target="_blank" style="color: var(--link);">http://ec.europa.eu/odr</a>.</p>
+        <p>BH Linz-Land | EU-Streitbeilegung: <a href="http://ec.europa.eu/odr" target="_blank">ec.europa.eu/odr</a></p>
       </div>
-
       <div class="modal-body-text" lang="en">
-        <p><strong>Information according to § 5 E-Commerce Act and § 25 Media Act</strong></p><br>
+        <p><strong>Information according to § 5 ECG & § 25 Media Act</strong></p><br>
         <p><strong>Gästehaus 22</strong></p>
-        <p>Private Room Rental</p>
+        <p>Private Rental</p>
         <p>Owner: [Your Name]</p>
         <p>Eichenstrasse 22, 4481 Asten, Austria</p><br>
-        <p><strong>Contact:</strong></p>
-        <p>Phone: +43 680 1610618</p>
-        <p>Email: office@gaestehaus22.at</p><br>
-        <p><strong>Regulatory Authority:</strong> BH Linz-Land</p>
-        <p><strong>Dispute Resolution:</strong> Consumers can submit complaints to the EU's online dispute resolution platform: <a href="http://ec.europa.eu/odr" target="_blank" style="color: var(--link);">http://ec.europa.eu/odr</a>.</p>
+        <p>Email: office@gaestehaus22.at</p>
       </div>
     </div>
   </div>
@@ -273,27 +306,14 @@
     <div class="modal-content">
       <span class="close-modal" onclick="toggleModal('privacy')">×</span>
       <h2 lang="de">Datenschutz</h2><h2 lang="en">Privacy Policy</h2>
-      
       <div class="modal-body-text" lang="de">
-        <p><strong>1. Allgemeine Informationen</strong></p>
-        <p>Wir behandeln Ihre Daten vertraulich gemäß DSGVO und TKG 2003.</p><br>
-        <p><strong>2. Kontakt (WhatsApp & Co)</strong></p>
-        <p>Bei Kontakt via WhatsApp/SMS speichern wir Ihre Nummer zur Anfragebearbeitung. Es gelten die Datenschutzregeln der jeweiligen Dienste (z.B. WhatsApp Inc.).</p><br>
-        <p><strong>3. Standortdaten</strong></p>
-        <p>Wir nutzen die Geolocation-API Ihres Browsers nur bei expliziter Zustimmung, um Entfernungen zu berechnen. Daten werden nicht dauerhaft gespeichert.</p><br>
-        <p><strong>4. Ihre Rechte</strong></p>
-        <p>Sie haben Recht auf Auskunft, Löschung und Berichtigung. Kontakt: office@gaestehaus22.at.</p>
+        <p><strong>1. Kontakt:</strong> Daten via WhatsApp/SMS werden nur zur Anfragebearbeitung genutzt.</p><br>
+        <p><strong>2. Geolocation:</strong> Die Standortabfrage erfolgt nur mit Ihrer Zustimmung zur Entfernungsberechnung.</p><br>
+        <p><strong>3. Cookies:</strong> Wir nutzen keine Tracking-Cookies.</p>
       </div>
-
       <div class="modal-body-text" lang="en">
-        <p><strong>1. General Information</strong></p>
-        <p>We process your data confidentially according to GDPR regulations.</p><br>
-        <p><strong>2. Contact (WhatsApp & Co)</strong></p>
-        <p>When contacting us via WhatsApp/SMS, we store your number for processing. The privacy policies of the respective services apply.</p><br>
-        <p><strong>3. Location Data</strong></p>
-        <p>We use your browser's Geolocation API only with your consent to calculate distances. No data is stored permanently.</p><br>
-        <p><strong>4. Your Rights</strong></p>
-        <p>You have the right to access, delete, and correct your data. Contact: office@gaestehaus22.at.</p>
+        <p><strong>1. Contact:</strong> Data via WhatsApp/SMS is used for inquiries only.</p><br>
+        <p><strong>2. Location:</strong> Geolocation is only used with your consent.</p>
       </div>
     </div>
   </div>
@@ -303,9 +323,12 @@
   <!-- SCRIPTS -->
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>
-    const images = { gallery: ["bedrooms.webp", "livingroom.webp", "kitchen.webp", "bathroom.webp"] };
-    const DEST_LAT = 48.2163, DEST_LNG = 14.4144;
-    let userCoords = null;
+    const images = { gallery: [
+      {src: "bedrooms.webp", alt: "Gemütliche Schlafzimmer im Gästehaus 22 Asten"},
+      {src: "livingroom.webp", alt: "Wohnzimmer mit TV und YouTube Premium"},
+      {src: "kitchen.webp", alt: "Voll ausgestattete Küche für Monteure"},
+      {src: "bathroom.webp", alt: "Sauberes Badezimmer und WC"}
+    ]};
     
     function setLang(lang) {
       document.body.classList.toggle('lang-en', lang === 'en');
@@ -315,43 +338,20 @@
 
     function toggleModal(id) {
       const m = document.getElementById('modal-' + id);
-      const isShowing = (m.style.display === 'flex');
-      m.style.display = isShowing ? 'none' : 'flex';
-      document.body.style.overflow = isShowing ? 'auto' : 'hidden';
+      m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
     }
 
-    function closeModals(e) { 
-      if(e.target.classList.contains('modal')) {
-        e.target.style.display = 'none';
-        document.body.style.overflow = 'auto';
-      }
-    }
-
-    let deferredPrompt;
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      document.getElementById('install-button').style.display = 'flex';
-    });
-
-    document.getElementById('install-button').addEventListener('click', async () => {
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-        deferredPrompt = null;
-        document.getElementById('install-button').style.display = 'none';
-      }
-    });
+    function closeModals(e) { if(e.target.classList.contains('modal')) e.target.style.display = 'none'; }
 
     document.addEventListener('DOMContentLoaded', () => {
       lucide.createIcons();
-      
       const container = document.getElementById('gallery-container');
-      images.gallery.forEach(src => {
+      images.gallery.forEach(img => {
         const div = document.createElement('div');
         div.className = 'gallery-item';
-        div.innerHTML = `<img src="${src}" alt="Zimmer" loading="lazy">`;
+        div.innerHTML = `<img src="${img.src}" alt="${img.alt}" loading="lazy">`;
         div.onclick = () => { 
-            document.getElementById('lightbox-img').src = src; 
+            document.getElementById('lightbox-img').src = img.src; 
             document.getElementById('lightbox').style.display = 'flex'; 
         };
         container.appendChild(div);
@@ -359,28 +359,21 @@
 
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(pos => {
-          userCoords = pos.coords;
           const R = 6371; 
-          const dLat = (DEST_LAT - userCoords.latitude) * Math.PI / 180;
-          const dLon = (DEST_LNG - userCoords.longitude) * Math.PI / 180;
-          const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-                    Math.cos(userCoords.latitude * Math.PI / 180) * Math.cos(DEST_LAT * Math.PI / 180) * 
-                    Math.sin(dLon/2) * Math.sin(dLon/2);
-          const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-          const dist = R * c;
-
+          const dLat = (48.2163 - pos.coords.latitude) * Math.PI / 180;
+          const dLon = (14.4144 - pos.coords.longitude) * Math.PI / 180;
+          const a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(pos.coords.latitude * Math.PI / 180) * Math.cos(48.2163 * Math.PI / 180) * Math.sin(dLon/2) * Math.sin(dLon/2);
+          const dist = R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)));
           const el = document.getElementById('dist-info');
           el.style.display = 'block';
           el.innerText = `Nur ${dist.toFixed(1)} km entfernt`;
-        }, null, {timeout: 5000});
+        });
       }
     });
 
     function openNavigation() {
       const addr = encodeURIComponent("Gästehaus 22, Eichenstraße 22, 4481 Asten");
-      const url = /iPad|iPhone|iPod/.test(navigator.userAgent) 
-        ? `maps://maps.apple.com/?daddr=${addr}`
-        : `https://www.google.com/maps/dir/?api=1&destination=${addr}`;
+      const url = /iPad|iPhone|iPod/.test(navigator.userAgent) ? `maps://maps.apple.com/?daddr=${addr}` : `https://www.google.com/maps/dir/?api=1&destination=${addr}`;
       window.open(url, '_blank');
     }
   </script>
