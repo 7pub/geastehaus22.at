@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Gästehaus 22 | Günstige Monteurzimmer & Arbeiterunterkunft in Asten</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Unterkunft für Arbeiter & Monteure in Asten nahe Linz. Voll ausgestattete Küche, Starlink Internet und Parkplatz inklusive.">
+  <meta name="description" content="Unterkunft für Arbeiter & Monteure in Asten nahe Linz. Starlink Internet, YouTube Premium und Parkplätze direkt vorm Haus.">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -32,7 +32,7 @@
     [lang="en"] { display: none; }
     body.lang-en [lang="de"] { display: none; }
     body.lang-en [lang="en"] { display: block; }
-    body.lang-en h1[lang="en"], body.lang-en p[lang="en"], body.lang-en .section-label[lang="en"] { display: block !important; }
+    body.lang-en h1[lang="en"], body.lang-en p[lang="en"], body.lang-en .section-label[lang="en"], body.lang-en h2[lang="en"], body.lang-en div[lang="en"] { display: block !important; }
     body.lang-en span[lang="en"] { display: inline !important; }
     body.lang-en li[lang="en"] { display: flex !important; }
 
@@ -134,8 +134,9 @@
     .footer-heart { margin-top: 0.8rem; display: flex; align-items: center; justify-content: center; gap: 5px; }
 
     .modal { display: none; position: fixed; z-index: 3000; top: 0; left: 0; width: 100%; height: 100%; background: var(--overlay); backdrop-filter: blur(5px); align-items: center; justify-content: center; }
-    .modal-content { background: #fff; width: 90%; max-width: 500px; padding: 2.5rem; border-radius: 24px; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.2); text-align: center; }
+    .modal-content { background: #fff; width: 90%; max-width: 550px; padding: 2.5rem; border-radius: 24px; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.2); text-align: center; }
     .close-modal { position: absolute; top: 1rem; right: 1rem; cursor: pointer; font-size: 1.2rem; background: #eee; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .modal-body-text { text-align: left; margin-top: 1.5rem; font-size: 0.85rem; line-height: 1.5; max-height: 60vh; overflow-y: auto; padding-right: 10px; }
 
     #lightbox { display: none; position: fixed; z-index: 4000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; }
     #lightbox img { max-width: 90%; max-height: 90%; border-radius: 8px; }
@@ -199,9 +200,10 @@
         <section class="card">
           <div class="section-label" lang="de">Lage</div>
           <div class="section-label" lang="en">Location</div>
-          <p><strong>Gästehaus 22</strong><br>Eichenstraße 22<br>4481 Asten, Austria</p>
-          <button onclick="openNavigation()" class="btn-primary btn-nav" style="margin-top:1rem;">
-            <i data-lucide="map-pin"></i> <span lang="de">Route anzeigen</span><span lang="en">Get directions</span>
+          <p><strong>Gästehaus 22</strong><br>Eichenstraße 22, 4481 Asten</p>
+          <div id="dist-info"></div>
+          <button onclick="openNavigation()" class="btn-primary btn-nav">
+            <i data-lucide="map-pin"></i> <span lang="de">Route berechnen</span><span lang="en">Get directions</span>
           </button>
         </section>
       </aside>
@@ -232,26 +234,67 @@
     </p>
   </footer>
 
-  <!-- MODALS -->
+  <!-- MODAL: IMPRESSUM -->
   <div id="modal-legal" class="modal" onclick="closeModals(event)">
     <div class="modal-content">
       <span class="close-modal" onclick="toggleModal('legal')">×</span>
       <h2 lang="de">Impressum</h2><h2 lang="en">Legal Notice</h2>
-      <div style="text-align: left; margin-top: 1.5rem;">
+      
+      <div class="modal-body-text" lang="de">
+        <p><strong>Informationspflicht gemäß § 5 E-Commerce Gesetz und Offenlegungspflicht gemäß § 25 Mediengesetz</strong></p><br>
         <p><strong>Gästehaus 22</strong></p>
-        <p>Eichenstraße 22, 4481 Asten, Österreich</p>
+        <p>Privatzimmervermietung (Häusliche Nebenbeschäftigung)</p>
+        <p>Inhaber: [Dein Name]</p>
+        <p>Eichenstraße 22, 4481 Asten, Österreich</p><br>
+        <p><strong>Kontakt:</strong></p>
         <p>Tel: +43 680 1610618</p>
-        <p>E-Mail: info@gaestehaus22.at</p>
+        <p>E-Mail: office@gaestehaus22.at</p><br>
+        <p><strong>Aufsichtsbehörde:</strong> Bezirkshauptmannschaft Linz-Land</p>
+        <p><strong>Online-Streitbeilegung:</strong> Verbraucher haben die Möglichkeit, Beschwerden an die Online-Streitbeilegungsplattform der EU zu richten: <a href="http://ec.europa.eu/odr" target="_blank" style="color: var(--link);">http://ec.europa.eu/odr</a>.</p>
+      </div>
+
+      <div class="modal-body-text" lang="en">
+        <p><strong>Information according to § 5 E-Commerce Act and § 25 Media Act</strong></p><br>
+        <p><strong>Gästehaus 22</strong></p>
+        <p>Private Room Rental</p>
+        <p>Owner: [Your Name]</p>
+        <p>Eichenstrasse 22, 4481 Asten, Austria</p><br>
+        <p><strong>Contact:</strong></p>
+        <p>Phone: +43 680 1610618</p>
+        <p>Email: office@gaestehaus22.at</p><br>
+        <p><strong>Regulatory Authority:</strong> BH Linz-Land</p>
+        <p><strong>Dispute Resolution:</strong> Consumers can submit complaints to the EU's online dispute resolution platform: <a href="http://ec.europa.eu/odr" target="_blank" style="color: var(--link);">http://ec.europa.eu/odr</a>.</p>
       </div>
     </div>
   </div>
 
+  <!-- MODAL: DATENSCHUTZ -->
   <div id="modal-privacy" class="modal" onclick="closeModals(event)">
     <div class="modal-content">
       <span class="close-modal" onclick="toggleModal('privacy')">×</span>
       <h2 lang="de">Datenschutz</h2><h2 lang="en">Privacy Policy</h2>
-      <p style="text-align: left; margin-top: 1.5rem;" lang="de">Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet. Wir speichern keine Tracking-Cookies.</p>
-      <p style="text-align: left; margin-top: 1.5rem;" lang="en">Your data will only be used to process your inquiry. We do not store tracking cookies.</p>
+      
+      <div class="modal-body-text" lang="de">
+        <p><strong>1. Allgemeine Informationen</strong></p>
+        <p>Wir behandeln Ihre Daten vertraulich gemäß DSGVO und TKG 2003.</p><br>
+        <p><strong>2. Kontakt (WhatsApp & Co)</strong></p>
+        <p>Bei Kontakt via WhatsApp/SMS speichern wir Ihre Nummer zur Anfragebearbeitung. Es gelten die Datenschutzregeln der jeweiligen Dienste (z.B. WhatsApp Inc.).</p><br>
+        <p><strong>3. Standortdaten</strong></p>
+        <p>Wir nutzen die Geolocation-API Ihres Browsers nur bei expliziter Zustimmung, um Entfernungen zu berechnen. Daten werden nicht dauerhaft gespeichert.</p><br>
+        <p><strong>4. Ihre Rechte</strong></p>
+        <p>Sie haben Recht auf Auskunft, Löschung und Berichtigung. Kontakt: office@gaestehaus22.at.</p>
+      </div>
+
+      <div class="modal-body-text" lang="en">
+        <p><strong>1. General Information</strong></p>
+        <p>We process your data confidentially according to GDPR regulations.</p><br>
+        <p><strong>2. Contact (WhatsApp & Co)</strong></p>
+        <p>When contacting us via WhatsApp/SMS, we store your number for processing. The privacy policies of the respective services apply.</p><br>
+        <p><strong>3. Location Data</strong></p>
+        <p>We use your browser's Geolocation API only with your consent to calculate distances. No data is stored permanently.</p><br>
+        <p><strong>4. Your Rights</strong></p>
+        <p>You have the right to access, delete, and correct your data. Contact: office@gaestehaus22.at.</p>
+      </div>
     </div>
   </div>
 
