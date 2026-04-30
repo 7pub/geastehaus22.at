@@ -72,7 +72,7 @@
     .install-btn-top {
       color: var(--link);
       border-color: var(--link);
-      display: none; /* Wird per JS eingeblendet */
+      display: none;
     }
 
     .lang-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
@@ -108,7 +108,6 @@
     .lucide { width: 18px; height: 18px; stroke-width: 2.5; }
     .check-icon { color: var(--success); }
 
-    /* Buttons */
     .btn-primary {
       padding: 0.8rem 1.5rem; color: #fff; border-radius: 12px;
       text-decoration: none; display: flex; align-items: center;
@@ -120,7 +119,6 @@
     .btn-whatsapp { background-color: var(--whatsapp); }
     .btn-nav { background-color: var(--link); }
 
-    /* RCS nur Mobile */
     .btn-rcs { 
       background-color: var(--rcs-blue); 
       display: none !important;
@@ -146,7 +144,22 @@
     .gallery-item { height: 200px; border-radius: 12px; overflow: hidden; background: #ddd; }
     .gallery-item img { width: 100%; height: 100%; object-fit: cover; cursor: zoom-in; }
 
-    footer { text-align: center; padding: 3rem 1rem; color: var(--accent-soft); font-size: 0.85rem; }
+    /* --- FOOTER STYLES --- */
+    footer { 
+      text-align: center; 
+      padding: 4rem 1.5rem 3rem; 
+      color: var(--accent-soft); 
+      font-size: 0.9rem;
+      border-top: 1px solid #e3e3e3;
+      margin-top: 3rem;
+      background: #fff;
+    }
+    .footer-links { margin-bottom: 1rem; display: flex; justify-content: center; gap: 1.5rem; }
+    .footer-links a { color: var(--accent-soft); text-decoration: none; font-weight: 500; }
+    .footer-links a:hover { color: var(--link); }
+    .footer-heart { margin-top: 1rem; font-size: 0.8rem; opacity: 0.8; }
+    .emoji { vertical-align: middle; height: 16px; width: 16px; }
+
     #lightbox {
       display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(0,0,0,0.9); align-items: center; justify-content: center;
@@ -172,22 +185,25 @@
       <h1 lang="de">Monteurzimmer in Asten</h1>
       <h1 lang="en">Worker Rooms in Asten</h1>
       <p class="subtitle" lang="de">Praktisch. Sauber. Günstig.</p>
+      <p class="subtitle" lang="en">Practical. Clean. Affordable.</p>
     </header>
 
     <main>
       <section class="card">
-        <div class="section-label">Angebot</div>
-        <div class="price-tag">35 € <span style="font-size: 0.9rem; font-weight: 400;">/ Nacht pro Person</span></div>
+        <div class="section-label" lang="de">Angebot</div>
+        <div class="section-label" lang="en">Offer</div>
+        <div class="price-tag">35 € <span style="font-size: 0.9rem; font-weight: 400;" lang="de">/ Nacht pro Person</span><span style="font-size: 0.9rem; font-weight: 400;" lang="en">/ night per person</span></div>
         <ul>
-          <li><i data-lucide="wifi" class="check-icon"></i> <span>Gratis WLAN</span></li>
-          <li><i data-lucide="utensils" class="check-icon"></i> <span>Küche & Wohnzimmer</span></li>
-          <li><i data-lucide="car" class="check-icon"></i> <span>Parkplätze inkl.</span></li>
+          <li><i data-lucide="wifi" class="check-icon"></i> <span lang="de">Gratis WLAN</span><span lang="en">Free Wi-Fi</span></li>
+          <li><i data-lucide="utensils" class="check-icon"></i> <span lang="de">Küche & Wohnzimmer</span><span lang="en">Kitchen & Livingroom</span></li>
+          <li><i data-lucide="car" class="check-icon"></i> <span lang="de">Parkplätze inkl.</span><span lang="en">Parking included</span></li>
         </ul>
       </section>
 
       <aside style="display: flex; flex-direction: column; gap: 1.5rem;">
         <section class="card">
-          <div class="section-label">Kontakt</div>
+          <div class="section-label" lang="de">Kontakt</div>
+          <div class="section-label" lang="en">Contact</div>
           <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-top: 0.5rem;">
             <a href="https://wa.me/436801610618" class="btn-primary btn-whatsapp" target="_blank">
               <i data-lucide="message-circle"></i> WhatsApp
@@ -196,27 +212,43 @@
               <i data-lucide="message-square-more"></i> RCS Nachricht
             </a>
             <a href="tel:+436801610618" class="btn-primary btn-call">
-              <i data-lucide="phone"></i> Anrufen
+              <i data-lucide="phone"></i> <span lang="de">Anrufen</span><span lang="en">Call us</span>
             </a>
           </div>
         </section>
 
         <section class="card">
-          <div class="section-label">Lage</div>
+          <div class="section-label" lang="de">Lage</div>
+          <div class="section-label" lang="en">Location</div>
           <p><strong>Gästehaus 22</strong><br>Eichenstraße 22, 4481 Asten</p>
           <div id="dist-info"></div>
           <button onclick="openNavigation()" class="btn-primary btn-nav" style="margin-top:1rem;">
-            <i data-lucide="map-pin"></i> Route berechnen
+            <i data-lucide="map-pin"></i> <span lang="de">Route berechnen</span><span lang="en">Get directions</span>
           </button>
         </section>
       </aside>
 
       <section class="gallery-section card" style="grid-column: 1 / -1;">
+        <div class="section-label" lang="de">Galerie</div>
+        <div class="section-label" lang="en">Gallery</div>
         <div class="gallery-grid" id="gallery-container"></div>
       </section>
     </main>
 
-  <footer>© 2026 Gästehaus 22</footer>
+  <footer>
+    <div class="footer-links">
+      <a href="/impressum.html" lang="de">Impressum</a>
+      <a href="/impressum.html" lang="en">Legal Notice</a>
+      <a href="/datenschutz.html" lang="de">Datenschutz</a>
+      <a href="/datenschutz.html" lang="en">Privacy Policy</a>
+    </div>
+    <p>© 2026 Gästehaus 22 – 4481 Asten, Austria</p>
+    <p class="footer-heart">
+      Made with 
+      <img class="emoji" alt="heart" src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png"> 
+      in Austria
+    </p>
+  </footer>
 
   <div id="lightbox" onclick="this.style.display='none'"><img id="lightbox-img"></div>
 
@@ -226,7 +258,6 @@
     const DEST_LAT = 48.2163, DEST_LNG = 14.4144;
     let userCoords = null, deferredPrompt;
 
-    // --- PWA INSTALL LOGIC ---
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredPrompt = e;
@@ -267,7 +298,9 @@
           const a = Math.sin(dLat/2)**2 + Math.cos(userCoords.latitude*Math.PI/180)*Math.cos(DEST_LAT*Math.PI/180)*Math.sin(dLon/2)**2;
           const dist = R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
           const el = document.getElementById('dist-info');
-          el.style.display = 'block'; el.innerText = `Nur ${dist.toFixed(1)} km entfernt`;
+          el.style.display = 'block'; 
+          const lang = document.body.classList.contains('lang-en') ? 'en' : 'de';
+          el.innerText = lang === 'de' ? `Nur ${dist.toFixed(1)} km entfernt` : `Only ${dist.toFixed(1)} km away`;
         }, null, {timeout: 5000});
       }
     });
