@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Unterkunft für Arbeiter & Monteure in Asten nahe Linz. Starlink Internet, YouTube Premium und Parkplätze direkt vorm Haus.">
 
+  <!-- SEO / Schema.org für Google -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -31,152 +32,349 @@
   }
   </script>
 
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+
   <style>
     :root {
       --bg: #f5f5f5;
       --card: #ffffff;
       --accent: #222222;
       --accent-soft: #666666;
-      --font-main: sans-serif;
+      --font-main: system-ui, -apple-system, sans-serif;
       --success: #28a745;
       --whatsapp: #25D366;
+      --rcs-blue: #1a73e8;
       --link: #007bff;
+      --overlay: rgba(0, 0, 0, 0.7);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: var(--font-main); background: var(--bg); color: #111; line-height: 1.5; }
+    body { font-family: var(--font-main); background: var(--bg); color: #111; line-height: 1.6; transition: background 0.3s; }
 
-    /* Sprachen-Steuerung */
+    /* --- SPRACHSTEUERUNG CSS --- */
     [lang="en"] { display: none; }
     body.lang-en [lang="de"] { display: none; }
     body.lang-en [lang="en"] { display: block; }
+    body.lang-en h1[lang="en"], body.lang-en p[lang="en"], body.lang-en .section-label[lang="en"], body.lang-en h2[lang="en"], body.lang-en div[lang="en"] { display: block !important; }
+    body.lang-en span[lang="en"] { display: inline !important; }
+    body.lang-en li[lang="en"] { display: flex !important; }
 
     header {
-      padding: 3rem 1rem 1.5rem;
+      padding: 5rem 1.5rem 2rem;
       text-align: center;
       background: #ffffff;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid #e3e3e3;
+      position: relative;
+    }
+    
+    .top-bar {
+      position: absolute;
+      top: 1.5rem; left: 0; right: 0;
+      padding: 0 1.5rem;
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+      z-index: 100;
+    }
+
+    .lang-switch { display: flex; gap: 0.5rem; }
+
+    .lang-btn {
+      padding: 0.5rem 0.8rem;
+      border: 1px solid #ddd;
+      background: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .lang-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+    .install-btn-top { 
+      display: none; 
+      padding: 0.5rem 0.8rem;
+      background: white;
+      border: 1px solid var(--link);
+      color: var(--link);
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
     }
 
     .logo-img {
-      width: 100px; height: 100px;
-      border-radius: 50%;
-      margin-bottom: 1rem;
+      width: 120px; height: 120px;
+      object-fit: cover; border-radius: 50%;
+      margin-bottom: 1rem; background: white;
+      border: 2px solid #fff; box-shadow: 0 8px 15px rgba(0,0,0,0.1);
     }
 
-    /* Fallback für BlackBerry: Flexbox statt nur Grid */
+    h1 { font-size: clamp(1.6rem, 5vw, 2.2rem); line-height: 1.2; margin-bottom: 0.5rem; }
+    .subtitle { color: var(--accent-soft); font-size: 1rem; }
+
     main {
-      max-width: 1000px;
-      margin: 1rem auto;
-      padding: 0 1rem;
-      display: block; /* Fallback */
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
+      max-width: 1040px; margin: 2rem auto; padding: 0 1.5rem;
+      display: grid; grid-template-columns: 1.8fr 1.2fr; gap: 1.5rem;
     }
 
-    .card { 
-      background: var(--card); 
-      border-radius: 12px; 
-      padding: 1.2rem; 
-      margin-bottom: 1rem; 
-      width: 100%; /* Mobil-First */
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
+    @media (max-width: 850px) { main { grid-template-columns: 1fr; } }
 
-    /* Desktop-Ansicht */
-    @media (min-width: 700px) {
-      .card-main { flex: 1.5; }
-      .card-side { flex: 1; }
-    }
+    .card { background: var(--card); border-radius: 16px; padding: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.03); }
+    .section-label { font-size: 0.75rem; text-transform: uppercase; color: var(--accent-soft); margin-bottom: 0.5rem; font-weight: 700; }
+    .price-tag { font-size: 1.8rem; font-weight: 700; margin: 0.5rem 0; }
+    
+    ul { list-style: none; margin-top: 1rem; }
+    li { margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.75rem; }
+    .check-icon { color: var(--success); flex-shrink: 0; width: 20px; height: 20px; }
 
     .btn-primary {
-      padding: 0.8rem; color: #fff; border-radius: 8px;
-      text-decoration: none; display: block;
-      text-align: center; font-weight: bold;
-      margin-bottom: 0.5rem;
+      padding: 0.8rem; color: #fff; border-radius: 12px;
+      text-decoration: none; display: flex; align-items: center;
+      justify-content: center; gap: 0.7rem; font-weight: 600;
+      transition: 0.2s; border: none; width: 100%; cursor: pointer;
     }
     .btn-call { background-color: var(--success); }
     .btn-whatsapp { background-color: var(--whatsapp); }
     .btn-nav { background-color: var(--link); }
+    .btn-rcs { background-color: var(--rcs-blue); display: none !important; }
+    @media (max-width: 768px) { .btn-rcs { display: flex !important; } }
 
-    .gallery-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .gallery-item { width: 48%; }
-    .gallery-item img { width: 100%; border-radius: 8px; height: 120px; object-fit: cover; }
+    #dist-info { display: none; background: #eef6ff; color: var(--link); padding: 0.6rem; border-radius: 8px; font-size: 0.85rem; margin-top: 0.8rem; font-weight: 600; text-align: center; }
 
-    footer { text-align: center; padding: 2rem 1rem; color: var(--accent-soft); font-size: 0.8rem; }
-    
-    /* Modals & Lightbox (einfacher für BB) */
-    .modal { display: none; position: fixed; top: 10%; left: 5%; width: 90%; background: #fff; border: 1px solid #000; z-index: 1000; padding: 1rem; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .gallery-item img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; cursor: zoom-in; }
+
+    footer { text-align: center; padding: 4rem 1.5rem 3rem; color: var(--accent-soft); font-size: 0.9rem; }
+    .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; }
+    .social-links a { color: var(--accent); opacity: 0.6; transition: 0.3s; }
+    .social-links a:hover { opacity: 1; transform: translateY(-2px); }
+    .footer-nav { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1rem; }
+    .footer-nav span { cursor: pointer; font-weight: 600; text-decoration: underline; }
+    .footer-heart { margin-top: 0.8rem; display: flex; align-items: center; justify-content: center; gap: 5px; }
+
+    .modal { display: none; position: fixed; z-index: 3000; top: 0; left: 0; width: 100%; height: 100%; background: var(--overlay); backdrop-filter: blur(5px); align-items: center; justify-content: center; }
+    .modal-content { background: #fff; width: 90%; max-width: 550px; padding: 2.5rem; border-radius: 24px; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.2); text-align: center; }
+    .close-modal { position: absolute; top: 1rem; right: 1rem; cursor: pointer; font-size: 1.2rem; background: #eee; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .modal-body-text { text-align: left; margin-top: 1.5rem; font-size: 0.85rem; line-height: 1.5; max-height: 60vh; overflow-y: auto; padding-right: 10px; }
+
+    #lightbox { display: none; position: fixed; z-index: 4000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; }
+    #lightbox img { max-width: 90%; max-height: 90%; border-radius: 8px; }
   </style>
 </head>
-<body>
+<body id="top">
 
     <header>
-      <img src="Logo.webp" alt="Gästehaus 22 Logo" class="logo-img">
-      <h1 lang="de">Gästehaus 22 Asten</h1>
-      <h1 lang="en">Guesthouse 22 Asten</h1>
+      <div class="top-bar">
+        <button id="install-button" class="install-btn-top">
+          <i data-lucide="download-cloud"></i> <span>App</span>
+        </button>
+
+        <div class="lang-switch">
+          <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
+          <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+        </div>
+      </div>
+      
+      <img src="Logo.webp" alt="Gästehaus 22 Logo - Monteurunterkunft Asten" class="logo-img">
+      <h1 lang="de">Monteurzimmer in Asten</h1>
+      <h1 lang="en">Worker Rooms in Asten</h1>
+      <p class="subtitle" lang="de">Praktisch. Sauber. Günstig.</p>
+      <p class="subtitle" lang="en">Practical. Clean. Affordable.</p>
     </header>
 
     <main>
-      <div class="card card-main">
-        <h2 lang="de">Unser Angebot</h2>
-        <h2 lang="en">Our Offer</h2>
-        <p><strong>35 €</strong> / Nacht pro Person</p>
-        <ul style="margin-top: 10px; list-style-position: inside;">
-          <li>Starlink Internet</li>
-          <li>Küche & TV</li>
-          <li>Parkplätze inkl.</li>
+      <section class="card">
+        <div class="section-label" lang="de">Angebot</div>
+        <div class="section-label" lang="en">Offer</div>
+        <div class="price-tag">35 € <span style="font-size: 0.9rem; font-weight: 400;" lang="de">/ Nacht pro Person</span><span style="font-size: 0.9rem; font-weight: 400;" lang="en">/ night per person</span></div>
+        <ul>
+          <li><i data-lucide="wifi" class="check-icon"></i> <span lang="de">Starlink - Highspeed-Internet</span><span lang="en">Starlink - High-Speed Internet</span></li>
+          <li><i data-lucide="utensils" class="check-icon"></i> <span lang="de">Voll ausgestattete Küche</span><span lang="en">Fully equipped kitchen</span></li>
+          <li><i data-lucide="tv" class="check-icon"></i> <span lang="de">Wohnzimmer mit TV & YouTube Premium</span><span lang="en">Living room with TV & YouTube Premium</span></li>
+          <li><i data-lucide="car" class="check-icon"></i> <span lang="de">Parkplätze direkt vorm Haus</span><span lang="en">Parking right in front of the house</span></li>
         </ul>
-      </div>
+      </section>
 
-      <div class="card card-side">
-        <h2 lang="de">Kontakt</h2>
-        <a href="tel:+436801610618" class="btn-primary btn-call">Anrufen / Call</a>
-        <a href="https://wa.me/436801610618" class="btn-primary btn-whatsapp">WhatsApp</a>
-        
-        <h2 style="margin-top: 1rem;">Lage</h2>
-        <p>Eichenstraße 22, 4481 Asten</p>
-        <!-- Optimierter Maps Link für BlackBerry/Legacy -->
-        <a href="https://maps.google.com/?daddr=Eichenstraße+22,+4481+Asten" class="btn-primary btn-nav" target="_blank">
-          Route berechnen
-        </a>
-      </div>
+      <aside style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <section class="card">
+          <div class="section-label" lang="de">Kontakt</div>
+          <div class="section-label" lang="en">Contact</div>
+          <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-top: 0.5rem;">
+            
+            <a href="https://wa.me/436801610618" class="btn-primary btn-whatsapp" target="_blank">
+              <i data-lucide="message-circle"></i> WhatsApp
+            </a>
+            
+            <a href="sms:+436801610618?body=Anfrage%20Zimmer" class="btn-primary btn-rcs">
+              <i data-lucide="message-square"></i> RCS Nachricht
+            </a>
+            
+            <a href="tel:+436801610618" class="btn-primary btn-call">
+              <i data-lucide="phone"></i> +43 680 1610618
+            </a>
+            
+          </div>
+        </section>
 
-      <div class="card" style="width: 100%;">
-        <h2 lang="de">Monteurzimmer & Unterkunft</h2>
-        <p style="font-size: 0.9rem; color: #555;">
-          Günstige Zimmer für Monteure und Arbeiter von Karl Achleitner in Asten bei Linz. 
-          Beste Anbindung an die A1.
+        <section class="card">
+          <div class="section-label" lang="de">Lage</div>
+          <div class="section-label" lang="en">Location</div>
+          <p><strong>Gästehaus 22</strong><br>Eichenstraße 22<br>4481 Asten, Austria</p>
+          <button onclick="openNavigation()" class="btn-primary btn-nav" style="margin-top:1rem;">
+            <i data-lucide="map-pin"></i> <span lang="de">Route anzeigen</span><span lang="en">Get directions</span>
+          </button>
+        </section>
+      </aside>
+
+      <!-- SEO TEXT BLOCK FÜR GOOGLE RANKING -->
+      <section class="card" style="grid-column: 1 / -1;">
+        <h2 style="font-size: 1.2rem; margin-bottom: 0.5rem;" lang="de">Günstige Monteurzimmer & Arbeiterunterkunft in Asten</h2>
+        <h2 style="font-size: 1.2rem; margin-bottom: 0.5rem;" lang="en">Affordable Worker Accommodation in Asten</h2>
+        <p style="font-size: 0.9rem; color: var(--accent-soft);" lang="de">
+          Suchen Sie eine saubere und preiswerte Unterkunft für Monteure oder Arbeiter im Bezirk Linz-Land? 
+          Das Gästehaus 22 in Asten bietet die perfekte Lösung. Durch die ideale Lage nahe der Autobahn A1 
+          und kurzen Wegen nach Linz, Enns und St. Florian sind wir ein beliebter Stützpunkt für Firmen. 
+          Unsere Zimmer sind modern ausgestattet und bieten dank Starlink Highspeed-Internet sowie 
+          YouTube Premium den nötigen Komfort nach dem Feierabend. Parkplätze direkt vorm Haus inklusive.
         </p>
-      </div>
+        <p style="font-size: 0.9rem; color: var(--accent-soft);" lang="en">
+          Looking for clean and affordable accommodation for workers in the Linz-Land district? 
+          Gästehaus 22 in Asten is the perfect solution. Ideally located near the A1 motorway 
+          with short distances to Linz, Enns, and St. Florian, we are a preferred choice for companies. 
+          Our rooms are modernly equipped and offer comfort after work with Starlink Highspeed-Internet 
+          and YouTube Premium. Parking is available directly in front of the house.
+        </p>
+      </section>
 
-      <div class="card" style="width: 100%;">
-        <div class="gallery-grid">
-           <div class="gallery-item"><img src="bedrooms.webp" alt="Zimmer"></div>
-           <div class="gallery-item"><img src="kitchen.webp" alt="Küche"></div>
-        </div>
-      </div>
+      <section class="gallery-section card" style="grid-column: 1 / -1;">
+        <div class="section-label" lang="de">Galerie</div>
+        <div class="section-label" lang="en">Gallery</div>
+        <div class="gallery-grid" id="gallery-container"></div>
+      </section>
     </main>
 
-    <footer>
-      <p>© 2026 Karl Achleitner | Gästehaus 22</p>
-      <p>office@gaestehaus22.at</p>
-    </footer>
+  <footer>
+    <div class="social-links">
+      <a href="https://instagram.com/gaestehaus22" target="_blank"><i data-lucide="instagram"></i></a>
+      <a href="https://facebook.com/gaestehaus22" target="_blank"><i data-lucide="facebook"></i></a>
+    </div>
+    <div class="footer-nav">
+      <span onclick="toggleModal('legal')" lang="de">Impressum</span>
+      <span onclick="toggleModal('legal')" lang="en">Legal Notice</span>
+      <span onclick="toggleModal('privacy')" lang="de">Datenschutz</span>
+      <span onclick="toggleModal('privacy')" lang="en">Privacy</span>
+    </div>
+    <p>© 2026 Gästehaus 22 – 4481 Asten</p>
+  </footer>
 
-    <script>
-      // Einfaches Sprach-Skript (auch für BB kompatibel)
-      function setLang(l) {
-        document.body.className = (l === 'en') ? 'lang-en' : '';
+  <!-- MODAL: IMPRESSUM -->
+  <div id="modal-legal" class="modal" onclick="closeModals(event)">
+    <div class="modal-content">
+      <span class="close-modal" onclick="toggleModal('legal')">×</span>
+      <h2 lang="de">Impressum</h2><h2 lang="en">Legal Notice</h2>
+      <div class="modal-body-text" lang="de">
+        <p><strong>Informationspflicht gemäß § 5 ECG & § 25 Mediengesetz</strong></p><br>
+        <p><strong>Gästehaus 22</strong></p>
+        <p>Privatzimmervermietung (Häusliche Nebenbeschäftigung)</p>
+        <p>Inhaber: [Dein Name]</p>
+        <p>Eichenstraße 22, 4481 Asten, Österreich</p><br>
+        <p>Tel: +43 680 1610618</p>
+        <p>E-Mail: office@gaestehaus22.at</p><br>
+        <p>BH Linz-Land | EU-Streitbeilegung: <a href="http://ec.europa.eu/odr" target="_blank">ec.europa.eu/odr</a></p>
+      </div>
+      <div class="modal-body-text" lang="en">
+        <p><strong>Information according to § 5 ECG & § 25 Media Act</strong></p><br>
+        <p><strong>Gästehaus 22</strong></p>
+        <p>Private Rental</p>
+        <p>Owner: [Your Name]</p>
+        <p>Eichenstrasse 22, 4481 Asten, Austria</p><br>
+        <p>Email: office@gaestehaus22.at</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: DATENSCHUTZ -->
+  <div id="modal-privacy" class="modal" onclick="closeModals(event)">
+    <div class="modal-content">
+      <span class="close-modal" onclick="toggleModal('privacy')">×</span>
+      <h2 lang="de">Datenschutz</h2><h2 lang="en">Privacy Policy</h2>
+      <div class="modal-body-text" lang="de">
+        <p><strong>1. Kontakt:</strong> Daten via WhatsApp/SMS werden nur zur Anfragebearbeitung genutzt.</p><br>
+        <p><strong>2. Geolocation:</strong> Die Standortabfrage erfolgt nur mit Ihrer Zustimmung zur Entfernungsberechnung.</p><br>
+        <p><strong>3. Cookies:</strong> Wir nutzen keine Tracking-Cookies.</p>
+      </div>
+      <div class="modal-body-text" lang="en">
+        <p><strong>1. Contact:</strong> Data via WhatsApp/SMS is used for inquiries only.</p><br>
+        <p><strong>2. Location:</strong> Geolocation is only used with your consent.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="lightbox" onclick="this.style.display='none'"><img id="lightbox-img"></div>
+
+  <!-- SCRIPTS -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    const images = { gallery: [
+      {src: "bedrooms.webp", alt: "Gemütliche Schlafzimmer im Gästehaus 22 Asten"},
+      {src: "livingroom.webp", alt: "Wohnzimmer mit TV und YouTube Premium"},
+      {src: "kitchen.webp", alt: "Voll ausgestattete Küche für Monteure"},
+      {src: "bathroom.webp", alt: "Sauberes Badezimmer und WC"}
+    ]};
+    
+    function setLang(lang) {
+      document.body.classList.toggle('lang-en', lang === 'en');
+      document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    }
+
+    function toggleModal(id) {
+      const m = document.getElementById('modal-' + id);
+      m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
+    }
+
+    function closeModals(e) { if(e.target.classList.contains('modal')) e.target.style.display = 'none'; }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      const container = document.getElementById('gallery-container');
+      images.gallery.forEach(img => {
+        const div = document.createElement('div');
+        div.className = 'gallery-item';
+        div.innerHTML = `<img src="${img.src}" alt="${img.alt}" loading="lazy">`;
+        div.onclick = () => { 
+            document.getElementById('lightbox-img').src = img.src; 
+            document.getElementById('lightbox').style.display = 'flex'; 
+        };
+        container.appendChild(div);
+      });
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(pos => {
+          const R = 6371; 
+          const dLat = (48.2163 - pos.coords.latitude) * Math.PI / 180;
+          const dLon = (14.4144 - pos.coords.longitude) * Math.PI / 180;
+          const a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(pos.coords.latitude * Math.PI / 180) * Math.cos(48.2163 * Math.PI / 180) * Math.sin(dLon/2) * Math.sin(dLon/2);
+          const dist = R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)));
+          const el = document.getElementById('dist-info');
+          el.style.display = 'block';
+          el.innerText = `Nur ${dist.toFixed(1)} km entfernt`;
+        });
       }
-      
-      // BlackBerry Link Fix: Falls das target="_blank" hakt, erzwingen wir die Location
-      document.querySelector('.btn-nav').onclick = function(e) {
-          if(navigator.userAgent.match(/BlackBerry|BB10/i)) {
-              window.location.href = this.href;
-              return false;
-          }
-      };
-    </script>
+    });
+
+    function openNavigation() {
+      const addr = encodeURIComponent("Gästehaus 22, Eichenstraße 22, 4481 Asten");
+      const url = /iPad|iPhone|iPod/.test(navigator.userAgent) ? `maps://maps.apple.com/?daddr=${addr}` : `https://www.google.com/maps/dir/?api=1&destination=${addr}`;
+      window.open(url, '_blank');
+    }
+  </script>
 </body>
 </html>
