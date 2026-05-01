@@ -376,5 +376,35 @@
       window.open(url, '_blank');
     }
   </script>
+  <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(reg => console.log('Service Worker registriert', reg))
+        .catch(err => console.log('Service Worker Fehler', err));
+    });
+  }
+
+  // Logik für den Installations-Button
+  let deferredPrompt;
+  const installBtn = document.getElementById('install-button');
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installBtn.style.display = 'flex'; // Button anzeigen, wenn installierbar
+  });
+
+  installBtn.addEventListener('click', async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        installBtn.style.display = 'none';
+      }
+      deferredPrompt = null;
+    }
+  });
+</script>
 </body>
 </html>
