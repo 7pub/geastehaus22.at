@@ -491,19 +491,6 @@
                     </button>
                     <div id="dist-info" style="display:none; margin-top: 10px; text-align: center; padding: 10px; border-radius: 8px;"></div>
                     <div id="result"></div>
-                    <!-- Status Anzeige -->
-<div id="location-status">
-    <p id="status-message">Suche Standort...</p>
-</div>
-
-<!-- Manuelle Eingabe (initial versteckt) -->
-<div id="manual-location" style="display: none;">
-    <p>Standort konnte nicht ermittelt werden.</p>
-    <div style="display: flex; gap: 0.5rem;">
-        <input type="text" id="user-city" placeholder="PLZ oder Ort eingeben..." class="input-field">
-        <button onclick="handleManualSubmit()" class="btn-primary">OK</button>
-    </div>
-</div>
                 </div>
 
                 <button onclick="openNavigation()" class="btn-primary btn-nav" style="margin-top:1rem;">
@@ -648,34 +635,6 @@
                     }
                 });
             }*/
-navigator.geolocation.getCurrentPosition(
-    (position) => {
-        // Erfolg: Standort verarbeiten
-        console.log("Breitengrad: " + position.coords.latitude);
-    },
-    (error) => {
-        // Fehler-Handling
-        showManualInput();
-    },
-    { timeout: 10000 } // Beispiel: 10 Sekunden Timeout
-);
-
-function showManualInput() {
-    // Verstecke die Fehlermeldung/Ladeanzeige
-    document.getElementById('location-status').style.display = 'none';
-    
-    // Zeige das Eingabefeld an
-    const manualDiv = document.getElementById('manual-location');
-    manualDiv.style.display = 'block';
-}
-
-function handleManualSubmit() {
-    const location = document.getElementById('user-city').value;
-    if (location) {
-        console.log("Manueller Standort:", location);
-        // Hier die weitere Logik (z.B. API-Abfrage mit Ortsnamen)
-    }
-}
 
             ['data-as-772', 'data-as-772-en'].forEach(id => {
                 const el = document.getElementById(id);

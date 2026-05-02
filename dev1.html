@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gästehaus 22 Asten | Monteurzimmer & Arbeiterunterkunft Linz</title>
+    
+    <!-- SEO & Meta -->
+    <meta name="description" content="Preiswerte Unterkunft in 4481 Asten nahe Linz. Einzelbetten, Highspeed-WLAN & Parkplätze direkt vorm Haus. Jetzt anfragen: +43 680 1610618.">
+    <link rel="canonical" href="https://gaestehaus22.at/">
+
+    <!-- Strukturierte Daten -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Gästehaus 22",
+      "image": "https://gaestehaus22.at/Logo.webp",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Eichenstraße 22",
+        "addressLocality": "Asten",
+        "postalCode": "4481",
+        "addressCountry": "AT"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 48.21245,
+        "longitude": 14.41432
+      },
+      "url": "https://gaestehaus22.at",
+      "telephone": "+436801610618",
+      "priceRange": "€€"
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg: #f5f5f5;
+            --card: #ffffff;
+            --accent: #222222;
+            --accent-soft: #666666;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --success: #28a745;
+            --whatsapp: #25D366;
+            --rcs-blue: #1a73e8;
+            --link: #007bff;
+            --overlay: rgba(0, 0, 0, 0.7);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: var(--font-main);
+            background: var(--bg);
+            color: #111;
+            line-height: 1.6;
+        }
+
+        /* Sprachsteuerung */
+        [lang="en"] { display: none; }
+        body.lang-en [lang="de"] { display: none; }
+        body.lang-en [lang="en"] { display: block; }
+        body.lang-en span[lang="en"] { display: inline !important; }
+        body.lang-en h1[lang="en"], body.lang-en p[lang="en"], body.lang-en .section-label[lang="en"] { display: block !important; }
+
+        header {
+            padding: 5rem 1.5rem 2rem;
+            text-align: center;
+            background: #ffffff;
+            border-bottom: 1px solid #e3e3e3;
+            position: relative;
+        }
+
+        .top-bar {
+            position: absolute;
+            top: 1.5rem;
+            left: 0;
+            right: 0;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .lang-btn {
+            padding: 0.5rem 0.8rem;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .lang-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+        .logo-img {
+            width: 120px; height: 120px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        main {
+            max-width: 1040px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 1.8fr 1.2fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 850px) { main { grid-template-columns: 1fr; } }
+
+        .card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
+        }
+
+        .section-label { font-size: 0.75rem; text-transform: uppercase; color: var(--accent-soft); font-weight: 700; margin-bottom: 0.5rem; }
+
+        .btn-primary {
+            padding: 0.8rem;
+            color: #fff;
+            border-radius: 12px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.7rem;
+            font-weight: 600;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-whatsapp { background: var(--whatsapp); }
+        .btn-call { background: var(--success); }
+        .btn-nav { background: var(--link); }
+
+        .input-field {
+            flex: 1;
+            padding: 0.6rem;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-family: inherit;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .gallery-item img {
+            width: 100%; height: 200px; object-fit: cover; border-radius: 12px; cursor: zoom-in;
+        }
+
+        footer { text-align: center; padding: 3rem 1.5rem; color: var(--accent-soft); font-size: 0.9rem; }
+
+        .modal {
+            display: none; position: fixed; z-index: 3000; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--overlay); backdrop-filter: blur(5px); align-items: center; justify-content: center;
+        }
+
+        .modal-content { background: #fff; width: 90%; max-width: 550px; padding: 2rem; border-radius: 24px; position: relative; }
+
+        #lightbox {
+            display: none; position: fixed; z-index: 4000; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.9); align-items: center; justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="top-bar">
+            <button id="install-button" style="display:none;" class="lang-btn">App</button>
+            <div class="lang-switch">
+                <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
+                <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+            </div>
+        </div>
+        <img src="Logo.webp" alt="Logo" class="logo-img">
+        <h1 lang="de">Monteurzimmer in Asten</h1>
+        <h1 lang="en">Worker Rooms in Asten</h1>
+        <p class="subtitle" lang="de">Praktisch. Sauber. Günstig.</p>
+        <p class="subtitle" lang="en">Practical. Clean. Affordable.</p>
+    </header>
+
+    <main>
+        <section class="card">
+            <div class="section-label" lang="de">Angebot</div>
+            <div class="section-label" lang="en">Offer</div>
+            <div style="font-size: 1.8rem; font-weight: 700;">35 € <span style="font-size: 0.9rem; font-weight: 400;">/ Nacht</span></div>
+            <ul style="list-style: none; margin-top: 1rem;">
+                <li><i data-lucide="wifi"></i> Starlink Highspeed-WLAN</li>
+                <li><i data-lucide="utensils"></i> Voll ausgestattete Küche</li>
+                <li><i data-lucide="car"></i> Parkplatz direkt vorm Haus</li>
+            </ul>
+        </section>
+
+        <aside style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <section class="card">
+                <div class="section-label">Kontakt</div>
+                <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                    <a href="https://wa.me/436801610618" class="btn-primary btn-whatsapp">WhatsApp</a>
+                    <a href="tel:+436801610618" class="btn-primary btn-call">+43 680 1610618</a>
+                </div>
+            </section>
+
+            <section class="card">
+                <div class="section-label">Lage</div>
+                <p><strong>Gästehaus 22</strong><br>Eichenstraße 22, 4481 Asten</p>
+                
+                <div id="location-wrapper" style="margin-top: 1rem;">
+                    <button id="check-dist-btn" class="btn-primary" style="background: none; border: 2px solid var(--link); color: var(--link);">
+                        <i data-lucide="map"></i> 
+                        <span lang="de">Wie weit ist es von mir?</span>
+                        <span lang="en">How far is it from me?</span>
+                    </button>
+
+                    <!-- Distanz-Ergebnis -->
+                    <div id="dist-info" style="display:none; margin-top: 10px; text-align: center; padding: 10px; border-radius: 8px; background: #eef6ff; color: var(--link); font-weight: 600;"></div>
+
+                    <!-- Lade-Status -->
+                    <div id="location-status" style="display: none; margin-top: 10px; text-align: center; font-size: 0.85rem;">
+                        <p>Suche Standort...</p>
+                    </div>
+
+                    <!-- Manuelle Eingabe (wird nur bei Fehler eingeblendet) -->
+                    <div id="manual-location" style="display: none; margin-top: 10px;">
+                        <p style="font-size: 0.8rem; margin-bottom: 5px;" lang="de">Standort nicht abrufbar. Ort eingeben:</p>
+                        <p style="font-size: 0.8rem; margin-bottom: 5px;" lang="en">Location unavailable. Enter city:</p>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <input type="text" id="user-city" placeholder="PLZ oder Ort" class="input-field">
+                            <button onclick="handleManualSubmit()" class="btn-primary" style="width: auto; padding: 0 1rem; background: var(--link);">OK</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button onclick="openNavigation()" class="btn-primary btn-nav" style="margin-top:1rem;">
+                    <i data-lucide="map-pin"></i> Route anzeigen
+                </button>
+            </section>
+        </aside>
+
+        <section class="gallery-section card" style="grid-column: 1 / -1;">
+            <div class="section-label">Galerie</div>
+            <div class="gallery-grid" id="gallery-container"></div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-nav">
+            <span onclick="toggleModal('legal')" style="cursor:pointer; text-decoration: underline;">Impressum</span> | 
+            <span onclick="toggleModal('privacy')" style="cursor:pointer; text-decoration: underline;">Datenschutz</span>
+        </div>
+        <p>© 2026 Gästehaus 22</p>
+    </footer>
+
+    <!-- Modals -->
+    <div id="modal-legal" class="modal" onclick="closeModals(event)">
+        <div class="modal-content">
+            <h2 lang="de">Impressum</h2>
+            <p>Gästehaus 22<br>Karl Altreiter<br>Eichenstraße 22, 4481 Asten</p>
+        </div>
+    </div>
+
+    <div id="lightbox" onclick="this.style.display='none'"><img id="lightbox-img" style="max-width:90%; border-radius:8px;"></div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        const TARGET = { lat: 48.21245, lon: 14.41432 };
+
+        // Icons initialisieren
+        lucide.createIcons();
+
+        // Galerie
+        const galleryImages = ["bedrooms.webp", "livingroom.webp", "kitchen.webp", "bathroom.webp"];
+        const container = document.getElementById('gallery-container');
+        galleryImages.forEach(src => {
+            const div = document.createElement('div');
+            div.className = 'gallery-item';
+            div.innerHTML = `<img src="${src}" alt="Zimmer" loading="lazy">`;
+            div.onclick = () => {
+                document.getElementById('lightbox-img').src = src;
+                document.getElementById('lightbox').style.display = 'flex';
+            };
+            container.appendChild(div);
+        });
+
+        // Sprache
+        function setLang(lang) {
+            document.body.classList.toggle('lang-en', lang === 'en');
+            document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+        }
+
+        // Modals
+        function toggleModal(id) {
+            const m = document.getElementById('modal-' + id);
+            m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
+        }
+        function closeModals(e) { if (e.target.classList.contains('modal')) e.target.style.display = 'none'; }
+
+        // Navigation
+        function openNavigation() {
+            const addr = encodeURIComponent("Gästehaus 22, Eichenstraße 22, 4481 Asten");
+            window.open(`https://www.google.com/maps/dir/?api=1&destination=${addr}`, '_blank');
+        }
+
+        // --- Distanz Logik ---
+        const checkDistBtn = document.getElementById('check-dist-btn');
+        const distInfo = document.getElementById('dist-info');
+        const locationStatus = document.getElementById('location-status');
+        const manualLocation = document.getElementById('manual-location');
+
+        function calculateHaversine(lat1, lon1, lat2, lon2) {
+            const R = 6371;
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLon/2)**2;
+            return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        }
+
+        checkDistBtn.addEventListener('click', () => {
+            checkDistBtn.disabled = true;
+            manualLocation.style.display = 'none';
+            distInfo.style.display = 'none';
+            locationStatus.style.display = 'block';
+
+            if (!navigator.geolocation) {
+                showManualInput();
+                return;
+            }
+
+            navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                    locationStatus.style.display = 'none';
+                    const dist = calculateHaversine(pos.coords.latitude, pos.coords.longitude, TARGET.lat, TARGET.lon);
+                    distInfo.style.display = 'block';
+                    distInfo.innerText = `${dist.toFixed(1)} km von dir entfernt`;
+                    checkDistBtn.disabled = false;
+                },
+                () => { showManualInput(); },
+                { timeout: 6000 }
+            );
+        });
+
+        function showManualInput() {
+            locationStatus.style.display = 'none';
+            manualLocation.style.display = 'block';
+            checkDistBtn.disabled = false;
+        }
+
+        function handleManualSubmit() {
+            const val = document.getElementById('user-city').value;
+            if (val) {
+                const addr = encodeURIComponent("Gästehaus 22, Eichenstraße 22, 4481 Asten");
+                window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(val)}&destination=${addr}`, '_blank');
+            }
+        }
+    </script>
+</body>
+</html>
