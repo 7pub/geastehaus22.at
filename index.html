@@ -621,7 +621,7 @@
                 container.appendChild(div);
             });
 
-            if (navigator.geolocation) {
+            /**if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(pos => {
                     const R = 6371;
                     const dLat = (48.2163 - pos.coords.latitude) * Math.PI / 180;
@@ -634,7 +634,7 @@
                         el.innerText = `Nur ${dist.toFixed(1)} km entfernt`;
                     }
                 });
-            }
+            }*/
 
             ['data-as-772', 'data-as-772-en'].forEach(id => {
                 const el = document.getElementById(id);
