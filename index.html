@@ -9,10 +9,6 @@
     <!-- SEO & Meta -->
     <meta name="description" content="Preiswerte Unterkunft in 4481 Asten nahe Linz. Einzelbetten, Highspeed-WLAN & Parkplätze direkt vorm Haus. Jetzt anfragen: +43 680 1610618.">
     <link rel="canonical" href="https://gaestehaus22.at/">
-    <!--<link rel="preconnect" href="https://unpkg.com">-->
-    <link rel="preconnect" href="/lucide.min.js">
-    <script src="lucide.min.js"></script>
-    <script src="app.js"></script>
 
     <!-- Strukturierte Daten (Local Business) -->
     <script type="application/ld+json">
@@ -40,21 +36,31 @@
     }
     </script>
 
-    <!--<link rel="stylesheet" href="styles.css">-->
-<style>
-    :root {
-    --bg: #f5f5f5;
-    --card: #ffffff;
-    --accent: #222222;
-    /* Geändert von #666666 auf #555555 für besseren Kontrast */
-    --accent-soft: #555555; 
-    --font-main: system-ui, -apple-system, sans-serif;
-    --success: #1e7e34; /* Etwas dunkleres Grün für bessere Lesbarkeit auf Weiß */
-    --whatsapp: #1da851; /* Satteres WhatsApp-Grün */
-    --rcs-blue: #1a73e8;
-    --link: #0056b3; /* Dunkleres Blau für Links */
-    --overlay: rgba(0, 0, 0, 0.7);
-}
+    <!-- Favicons & Mobile App Setup -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Windows & Theme Setup -->
+    <meta name="msapplication-config" content="/browserconfig.xml">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#222222">
+
+    <style>
+        :root {
+            --bg: #f5f5f5;
+            --card: #ffffff;
+            --accent: #222222;
+            --accent-soft: #666666;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --success: #28a745;
+            --whatsapp: #25D366;
+            --rcs-blue: #1a73e8;
+            --link: #007bff;
+            --overlay: rgba(0, 0, 0, 0.7);
+        }
 
         * {
             box-sizing: border-box;
@@ -105,154 +111,8 @@
             border-bottom: 1px solid #e3e3e3;
             position: relative;
         }
-                :root {
-            --brand: #2563eb;
-            --brand-dark: #1e40af;
-            --surface: #ffffff;
-            --bg: #f8fafc;
-            --text: #0f172a;
-            --text-light: #64748b;
-        }
 
-        body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .card {
-            background: var(--surface);
-            padding: 2.5rem;
-            border-radius: 1.5rem;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .header-icon {
-            width: 56px;
-            height: 56px;
-            background: #dbeafe;
-            color: var(--brand);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-        }
-
-        h2 { margin: 0 0 0.5rem 0; font-size: 1.5rem; font-weight: 800; }
-        .address { color: var(--text-light); font-size: 0.9rem; margin-bottom: 2rem; display: block; }
-
-        .btn {
-            width: 100%;
-            padding: 1rem;
-            border-radius: 0.75rem;
-            border: none;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: all 0.2s ease;
-        }
-
-        .btn-primary {
-            background: var(--brand);
-            color: white;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
-        }
-
-        .btn-primary:hover { background: var(--brand-dark); transform: translateY(-1px); }
-
-        .btn-secondary {
-            background: #f1f5f9;
-            color: var(--text);
-            margin-top: 1rem;
-        }
-
-        #manual-input-box {
-            display: none;
-            margin-top: 2rem;
-            animation: fadeIn 0.3s ease-out;
-        }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        input {
-            width: 100%;
-            padding: 0.85rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 0.75rem;
-            margin-bottom: 0.75rem;
-            box-sizing: border-box;
-            font-size: 1rem;
-        }
-
-        #result-box {
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background: #eff6ff;
-            border-radius: 1rem;
-            display: none;
-            border: 1px solid #dbeafe;
-        }
-
-        .distance-highlight {
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--brand);
-            display: block;
-        }
-
-        .maps-btn {
-            margin-top: 1rem;
-            color: var(--brand);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: inline-block;
-        }
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-.spin {
-    animation: spin 1s linear infinite;
-}
-  .subtitle {
-    color: var(--accent-soft);
-    font-size: 1rem;
-    font-weight: 500; /* Erhöht die Lesbarkeit */
-}
-.section-label {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    color: #444444; /* Explizit dunkler als das Standard-Grau */
-    margin-bottom: 0.5rem;
-    font-weight: 800; /* Richtig kräftig machen */
-}
-#dist-info {
-    display: none;
-    background: #007bff; /* Hintergrund jetzt kräftig blau */
-    color: #ffffff;      /* Schrift weiß - perfekter Kontrast! */
-    padding: 0.6rem;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    margin-top: 0.8rem;
-    font-weight: 600;
-    text-align: center;
-}
-      .top-bar {
+        .top-bar {
             position: absolute;
             top: 1.5rem;
             left: 0;
@@ -563,77 +423,14 @@
             max-height: 90%;
             border-radius: 8px;
         }
-        /* --- Galerie Styling --- */
-
-/* Der Container, den das JS befüllt */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 12px;
-    margin-top: 1rem;
-}
-
-.gallery-grid img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover; /* Schneidet Bilder sauber zu, statt sie zu quetschen */
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.2s ease, filter 0.2s ease;
-    border: 1px solid var(--accent-soft);
-}
-
-.gallery-grid img:hover {
-    transform: scale(1.02);
-    filter: brightness(1.1);
-}
-
-/* --- Lightbox (Großansicht beim Draufklicken) --- */
-#lightbox {
-    display: none; /* Wird vom JS auf 'flex' gesetzt */
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.95);
-    z-index: 2000;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    backdrop-filter: blur(8px);
-}
-
-#lightbox img {
-    max-width: 100%;
-    max-height: 90vh;
-    object-fit: contain;
-    border-radius: 4px;
-    box-shadow: 0 0 30px rgba(0,0,0,0.5);
-}
-
-/* --- Responsive Anpassung --- */
-@media (max-width: 480px) {
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 Spalten auf dem Handy */
-        gap: 8px;
-    }
-    
-    .gallery-grid img {
-        height: 120px;
-    }
-}
-</style>
-    <!-- Favicons & Mobile App Setup -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#222222">
+    </style>
 </head>
 
 <body id="top">
 
     <header>
         <div class="top-bar">
-            <button id="install-button" class="install-btn-top" style="display: none;">
+            <button id="install-button" class="install-btn-top">
                 <i data-lucide="download-cloud"></i> <span>App</span>
             </button>
 
@@ -642,22 +439,20 @@
                 <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
             </div>
         </div>
-        
-        <img src="Logo.webp" alt="Gästehaus 22 Logo" class="logo-img" fetchpriority="high" width="120" height="120">    
-        
-        <h1 lang="de">Günstige Monteurzimmer & Arbeiterunterkunft in Asten</h1>
-        <h1 lang="en" aria-hidden="true" style="display: none;">Affordable Worker Rooms in Asten near Linz</h1>
-        
-        <p class="subtitle" lang="de">Ihre preiswerte Unterkunft nahe Linz – Sauber, Sicher, Zentral.</p>
-        <p class="subtitle" lang="en" aria-hidden="true" style="display: none;">Your budget accommodation near Linz.</p>
+
+        <img src="Logo.webp" alt="Gästehaus 22 Logo - Monteurunterkunft Asten" class="logo-img">
+        <h1 lang="de">Monteurzimmer in Asten</h1>
+        <h1 lang="en" data-nosnippet>Worker Rooms in Asten</h1>
+        <p class="subtitle" lang="de">Praktisch. Sauber. Günstig.</p>
+        <p class="subtitle" lang="en" data-nosnippet>Practical. Clean. Affordable.</p>
     </header>
 
     <main>
-        <!-- Angebot Card -->
         <section class="card">
             <div class="section-label" lang="de">Angebot</div>
             <div class="section-label" lang="en" data-nosnippet>Offer</div>
-            <div class="price-tag">35 € <span style="font-size: 0.9rem; font-weight: 400;" lang="de">/ Nacht pro Person</span><span style="font-size: 0.9rem; font-weight: 400;" lang="en" data-nosnippet>/ night per person</span></div>
+            <div class="price-tag">35 € <span style="font-size: 0.9rem; font-weight: 400;" lang="de">/ Nacht pro Person</span><span style="font-size: 0.9rem; font-weight: 400;" lang="en" data-nosnippet>/ night per person</span>
+            </div>
             <ul>
                 <li><i data-lucide="wifi" class="check-icon"></i> <span lang="de">Starlink - Highspeed-Internet</span><span lang="en" data-nosnippet>Starlink - High-Speed Internet</span></li>
                 <li><i data-lucide="utensils" class="check-icon"></i> <span lang="de">Voll ausgestattete Küche</span><span lang="en" data-nosnippet>Fully equipped kitchen</span></li>
@@ -667,13 +462,11 @@
         </section>
 
         <aside style="display: flex; flex-direction: column; gap: 1.5rem;">
-            <!-- Kontakt Card -->
             <section class="card">
                 <div class="section-label" lang="de">Kontakt</div>
                 <div class="section-label" lang="en" data-nosnippet>Contact</div>
                 <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-top: 0.5rem;">
-                    <!-- WhatsApp Link korrigiert -->
-                    <a href="https://wa.me/436801610618" id="whatsapp-link" class="btn-primary btn-whatsapp" target="_blank">
+                    <a href="https://wa.me/436801610618" class="btn-primary btn-whatsapp" target="_blank">
                         <i data-lucide="message-circle"></i> WhatsApp
                     </a>
                     <a href="sms:+436801610618?body=Anfrage%20Zimmer" class="btn-primary btn-rcs">
@@ -685,7 +478,6 @@
                 </div>
             </section>
 
-            <!-- Lage Card mit interaktiver Entfernung -->
             <section class="card">
                 <div class="section-label" lang="de">Lage</div>
                 <div class="section-label" lang="en" data-nosnippet>Location</div>
@@ -726,7 +518,6 @@
             </div>
         </section>
 
-        <!-- Galerie -->
         <section class="gallery-section card" style="grid-column: 1 / -1;">
             <div class="section-label" lang="de">Galerie</div>
             <div class="section-label" lang="en" data-nosnippet>Gallery</div>
@@ -735,10 +526,10 @@
     </main>
 
     <footer>
-        <!--<div class="social-links">
+        <div class="social-links">
             <a href="https://instagram.com/gaestehaus22" target="_blank"><i data-lucide="instagram"></i></a>
             <a href="https://facebook.com/gaestehaus22" target="_blank"><i data-lucide="facebook"></i></a>
-        </div>-->
+        </div>
         <div class="footer-nav">
             <span onclick="toggleModal('legal')" lang="de">Impressum</span>
             <span onclick="toggleModal('legal')" lang="en" data-nosnippet>Legal Notice</span>
@@ -746,17 +537,32 @@
             <span onclick="toggleModal('privacy')" lang="en" data-nosnippet>Privacy</span>
         </div>
         <p>© 2026 Gästehaus 22 – 4481 Asten</p>
+        <p class="footer-heart">Build with
+            <img class="emoji" alt="heart" height="18" width="18" src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png">
+            by Karl
+        </p>
     </footer>
 
-    <!-- Modals & Lightbox -->
     <div id="modal-legal" class="modal" onclick="closeModals(event)">
         <div class="modal-content">
             <span class="close-modal" onclick="toggleModal('legal')">×</span>
             <h2 lang="de">Impressum</h2>
-            <div class="modal-body-text">
+            <h2 lang="en" data-nosnippet>Legal Notice</h2>
+            <div class="modal-body-text" lang="de">
+                <p><strong>Informationspflicht gemäß § 5 ECG & § 25 Mediengesetz</strong></p><br>
                 <p><strong>Gästehaus 22</strong></p>
+                <p>Privatzimmervermietung (Häusliche Nebenbeschäftigung)</p>
                 <p>Inhaber: <span id="data-as-772" style="unicode-bidi: bidi-override; direction: rtl;"></span></p>
-                <p>Eichenstraße 22, 4481 Asten</p>
+                <p>Eichenstraße 22, 4481 Asten, Österreich</p><br>
+                <p>Tel: +43 680 1610618</p>
+                <p>E-Mail: office@gaestehaus22.at</p>
+            </div>
+            <div class="modal-body-text" lang="en" data-nosnippet>
+                <p><strong>Information according to § 5 ECG & § 25 Media Act</strong></p><br>
+                <p><strong>Gästehaus 22</strong></p>
+                <p>Owner: <span id="data-as-772-en" style="unicode-bidi: bidi-override; direction: rtl;"></span></p>
+                <p>Eichenstrasse 22, 4481 Asten, Austria</p><br>
+                <p>Phone: +43 680 1610618</p>
             </div>
         </div>
     </div>
@@ -765,15 +571,106 @@
         <div class="modal-content">
             <span class="close-modal" onclick="toggleModal('privacy')">×</span>
             <h2 lang="de">Datenschutz</h2>
-            <p>Wir nutzen keine Tracking-Cookies. Standortdaten werden nur auf Klick zur Routenberechnung genutzt.</p>
+            <h2 lang="en" data-nosnippet>Privacy Policy</h2>
+            <div class="modal-body-text" lang="de">
+                <p>Wir nutzen keine Tracking-Cookies. Standortdaten dienen nur der Routenberechnung.</p>
+            </div>
+            <div class="modal-body-text" lang="en" data-nosnippet>
+                <p>We do not use tracking cookies. Location data is only used for route calculation.</p>
+            </div>
         </div>
     </div>
 
     <div id="lightbox" onclick="this.style.display='none'"><img id="lightbox-img"></div>
 
-    <!-- Scripts -->
-<!--<script>
-    // PRÄZISE KOORDINATEN: Eichenstraße 22, 4481 Asten
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        const images = {
+            gallery: [
+                { src: "bedrooms.webp", alt: "Schlafzimmer" },
+                { src: "livingroom.webp", alt: "Wohnzimmer" },
+                { src: "kitchen.webp", alt: "Küche" },
+                { src: "bathroom.webp", alt: "Badezimmer" }
+            ]
+        };
+
+        function setLang(lang) {
+            document.body.classList.toggle('lang-en', lang === 'en');
+            document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+        }
+
+        function toggleModal(id) {
+            const m = document.getElementById('modal-' + id);
+            m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        function closeModals(e) { if (e.target.classList.contains('modal')) e.target.style.display = 'none'; }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            const container = document.getElementById('gallery-container');
+            images.gallery.forEach(img => {
+                const div = document.createElement('div');
+                div.className = 'gallery-item';
+                div.innerHTML = `<img src="${img.src}" alt="${img.alt}" loading="lazy">`;
+                div.onclick = () => {
+                    document.getElementById('lightbox-img').src = img.src;
+                    document.getElementById('lightbox').style.display = 'flex';
+                };
+                container.appendChild(div);
+            });
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(pos => {
+                    const R = 6371;
+                    const dLat = (48.2163 - pos.coords.latitude) * Math.PI / 180;
+                    const dLon = (14.4144 - pos.coords.longitude) * Math.PI / 180;
+                    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(pos.coords.latitude * Math.PI / 180) * Math.cos(48.2163 * Math.PI / 180) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+                    const dist = R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
+                    const el = document.getElementById('dist-info');
+                    if(el) {
+                        el.style.display = 'block';
+                        el.innerText = `Nur ${dist.toFixed(1)} km entfernt`;
+                    }
+                });
+            }
+
+            ['data-as-772', 'data-as-772-en'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.innerText = "rentiehclA lraK";
+            });
+        });
+
+        function openNavigation() {
+            const addr = encodeURIComponent("Gästehaus 22, Eichenstraße 22, 4481 Asten");
+            const url = /iPad|iPhone|iPod/.test(navigator.userAgent) ? `maps://maps.apple.com/?daddr=${addr}` : `https://www.google.com/maps/dir/?api=1&destination=${addr}`;
+            window.open(url, '_blank');
+        }
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').catch(() => {});
+            });
+        }
+
+        let deferredPrompt;
+        const installBtn = document.getElementById('install-button');
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            installBtn.style.display = 'flex';
+        });
+
+        installBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') installBtn.style.display = 'none';
+                deferredPrompt = null;
+            }
+        });
+            // PRÄZISE KOORDINATEN: Eichenstraße 22, 4481 Asten
     const TARGET = { lat: 48.21245, lon: 14.41432 };
 
     // Elemente aus dem HTML holen
@@ -829,27 +726,6 @@
             { timeout: 8000, enableHighAccuracy: true }
         );
     });
-
-    function openNavigation() {
-        // Öffnet Google Maps mit dem Ziel
-        window.open(`https://www.google.com/maps/dir/?api=1&destination=${TARGET.lat},${TARGET.lon}`, '_blank');
-    }
-    
-    // Sprachumschaltung (einfache Version für die Demo)
-    function setLang(lang) {
-        document.querySelectorAll('[lang]').forEach(el => {
-            if (el.getAttribute('lang') === lang) {
-                el.style.display = '';
-                el.removeAttribute('aria-hidden');
-            } else if (el.tagName !== 'HTML') {
-                el.style.display = 'none';
-                el.setAttribute('aria-hidden', 'true');
-            }
-        });
-        document.getElementById('btn-de').classList.toggle('active', lang === 'de');
-        document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-    }
-</script>-->
-
+    </script>
 </body>
 </html>
