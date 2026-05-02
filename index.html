@@ -299,8 +299,9 @@
 
         .gallery-item img {
             width: 100%;
-            height: 200px;
+            height: 200px; /* Deine feste Höhe ist okay für das Design */
             object-fit: cover;
+            display: block; /* Verhindert kleine Abstände unter Bildern */
             border-radius: 12px;
             cursor: zoom-in;
         }
@@ -442,7 +443,7 @@
             </div>
         </div>
 
-        <img src="Logo.webp" alt="Gästehaus 22 Logo - Monteurunterkunft Asten" class="logo-img">
+        <img src="Logo.webp" alt="Gästehaus 22 Logo - Monteurunterkunft Asten" class="logo-img" width="120" height="120" fetchpriority="high">
         <h1 lang="de">Monteurzimmer in Asten</h1>
         <h1 lang="en" data-nosnippet>Worker Rooms in Asten</h1>
         <p class="subtitle" lang="de">Praktisch. Sauber. Günstig.</p>
@@ -619,7 +620,16 @@
         images.gallery.forEach(img => {
             const div = document.createElement('div');
             div.className = 'gallery-item';
-            div.innerHTML = `<img src="${img.thumb}" alt="${img.alt}" loading="lazy" width="553" height="415">`;
+        images.gallery.forEach(img => {
+            const div = document.createElement('div');
+            div.className = 'gallery-item';
+            // Wir setzen hier die Maße ein, die das Bild im CSS hat (ca. 400x300 als Richtwert für das Seitenverhältnis)
+            div.innerHTML = `<img src="${img.thumb}" 
+                                alt="${img.alt}" 
+                                loading="lazy" 
+                                decoding="async" 
+                                width="400" 
+                                height="300">`;
             div.onclick = () => {
                 document.getElementById('lightbox-img').src = img.src;
                 document.getElementById('lightbox').style.display = 'flex';
