@@ -56,12 +56,10 @@ function loadGallery() {
 
     // HINWEIS: Stelle sicher, dass diese Dateinamen exakt so auf deinem Server existieren!
     const images = [
-        'Zimmer-1.webp',
-        'Zimmer-2.webp',
-        'Zimmer-3.webp',
-        'Kueche.webp',
-        'Bad.webp',
-        'Hausansicht.webp'
+        'bedrooms.webp',
+        'kitchen.webp',
+        'livingroom.webp',
+        'bathroom.webp',
     ];
 
     galleryContainer.innerHTML = ''; 
