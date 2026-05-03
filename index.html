@@ -105,7 +105,54 @@
         body.lang-en li[lang="en"] {
             display: flex !important;
         }
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 4000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            align-items: center;
+            justify-content: center;
+        }
 
+        #lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+        }
+        #lightbox {
+            position: relative; /* Wichtig für die Positionierung des Buttons */
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 4001; /* Liegt über dem Bild */
+            transition: 0.3s;
+            line-height: 1;
+        }
+
+        .close-lightbox:hover {
+            color: #bbb;
+            transform: scale(1.1);
+        }
+
+        /* Optimierung für Mobilgeräte */
+        @media (max-width: 600px) {
+            .close-lightbox {
+                top: 10px;
+                right: 20px;
+                font-size: 40px;
+            }
+        }
         header {
             padding: 5rem 1.5rem 2rem;
             text-align: center;
@@ -408,55 +455,6 @@
             overflow-y: auto;
             padding-right: 10px;
         }
-
-        #lightbox {
-            display: none;
-            position: fixed;
-            z-index: 4000;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            align-items: center;
-            justify-content: center;
-        }
-
-        #lightbox img {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 8px;
-        }
-        #lightbox {
-            position: relative; /* Wichtig für die Positionierung des Buttons */
-        }
-
-        .close-lightbox {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: white;
-            font-size: 50px;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 4001; /* Liegt über dem Bild */
-            transition: 0.3s;
-            line-height: 1;
-        }
-
-        .close-lightbox:hover {
-            color: #bbb;
-            transform: scale(1.1);
-        }
-
-        /* Optimierung für Mobilgeräte */
-        @media (max-width: 600px) {
-            .close-lightbox {
-                top: 10px;
-                right: 20px;
-                font-size: 40px;
-            }
-        }
     </style>
 </head>
 
@@ -659,17 +657,25 @@
         images.gallery.forEach(img => {
             const div = document.createElement('div');
             div.className = 'gallery-item';
-            // Wir setzen hier die Maße ein, die das Bild im CSS hat (ca. 400x300 als Richtwert für das Seitenverhältnis)
-            div.innerHTML = `<img src="${img.thumb}" 
-                                alt="${img.alt}" 
-                                loading="lazy" 
-                                decoding="async" 
-                                width="400" 
-                                height="300">`;
-            div.onclick = () => {
-                document.getElementById('lightbox-img').src = img.src;
-                document.getElementById('lightbox').style.display = 'flex';
-            };
+            
+            const imageElement = document.createElement('img');
+            imageElement.src = img.thumb;
+            imageElement.alt = img.alt;
+            imageElement.loading = "lazy";
+            imageElement.width = 400;
+            imageElement.height = 300;
+            
+            // Klick-Event direkt an das Bild oder das Div binden
+            div.addEventListener('click', (e) => {
+                e.stopPropagation(); // Verhindert Bubbling
+                const lightbox = document.getElementById('lightbox');
+                const lightboxImg = document.getElementById('lightbox-img');
+                
+                lightboxImg.src = img.src; // Hier das große Bild laden
+                lightbox.style.display = 'flex';
+            });
+            
+            div.appendChild(imageElement);
             container.appendChild(div);
         });
 
