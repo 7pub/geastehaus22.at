@@ -613,7 +613,12 @@
         </div>
     </div>
 
-    <div id="lightbox" onclick="this.style.display='none'"><span class="close-lightbox">&times;</span><img id="lightbox-img"></div>
+    <!-- Das Overlay für die Bilder-Galerie -->
+    <div id="lightbox" onclick="this.style.display='none'">
+        <span class="close-lightbox">&times;</span>
+        <img id="lightbox-img" onclick="event.stopPropagation()">
+    </div>
+
     <script src="https://unpkg.com/lucide@latest" defer></script>
     <script>
     // 1. Die Bilddaten mit den neuen Dateinamen
