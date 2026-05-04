@@ -1,55 +1,15 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#222222">
     <title>Seite nicht gefunden | Gästehaus 22 Asten</title>
     
-    <!-- SEO & Meta -->
-    <meta name="description" content="+43 680 1610618 - Preiswerte Unterkunft in 4481 Asten nahe Linz. Einzelbetten, Highspeed-WLAN & Parkplätze direkt vorm Haus.">
-    
-    <!-- Windows & Theme Setup -->
-    <meta name="msapplication-config" content="/browserconfig.xml">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-    <meta name="theme-color" content="#222222">
-
-    <link rel="preload" href="Logo.webp" as="image">
-<link rel="service-doc" href="https://www.gaestehaus22.at/">
-
-    <!-- Favicons & Mobile App Setup -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/manifest.json">
-
-    <!-- Strukturierte Daten (Local Business) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Gästehaus 22",
-      "image": "https://gaestehaus22.at/Logo.webp",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Eichenstraße 22",
-        "addressLocality": "Asten",
-        "postalCode": "4481",
-        "addressCountry": "AT"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 48.223023,
-        "longitude": 14.4182762
-      },
-      "url": "https://gaestehaus22.at",
-      "telephone": "+436801610618",
-      "priceRange": "€€",
-      "description": "Günstige Monteurzimmer und Arbeiterunterkunft in Asten bei Linz mit Highspeed-Internet und Parkplätzen."
-    }
-    </script>
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png">
 
     <style>
         :root {
@@ -58,654 +18,101 @@
             --accent: #222222;
             --accent-soft: #555555;
             --font-main: system-ui, -apple-system, sans-serif;
-            --success: #28a745;
-            --whatsapp: #25D366;
-            --rcs-blue: #1a73e8;
             --link: #007bff;
-            --overlay: rgba(0, 0, 0, 0.7);
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: var(--font-main);
-            background: var(--bg);
-            color: #111;
-            line-height: 1.6;
-            transition: background 0.3s;
-        }
-
-        [lang="en"] {
-            display: none;
-        }
-
-        body.lang-en [lang="de"] {
-            display: none;
-        }
-
-        body.lang-en [lang="en"] {
-            display: block;
-        }
-
-        body.lang-en h1[lang="en"],
-        body.lang-en p[lang="en"],
-        body.lang-en .section-label[lang="en"],
-        body.lang-en h2[lang="en"],
-        body.lang-en div[lang="en"] {
-            display: block !important;
-        }
-
-        body.lang-en span[lang="en"] {
-            display: inline !important;
-        }
-
-        body.lang-en li[lang="en"] {
-            display: flex !important;
-        }
-
-        header {
-            padding: 5rem 1.5rem 2rem;
-            text-align: center;
-            background: #ffffff;
-            border-bottom: 1px solid #e3e3e3;
-            position: relative;
-        }
-
-        .top-bar {
-            position: absolute;
-            top: 1.5rem;
-            left: 0;
-            right: 0;
-            padding: 0 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-        }
-
-        .lang-switch {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .lang-btn {
-            padding: 0.5rem 0.8rem;
-            border: 1px solid #ddd;
-            background: white;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
-
-        .lang-btn.active {
-            background: var(--accent);
-            color: white;
-            border-color: var(--accent);
-        }
-
-        .install-btn-top {
-            display: none;
-            padding: 0.5rem 0.8rem;
-            background: white;
-            border: 1px solid var(--link);
-            color: var(--link);
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            align-items: center;
-            gap: 0.4rem;
-            font-size: 0.85rem;
-        }
-
-        .logo-img {
-            width: 120px;
-            height: 120px;
-            display: inline-block;
-            object-fit: cover;
-            border-radius: 50%;
-            margin-bottom: 1rem;
-            background: white;
-            border: 2px solid #fff;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            font-size: clamp(1.6rem, 5vw, 2.2rem);
-            line-height: 1.2;
-            margin-bottom: 0.5rem;
-        }
-
-        .subtitle {
-            color: var(--accent-soft);
-            font-size: 1rem;
-        }
-
-        main {
-            max-width: 1040px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-            display: grid;
-            grid-template-columns: 1.8fr 1.2fr;
-            gap: 1.5rem;
-        }
-
-        @media (max-width: 850px) {
-            main {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .card {
-            background: var(--card);
-            border-radius: 16px;
-            padding: 1.5rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
-        }
-
-        .section-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            color: var(--accent-soft);
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-        }
-
-        .price-tag {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin: 0.5rem 0;
-        }
-
-        ul {
-            list-style: none;
-            margin-top: 1rem;
-        }
-
-        li {
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .check-icon {
-            color: var(--success);
-            flex-shrink: 0;
-            width: 20px;
-            height: 20px;
-        }
-
-        .btn-primary {
-            padding: 0.8rem;
-            color: #fff;
-            border-radius: 12px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.7rem;
-            font-weight: 600;
-            transition: 0.2s;
-            border: none;
-            width: 100%;
-            cursor: pointer;
-        }
-
-        .btn-call {
-            background-color: var(--success);
-        }
-
-        .btn-whatsapp {
-            background-color: var(--whatsapp);
-        }
-
-        .btn-nav {
-            background-color: var(--link);
-        }
-
-        .btn-rcs {
-            background-color: var(--rcs-blue);
-            display: none !important;
-        }
-
-        @media (max-width: 768px) {
-            .btn-rcs {
-                display: flex !important;
-            }
-        }
-
-        #dist-info {
-            display: none;
-            background: #eef6ff;
-            color: var(--link);
-            padding: 0.6rem;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            margin-top: 0.8rem;
-            font-weight: 600;
-            text-align: center;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 200px; /* Deine feste Höhe ist okay für das Design */
-            object-fit: cover;
-            display: block; /* Verhindert kleine Abstände unter Bildern */
-            border-radius: 12px;
-            cursor: zoom-in;
-        }
-
-        footer {
-            text-align: center;
-            padding: 4rem 1.5rem 3rem;
-            color: var(--accent-soft);
-            font-size: 0.9rem;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .social-links a {
-            color: var(--accent);
-            opacity: 0.6;
-            transition: 0.3s;
-        }
-
-        .social-links a:hover {
-            opacity: 1;
-            transform: translateY(-2px);
-        }
-
-        .footer-nav {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-nav span {
-            cursor: pointer;
-            font-weight: 600;
-            text-decoration: underline;
-        }
-
-        .footer-heart {
-            margin-top: 0.8rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            font-size: 0.9rem;
-            color: var(--accent-soft);
-        }
-
-        .footer-heart img {
-            display: block;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 3000;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--overlay);
-            backdrop-filter: blur(5px);
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            background: #fff;
-            width: 90%;
-            max-width: 550px;
-            padding: 2.5rem;
-            border-radius: 24px;
-            position: relative;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-            text-align: center;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            cursor: pointer;
-            font-size: 1.2rem;
-            background: #eee;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-body-text {
-            text-align: left;
-            margin-top: 1.5rem;
-            font-size: 0.85rem;
-            line-height: 1.5;
-            max-height: 60vh;
-            overflow-y: auto;
-            padding-right: 10px;
-        }
-
-        #lightbox {
-            display: none;
-            position: fixed;
-            z-index: 4000;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            align-items: center;
-            justify-content: center;
-        }
-
-        #lightbox img {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 8px;
-        }
-
-        .close-lightbox {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: white;
-            font-size: 50px;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 4001; /* Liegt über dem Bild */
-            transition: 0.3s;
-            line-height: 1;
-        }
-
-        .close-lightbox:hover {
-            color: #bbb;
-            transform: scale(1.1);
-        }
-
-        /* Optimierung für Mobilgeräte */
-        @media (max-width: 600px) {
-            .close-lightbox {
-                top: 10px;
-                right: 20px;
-                font-size: 40px;
-            }
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font-main); background: var(--bg); color: #111; line-height: 1.6; }
+        [lang="en"] { display: none; }
+        body.lang-en [lang="de"] { display: none; }
+        body.lang-en [lang="en"] { display: block; }
+        
+        header { padding: 5rem 1.5rem 2rem; text-align: center; background: #fff; border-bottom: 1px solid #e3e3e3; position: relative; }
+        .top-bar { position: absolute; top: 1.5rem; left: 1.5rem; right: 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+        
+        .install-btn-top { display: none; padding: 0.5rem 0.8rem; background: white; border: 1px solid var(--link); color: var(--link); border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.85rem; }
+        .lang-switch { display: flex; gap: 0.5rem; }
+        .lang-btn { padding: 0.5rem 0.8rem; border: 1px solid #ddd; background: white; border-radius: 8px; cursor: pointer; font-size: 0.85rem; font-weight: 700; }
+        .lang-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+        
+        .logo-img { width: 120px; height: 120px; border-radius: 50%; margin-bottom: 1rem; box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
+        h1 { font-size: clamp(1.6rem, 5vw, 2.2rem); line-height: 1.2; }
+        .subtitle { color: var(--accent-soft); }
+        
+        main { display: flex; align-items: center; justify-content: center; min-height: 50vh; padding: 2rem; }
+        .card { background: var(--card); border-radius: 16px; padding: 2rem; box-shadow: 0 10px 25px rgba(0,0,0,0.03); text-align: center; max-width: 500px; width: 100%; }
+        .section-label { font-size: 0.75rem; text-transform: uppercase; color: var(--accent-soft); margin-bottom: 0.5rem; font-weight: 700; }
+        .btn-primary { padding: 0.8rem; color: #fff; border-radius: 12px; text-decoration: none; display: block; font-weight: 600; background-color: var(--link); margin-top: 2rem; }
+        footer { text-align: center; padding: 3rem 1.5rem; color: var(--accent-soft); font-size: 0.9rem; }
     </style>
 </head>
-
-<body id="top">
-
+<body>
     <header>
         <div class="top-bar">
-            <button id="install-button" class="install-btn-top">
-                <i data-lucide="download-cloud"></i> <span>App</span>
-            </button>
-
+            <button id="install-button" class="install-btn-top">App Install</button>
             <div class="lang-switch">
                 <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
                 <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
             </div>
         </div>
-        <img
-        src="Logo.webp"
-        alt="Gästehaus 22 Logo - Monteurunterkunft Asten"
-        class="logo-img"
-        width="120"
-        height="120"
-        fetchpriority="high"
-        loading="eager"
-        decoding="sync"
-        /> 
-       <h1 lang="de">Monteurzimmer in Asten</h1>
-        <h1 lang="en" data-nosnippet>Worker Rooms in Asten</h1>
+        <img src="Logo.webp" alt="Logo" class="logo-img" width="120" height="120">
+        <h1 lang="de">Monteurzimmer in Asten</h1>
+        <h1 lang="en">Worker Rooms in Asten</h1>
         <p class="subtitle" lang="de">Praktisch. Sauber. Günstig.</p>
-        <p class="subtitle" lang="en" data-nosnippet>Practical. Clean. Affordable.</p>
+        <p class="subtitle" lang="en">Practical. Clean. Affordable.</p>
     </header>
 
-<main style="display: flex; align-items: center; justify-content: center; min-height: 60vh;">
-    <section class="card" style="text-align: center; max-width: 500px; width: 100%;">
-        <div style="background: #fff5f5; color: #e53e3e; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
-            <i data-lucide="alert-circle" style="width: 32px; height: 32px;"></i>
-        </div>
-        
-        <div class="section-label" lang="de">Fehler 404</div>
-        <div class="section-label" lang="en" data-nosnippet>Error 404</div>
-        
-        <h2 style="font-size: 1.5rem; margin-bottom: 1rem;" lang="de">Seite nicht gefunden</h2>
-        <h2 style="font-size: 1.5rem; margin-bottom: 1rem;" lang="en" data-nosnippet>Page Not Found</h2>
-        
-        <p style="color: var(--accent-soft); margin-bottom: 2rem;" lang="de">
-            Vielleicht haben Sie sich vertippt oder die Seite wurde verschoben.
-        </p>
-        <p style="color: var(--accent-soft); margin-bottom: 2rem;" lang="en" data-nosnippet>
-            It might have been moved or the URL is incorrect.
-        </p>
-
-        <a href="/" class="btn-primary btn-nav">
-            <i data-lucide="arrow-left"></i>
-            <span lang="de">Zurück zur Startseite</span>
-            <span lang="en" data-nosnippet>Back to Homepage</span>
-        </a>
-    </section>
-</main>
+    <main>
+        <section class="card">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">⚠️</div>
+            <div class="section-label" lang="de">Fehler 404</div>
+            <div class="section-label" lang="en">Error 404</div>
+            <h2 lang="de">Seite nicht gefunden</h2>
+            <h2 lang="en">Page Not Found</h2>
+            <p style="color: var(--accent-soft);" lang="de">Vielleicht haben Sie sich vertippt oder die Seite wurde verschoben.</p>
+            <p style="color: var(--accent-soft);" lang="en">It might have been moved or the URL is incorrect.</p>
+            <a href="/" class="btn-primary">
+                <span lang="de">Zurück zur Startseite</span>
+                <span lang="en">Back to Homepage</span>
+            </a>
+        </section>
+    </main>
 
     <footer>
-        <!--<div class="social-links">
-            <a href="https://instagram.com/gaestehaus22" target="_blank"><i data-lucide="instagram"></i></a>
-            <a href="https://facebook.com/gaestehaus22" target="_blank"><i data-lucide="facebook"></i></a>
-        </div>-->
-        <div class="footer-nav">
-            <span onclick="toggleModal('legal')" lang="de">Impressum</span>
-            <span onclick="toggleModal('legal')" lang="en" data-nosnippet>Legal Notice</span>
-            <span onclick="toggleModal('privacy')" lang="de">Datenschutz</span>
-            <span onclick="toggleModal('privacy')" lang="en" data-nosnippet>Privacy</span>
-        </div>
         <p>© 2026 Gästehaus 22 – 4481 Asten</p>
-        <p class="footer-heart">Build with
-            <img class="emoji" alt="heart" height="18" width="18" src="/2764.png">
-            by Karl
-        </p>
     </footer>
 
-    <div id="modal-legal" class="modal" onclick="closeModals(event)">
-        <div class="modal-content">
-            <span class="close-modal" onclick="toggleModal('legal')">×</span>
-            <h2 lang="de">Impressum</h2>
-            <h2 lang="en" data-nosnippet>Legal Notice</h2>
-            <div class="modal-body-text" lang="de">
-                <p><strong>Informationspflicht gemäß § 5 ECG & § 25 Mediengesetz</strong></p><br>
-                <p><strong>Gästehaus 22</strong></p>
-                <p>Privatzimmervermietung (Häusliche Nebenbeschäftigung)</p>
-                <p>Inhaber: <span id="data-as-772" style="unicode-bidi: bidi-override; direction: rtl;"></span></p>
-                <p>Eichenstraße 22, 4481 Asten, Österreich</p><br>
-                <p>Tel: +43 680 1610618</p>
-                <p>E-Mail: office@gaestehaus22.at</p>
-            </div>
-            <div class="modal-body-text" lang="en" data-nosnippet>
-                <p><strong>Information according to § 5 ECG & § 25 Media Act</strong></p><br>
-                <p><strong>Gästehaus 22</strong></p>
-                <p>Owner: <span id="data-as-772-en" style="unicode-bidi: bidi-override; direction: rtl;"></span></p>
-                <p>Eichenstrasse 22, 4481 Asten, Austria</p><br>
-                <p>Phone: +43 680 1610618</p>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal-privacy" class="modal" onclick="closeModals(event)">
-        <div class="modal-content">
-            <span class="close-modal" onclick="toggleModal('privacy')">×</span>
-            <h2 lang="de">Datenschutz</h2>
-            <h2 lang="en" data-nosnippet>Privacy Policy</h2>
-            <div class="modal-body-text" lang="de">
-                <p>Wir nutzen keine Tracking-Cookies. Standortdaten dienen nur der Routenberechnung.</p>
-            </div>
-            <div class="modal-body-text" lang="en" data-nosnippet>
-                <p>We do not use tracking cookies. Location data is only used for route calculation.</p>
-            </div>
-        </div>
-    </div>
-
-    <div id="lightbox" onclick="this.style.display='none'"><span class="close-lightbox">&times;</span><img id="lightbox-img"></div>
-    <script src="https://unpkg.com/lucide@latest" defer></script>
     <script>
-    // 1. Die Bilddaten mit den neuen Dateinamen
-    const images = {
-        gallery: [
-            { src: "bedrooms.webp", thumb: "bedrooms553x737.webp", alt: "Schlafzimmer" },
-            { src: "livingroom.webp", thumb: "livingroom-553x425.webp", alt: "Wohnzimmer" },
-            { src: "kitchen.webp", thumb: "kitchen-553x736.webp", alt: "Küche" },
-            { src: "bathroom.webp", thumb: "bathroom-553x415.webp", alt: "Badezimmer" }
-        ]
-    };
-
-    // Hilfsfunktionen für Sprache und Modals
-    function setLang(lang) {
-        document.body.classList.toggle('lang-en', lang === 'en');
-        document.getElementById('btn-de').classList.toggle('active', lang === 'de');
-        document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-    }
-
-    function toggleModal(id) {
-        const m = document.getElementById('modal-' + id);
-        m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
-    }
-
-    function closeModals(e) { if (e.target.classList.contains('modal')) e.target.style.display = 'none'; }
-
-    //Ausführung wenn die Seite geladen ist
-    /**document.addEventListener('DOMContentLoaded', () => {
-        lucide.createIcons();
-        const container = document.getElementById('gallery-container');*/
-    document.addEventListener('DOMContentLoaded', () => {
-    // Icons erst initialisieren, wenn der Browser Leerlauf hat
-    if ('requestIdleCallback' in window) {
-        requestIdleCallback(() => lucide.createIcons());
-    } else {
-        setTimeout(lucide.createIcons, 100); // Fallback für ältere Browser
-    }
-
-    const container = document.getElementById('gallery-container');    
-        // Galerie-Bilder generieren (jetzt mit Thumbnails für Google Insight)
-        images.gallery.forEach(img => {
-            const div = document.createElement('div');
-            div.className = 'gallery-item';
-            // Wir setzen hier die Maße ein, die das Bild im CSS hat (ca. 400x300 als Richtwert für das Seitenverhältnis)
-            div.innerHTML = `<img src="${img.thumb}" 
-                                alt="${img.alt}" 
-                                loading="lazy" 
-                                decoding="async" 
-                                width="400" 
-                                height="300">`;
-            div.onclick = () => {
-                document.getElementById('lightbox-img').src = img.src;
-                document.getElementById('lightbox').style.display = 'flex';
-            };
-            container.appendChild(div);
-        });
-
-        // Impressum-Namen rückwärts einfügen (Spam-Schutz)
-        ['data-as-772', 'data-as-772-en'].forEach(id => {
-            const el = document.getElementById(id);
-            if (el) el.innerText = "rentiehclA lraK";
-        });
-    });
-
-    // Navigation & Service Worker
-    function openNavigation() {
-        const addr = encodeURIComponent("Gästehaus 22, Eichenstraße 22, 4481 Asten");
-        const url = /iPad|iPhone|iPod/.test(navigator.userAgent) ? `maps://maps.apple.com/?daddr=${addr}` : `https://www.google.com/maps/dir/?api=1&destination=${addr}`;
-        window.open(url, '_blank');
-    }
-
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/sw.js').catch(() => {});
-        });
-    }
-
-    // PWA Install Logik
-    let deferredPrompt;
-    const installBtn = document.getElementById('install-button');
-    window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
-        installBtn.style.display = 'flex';
-    });
-
-    installBtn.addEventListener('click', async () => {
-        if (deferredPrompt) {
-            deferredPrompt.prompt();
-            const { outcome } = await deferredPrompt.userChoice;
-            if (outcome === 'accepted') installBtn.style.display = 'none';
-            deferredPrompt = null;
-        }
-    });
-
-    // Entfernungsmessung
-    const TARGET = { lat: 48.223023, lon: 14.4182762 }; //lat: 48.21245, lon: 14.41432 
-    const checkDistBtn = document.getElementById('check-dist-btn');
-    const distInfo = document.getElementById('dist-info');
-
-    function calculateHaversine(lat1, lon1, lat2, lon2) {
-        const R = 6371;
-        const dLat = (lat2 - lat1) * Math.PI / 180;
-        const dLon = (lon2 - lon1) * Math.PI / 180;
-        const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-                  Math.cos(lat1 * Math.PI/180) * Math.cos(lat2 * Math.PI/180) * 
-                  Math.sin(dLon/2) * Math.sin(dLon/2);
-        return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-    }
-
-    checkDistBtn.addEventListener('click', () => {
-        checkDistBtn.disabled = true;
-        distInfo.style.display = 'block';
-        distInfo.innerHTML = "Standort wird ermittelt...";
-
-        if (!navigator.geolocation) {
-            distInfo.innerHTML = "Nicht unterstützt.";
-            checkDistBtn.disabled = false;
-            return;
+        // Sprache umschalten
+        function setLang(lang) {
+            document.body.classList.toggle('lang-en', lang === 'en');
+            document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
         }
 
-        navigator.geolocation.getCurrentPosition(
-            (pos) => {
-                const distance = calculateHaversine(pos.coords.latitude, pos.coords.longitude, TARGET.lat, TARGET.lon);
-                distInfo.innerHTML = `<div style="font-weight: bold; color: #0056b3; font-size: 1.1rem;">${distance.toFixed(1)} km entfernt</div>`;
-                checkDistBtn.disabled = false;
-            },
-            (error) => {
-                distInfo.innerHTML = "Zugriff verweigert.";
-                checkDistBtn.disabled = false;
-            },
-            { timeout: 8000, enableHighAccuracy: true }
-        );
-    });
+        // Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').catch(() => {});
+            });
+        }
 
-</script>
+        // PWA Install
+        let deferredPrompt;
+        const installBtn = document.getElementById('install-button');
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            installBtn.style.display = 'block';
+        });
+
+        installBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') installBtn.style.display = 'none';
+                deferredPrompt = null;
+            }
+        });
+    </script>
 </body>
 </html>
