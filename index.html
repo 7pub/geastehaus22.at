@@ -459,8 +459,10 @@
         <div class="top-bar">
             <button id="install-button" class="install-btn-top">
                 <i data-lucide="download-cloud"></i> 
-                <span lang="de">App installieren</span>
-                <span lang="en">Install App</span>
+                <span class="text-install" lang="de">App installieren</span>
+                <span class="text-install" lang="en">Install App</span>
+                <span class="text-open" lang="de" style="display:none">App öffnen</span>
+                <span class="text-open" lang="en" style="display:none">Open App</span>
             </button>
             <div class="lang-switch">
                 <button class="lang-btn active" id="btn-de" onclick="setLang('de')">
@@ -803,19 +805,58 @@
 
         let deferredPrompt;
         const installBtn = document.getElementById("install-button");
+
+        // Funktion zum Prüfen, ob die App im Standalone-Modus läuft
+        function isInstalled() {
+            return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+        }
+
+        // Initialer Check beim Laden
+        function updateButtonUI() {
+            if (isInstalled()) {
+                // Wenn installiert: Zeige Button immer an, aber ändere Text
+                installBtn.style.display = "flex";
+                installBtn.querySelectorAll('.text-install').forEach(el => el.style.display = 'none');
+                installBtn.querySelectorAll('.text-open').forEach(el => el.style.display = 'inline');
+                // Icon wechseln (optional)
+                const icon = installBtn.querySelector('i');
+                if (icon) icon.setAttribute('data-lucide', 'external-link');
+                if (window.lucide) lucide.createIcons();
+            }
+        }
+
         window.addEventListener("beforeinstallprompt", (e) => {
             e.preventDefault();
             deferredPrompt = e;
-            installBtn.style.display = "flex";
+            // Zeige Button nur, wenn nicht bereits installiert
+            if (!isInstalled()) {
+                installBtn.style.display = "flex";
+            }
         });
 
         installBtn.addEventListener("click", async () => {
+            if (isInstalled()) {
+                // Aktion wenn bereits installiert: z.B. Seite neu laden oder einfach Bestätigung
+                window.location.href = "/"; 
+                return;
+            }
+
             if (deferredPrompt) {
                 deferredPrompt.prompt();
                 const { outcome } = await deferredPrompt.userChoice;
-                if (outcome === "accepted") installBtn.style.display = "none";
+                if (outcome === "accepted") {
+                    installBtn.style.display = "none";
+                }
                 deferredPrompt = null;
             }
+        });
+
+        // App-Status beim Start prüfen
+        updateButtonUI();
+
+        // Erkennt auch, wenn die App während der Sitzung installiert wurde
+        window.addEventListener('appinstalled', () => {
+            updateButtonUI();
         });
 
         const TARGET = { lat: 48.223023, lon: 14.4182762 };
