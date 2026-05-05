@@ -92,7 +92,63 @@
             by Karl
         </p>
     </footer>
+   <div id="modal-legal" class="modal" onclick="closeModals(event)">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('legal')">×</span>
+            <h2 lang="de">Impressum</h2>
+            <h2 lang="en" data-nosnippet>Legal Notice</h2>
+            <div class="modal-body-text" lang="de">
+                <p>
+                    <strong>Informationspflicht gemäß § 5 ECG & § 25 Mediengesetz</strong>
+                </p>
+                <br />
+                <p><strong>Gästehaus 22</strong></p>
+                <p>Privatzimmervermietung (Häusliche Nebenbeschäftigung)</p>
+                <p>
+                    Inhaber:
+                    <span id="data-as-772" style="unicode-bidi: bidi-override; direction: rtl"></span>
+                </p>
+                <p>Eichenstraße 22, 4481 Asten, Österreich</p>
+                <br />
+                <p>Tel: +43 680 1610618</p>
+                <p>E-Mail: office@gaestehaus22.at</p>
+            </div>
+            <div class="modal-body-text" lang="en" data-nosnippet>
+                <p>
+                    <strong>Information according to § 5 ECG & § 25 Media Act</strong>
+                </p>
+                <br />
+                <p><strong>Gästehaus 22</strong></p>
+                <p>
+                    Owner:
+                    <span id="data-as-772-en" style="unicode-bidi: bidi-override; direction: rtl"></span>
+                </p>
+                <p>Eichenstrasse 22, 4481 Asten, Austria</p>
+                <br />
+                <p>Phone: +43 680 1610618</p>
+            </div>
+        </div>
+    </div>
 
+    <div id="modal-privacy" class="modal" onclick="closeModals(event)">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('privacy')">×</span>
+            <h2 lang="de">Datenschutz</h2>
+            <h2 lang="en" data-nosnippet>Privacy Policy</h2>
+            <div class="modal-body-text" lang="de">
+                <p>
+                    Wir nutzen keine Tracking-Cookies. Standortdaten dienen nur der
+                    Routenberechnung.
+                </p>
+            </div>
+            <div class="modal-body-text" lang="en" data-nosnippet>
+                <p>
+                    We do not use tracking cookies. Location data is only used for route
+                    calculation.
+                </p>
+            </div>
+        </div>
+    </div>
     <script>
         // Sprache umschalten
         function setLang(lang) {
