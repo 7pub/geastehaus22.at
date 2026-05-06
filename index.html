@@ -785,11 +785,9 @@
         }
         function updateButtonUI() {
             if (isInstalled()) {
-                // Wenn installiert: Zeige Button immer an, aber ändere Text
                 installBtn.style.display = "flex";
                 installBtn.querySelectorAll('.text-install').forEach(el => el.style.display = 'none');
                 installBtn.querySelectorAll('.text-open').forEach(el => el.style.display = 'inline');
-                // Icon wechseln (optional)
                 const icon = installBtn.querySelector('i');
                 if (icon) icon.setAttribute('data-lucide', 'external-link');
                 if (window.lucide) lucide.createIcons();
