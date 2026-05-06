@@ -55,13 +55,11 @@
             --link: #007bff;
             --overlay: rgba(0, 0, 0, 0.7);
         }
-
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-
         body {
             font-family: var(--font-main);
             background: var(--bg);
@@ -69,19 +67,15 @@
             line-height: 1.6;
             transition: background 0.3s;
         }
-
         [lang="en"] {
             display: none;
         }
-
         body.lang-en [lang="de"] {
             display: none;
         }
-
         body.lang-en [lang="en"] {
             display: block;
         }
-
         body.lang-en h1[lang="en"],
         body.lang-en p[lang="en"],
         body.lang-en .section-label[lang="en"],
@@ -89,15 +83,12 @@
         body.lang-en div[lang="en"] {
             display: block !important;
         }
-
         body.lang-en span[lang="en"] {
             display: inline !important;
         }
-
         body.lang-en li[lang="en"] {
             display: flex !important;
         }
-
         #lightbox {
             display: none;
             position: fixed;
@@ -110,13 +101,11 @@
             align-items: center;
             justify-content: center;
         }
-
         #lightbox img {
             max-width: 90%;
             max-height: 90%;
             border-radius: 8px;
         }
-
         .close-lightbox {
             position: absolute;
             top: 20px;
@@ -129,12 +118,10 @@
             transition: 0.3s;
             line-height: 1;
         }
-
         .close-lightbox:hover {
             color: #bbb;
             transform: scale(1.1);
         }
-
         @media (max-width: 600px) {
             .close-lightbox {
                 top: 10px;
@@ -142,7 +129,6 @@
                 font-size: 40px;
             }
         }
-
         header {
             padding: 5rem 1.5rem 2rem;
             text-align: center;
@@ -150,7 +136,6 @@
             border-bottom: 1px solid #e3e3e3;
             position: relative;
         }
-
         .top-bar {
             position: absolute;
             top: 1.5rem;
@@ -162,12 +147,10 @@
             align-items: center;
             z-index: 100;
         }
-
         .lang-switch {
             display: flex;
             gap: 0.5rem;
         }
-
         .lang-btn {
             padding: 0.5rem 0.8rem;
             border: 1px solid #ddd;
@@ -178,13 +161,11 @@
             font-weight: 700;
             color: var(--accent);
         }
-
         .lang-btn.active {
             background: var(--accent);
             color: white;
             border-color: var(--accent);
         }
-
         .install-btn-top {
             display: none;
             padding: 0.5rem 0.8rem;
@@ -198,7 +179,6 @@
             gap: 0.4rem;
             font-size: 0.85rem;
         }
-
         .logo-img {
             width: 120px;
             height: 120px;
@@ -210,18 +190,15 @@
             border: 2px solid #fff;
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
         }
-
         h1 {
             font-size: clamp(1.6rem, 5vw, 2.2rem);
             line-height: 1.2;
             margin-bottom: 0.5rem;
         }
-
         .subtitle {
             color: var(--accent-soft);
             font-size: 1rem;
         }
-
         main {
             max-width: 1040px;
             margin: 2rem auto;
@@ -230,20 +207,17 @@
             grid-template-columns: 1.8fr 1.2fr;
             gap: 1.5rem;
         }
-
         @media (max-width: 850px) {
             main {
                 grid-template-columns: 1fr;
             }
         }
-
         .card {
             background: var(--card);
             border-radius: 16px;
             padding: 1.5rem;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
         }
-
         .section-label {
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -251,32 +225,27 @@
             margin-bottom: 0.5rem;
             font-weight: 700;
         }
-
         .price-tag {
             font-size: 1.8rem;
             font-weight: 700;
             margin: 0.5rem 0;
         }
-
         ul {
             list-style: none;
             margin-top: 1rem;
         }
-
         li {
             margin-bottom: 0.8rem;
             display: flex;
             align-items: center;
             gap: 0.75rem;
         }
-
         .check-icon {
             color: var(--success);
             flex-shrink: 0;
             width: 20px;
             height: 20px;
         }
-
         .btn-primary {
             padding: 0.8rem;
             color: #fff;
@@ -292,19 +261,15 @@
             width: 100%;
             cursor: pointer;
         }
-
         .btn-call {
             background-color: var(--success);
         }
-
         .btn-whatsapp {
             background-color: var(--whatsapp);
         }
-
         .btn-nav {
             background-color: var(--link);
         }
-
         .btn-rcs {
             background-color: var(--rcs-blue);
             display: none !important;
@@ -458,23 +423,15 @@
                 <span class="text-open" lang="en" style="display:none">Open App</span>
             </button>
             <div class="lang-switch">
-                <button class="lang-btn active" id="btn-de" onclick="setLang('de')">
-                    DE
-                </button>
-                <button class="lang-btn" id="btn-en" onclick="setLang('en')">
-                    EN
-                </button>
+                <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
+                <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
             </div>
         </div>
-
-        <img src="Logo.webp" alt="Gästehaus 22 Logo - Monteurunterkunft Asten" class="logo-img" width="120" height="120"
-            fetchpriority="high" loading="eager" decoding="sync" />
+        <img src="Logo.webp" alt="Gästehaus 22 Logo - Monteurunterkunft Asten" class="logo-img" width="120" height="120" fetchpriority="high" loading="eager" decoding="sync" />
         <h1 lang="de">Monteurzimmer in Asten</h1>
         <h1 lang="en" data-nosnippet>Worker Rooms in Asten</h1>
         <p class="subtitle" lang="de">Praktisch. Sauber. Günstig.</p>
-        <p class="subtitle" lang="en" data-nosnippet>
-            Practical. Clean. Affordable.
-        </p>
+        <p class="subtitle" lang="en" data-nosnippet>Practical. Clean. Affordable.</p>
     </header>
     <main>
         <section class="card">
@@ -482,49 +439,41 @@
             <div class="section-label" lang="en" data-nosnippet>Offer</div>
             <div class="price-tag">
                 35 €
-                <span style="font-size: 0.9rem; font-weight: 400" lang="de">/ Nacht pro Person</span><span
-                    style="font-size: 0.9rem; font-weight: 400" lang="en" data-nosnippet>/ night per person</span>
+                <span style="font-size: 0.9rem; font-weight: 400" lang="de">/ Nacht pro Person</span>
+                <span style="font-size: 0.9rem; font-weight: 400" lang="en" data-nosnippet>/ night per person</span>
             </div>
             <ul>
                 <li>
                     <i data-lucide="wifi" class="check-icon"></i>
-                    <span lang="de">Starlink - Highspeed-Internet</span><span lang="en" data-nosnippet>Starlink -
-                        High-Speed Internet</span>
+                    <span lang="de">Starlink - Highspeed-Internet</span>
+                    <span lang="en" data-nosnippet>Starlink - High-Speed Internet</span>
                 </li>
                 <li>
                     <i data-lucide="utensils" class="check-icon"></i>
-                    <span lang="de">Voll ausgestattete Küche</span><span lang="en" data-nosnippet>Fully equipped
-                        kitchen</span>
+                    <span lang="de">Voll ausgestattete Küche</span>
+                    <span lang="en" data-nosnippet>Fully equipped kitchen</span>
                 </li>
                 <li>
                     <i data-lucide="tv" class="check-icon"></i>
-                    <span lang="de">Wohnzimmer mit TV & YouTube Premium</span><span lang="en" data-nosnippet>Living room
-                        with TV & YouTube Premium</span>
+                    <span lang="de">Wohnzimmer mit TV & YouTube Premium</span>
+                    <span lang="en" data-nosnippet>Living room with TV & YouTube Premium</span>
                 </li>
                 <li>
                     <i data-lucide="car" class="check-icon"></i>
-                    <span lang="de">Parkplätze direkt vorm Haus</span><span lang="en" data-nosnippet>Parking right in
-                        front of the house</span>
+                    <span lang="de">Parkplätze direkt vorm Haus</span>
+                    <span lang="en" data-nosnippet>Parking right in front of the house</span>
                 </li>
             </ul>
         </section>
-
         <aside style="display: flex; flex-direction: column; gap: 1.5rem">
             <section class="card">
                 <div class="section-label" lang="de">Kontakt</div>
                 <div class="section-label" lang="en" data-nosnippet>Contact</div>
-                <div style="
-              display: flex;
-              flex-direction: column;
-              gap: 0.8rem;
-              margin-top: 0.5rem;
-            ">
-                    <a href="https://wa.me/436801610618?text=Hallo%2C%20ich%20habe%20eine%20Anfrage%20bezüglich%20eines%20Zimmers."
-                        class="btn-primary btn-whatsapp" target="_blank">
+                <div style="display: flex;flex-direction: column;gap: 0.8rem;margin-top: 0.5rem;">
+                    <a href="https://wa.me/436801610618?text=Hallo%2C%20ich%20habe%20eine%20Anfrage%20bezüglich%20eines%20Zimmers." class="btn-primary btn-whatsapp" target="_blank">
                         <i data-lucide="message-circle"></i> WhatsApp
                     </a>
-                    <a href="sms:+436801610618?body=Hallo%2C%20ich%20habe%20eine%20Anfrage%20bezüglich%20eines%20Zimmers."
-                        class="btn-primary btn-rcs">
+                    <a href="sms:+436801610618?body=Hallo%2C%20ich%20habe%20eine%20Anfrage%20bezüglich%20eines%20Zimmers." class="btn-primary btn-rcs">
                         <i data-lucide="message-square"></i> RCS Nachricht
                     </a>
                     <a href="tel:+436801610618" class="btn-primary btn-call">
@@ -532,37 +481,19 @@
                     </a>
                 </div>
             </section>
-
             <section class="card">
                 <div class="section-label" lang="de">Lage</div>
                 <div class="section-label" lang="en" data-nosnippet>Location</div>
-                <p>
-                    <strong>Gästehaus 22</strong><br />Eichenstraße 22<br />4481 Asten,
-                    Austria
-                </p>
-
+                <p><strong>Gästehaus 22</strong><br />Eichenstraße 22<br />4481 Asten, Austria</p>
                 <div id="location-wrapper" style="margin-top: 1rem">
-                    <button id="check-dist-btn" class="btn-primary" style="
-                background: none;
-                border: 2px solid var(--link);
-                color: var(--link);
-                font-size: 0.85rem;
-                width: 100%;
-              ">
+                    <button id="check-dist-btn" class="btn-primary" style="background: none;border: 2px solid var(--link);color: var(--link);font-size: 0.85rem;width: 100%;">
                         <i data-lucide="map"></i>
                         <span lang="de">Wie weit ist es von mir?</span>
                         <span lang="en">How far is it from me?</span>
                     </button>
-                    <div id="dist-info" style="
-                display: none;
-                margin-top: 10px;
-                text-align: center;
-                padding: 10px;
-                border-radius: 8px;
-              "></div>
+                    <div id="dist-info" style="display: none;margin-top: 10px;text-align: center;padding: 10px;border-radius: 8px;"></div>
                     <div id="result"></div>
                 </div>
-
                 <button onclick="openNavigation()" class="btn-primary btn-nav" style="margin-top: 1rem">
                     <i data-lucide="map-pin"></i>
                     <span lang="de">Route anzeigen</span>
@@ -570,11 +501,9 @@
                 </button>
             </section>
         </aside>
-
 <section class="card" style="grid-column: 1 / -1">
     <div id="info-de" lang="de">
-        <h2 style="font-size: 1.2rem; margin-bottom: 0.5rem">
-                Wohnung mit Einzelbetten und kompletter Ausstattung für Arbeiter und Berufsreisende!</h2>
+        <h2 style="font-size: 1.2rem; margin-bottom: 0.5rem">Wohnung mit Einzelbetten und kompletter Ausstattung für Arbeiter und Berufsreisende!</h2>
         <div style="font-size: 0.9rem; color: var(--accent-soft)">
             <p>
                 Das <strong>Gästehaus 22</strong> ist spezialisiert auf die
