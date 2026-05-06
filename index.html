@@ -76,12 +76,23 @@
         body.lang-en [lang="en"] {
             display: block;
         }
+        [lang="en"], 
+        body.lang-en [lang="de"] {
+            display: none !important;
+        }
+        body.lang-en [lang="en"] {
+            display: inline; /* Standard für Spans */
+        }
+        body.lang-en div[lang="en"],
         body.lang-en h1[lang="en"],
-        body.lang-en p[lang="en"],
-        body.lang-en .section-label[lang="en"],
         body.lang-en h2[lang="en"],
-        body.lang-en div[lang="en"] {
-            display: block !important;
+        body.lang-en p[lang="en"],
+        body.lang-en section[lang="en"] {
+            display: block;
+        }
+        .text-open[style*="display:none"], 
+        .text-install[style*="display:none"] {
+            display: none !important;
         }
         body.lang-en span[lang="en"] {
             display: inline !important;
@@ -89,18 +100,7 @@
         body.lang-en li[lang="en"] {
             display: flex !important;
         }
-        #lightbox {
-            display: none;
-            position: fixed;
-            z-index: 4000;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            align-items: center;
-            justify-content: center;
-        }
+        #lightbox {display: none;position: fixed;z-index: 4000;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.9);align-items: center;justify-content: center;}
         #lightbox img {
             max-width: 90%;
             max-height: 90%;
