@@ -100,16 +100,13 @@
                 const CACHE_NAME = 'gastehaus-v1';
                 const ASSETS = [ './', './index.html', './Logo.webp', encodeURI('./bedrooms.webp'), encodeURI('./livingroom.webp'), encodeURI('./kitchen.webp'), encodeURI('./bathroom.webp') ];
                 const MARKDOWN_CONTENT = \`# Gästehaus 22 Asten | Monteurzimmer & Arbeiterunterkunft Linz\\n\\n**Praktisch. Sauber. Günstig.**\\nPreiswerte Unterkunft in 4481 Asten nahe Linz. Einzelbetten, Highspeed-WLAN & Parkplätze direkt vorm Haus.\\n\\n### 💰 Angebot\\n* **35 € / Nacht pro Person**\\n* **Starlink** - Highspeed-Internet\\n* **Voll ausgestattete Küche**\\n* **Wohnzimmer** mit TV & YouTube Premium\\n* **Parkplätze** direkt vorm Haus\\n\\n### 📍 Lage & Kontakt\\n**Gästehaus 22**\\nEichenstraße 22, 4481 Asten, Österreich\\n\\n* **WhatsApp:** [Jetzt anfragen](https://wa.me/436801610618)\\n* **Telefon:** [+43 680 1610618](tel:+436801610618)\\n* **Web:** [gaestehaus22.at](https://gaestehaus22.at/)\`;
-                
                 self.addEventListener('install', (e) => {
                     self.skipWaiting();
                     e.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)));
                 });
-                
                 self.addEventListener('activate', (e) => {
                     e.waitUntil(caches.keys().then(keys => Promise.all(keys.map(key => { if (key !== CACHE_NAME) return caches.delete(key); }))));
                 });
-                
                 self.addEventListener('fetch', (e) => {
                     const url = new URL(e.request.url);
                     const acceptHeader = e.request.headers.get('Accept') || '';
