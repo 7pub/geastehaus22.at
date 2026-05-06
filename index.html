@@ -1,18 +1,15 @@
 <!doctype html>
 <html lang="de">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gästehaus 22 Asten | Monteurzimmer & Arbeiterunterkunft Linz</title>
     <meta name="description"
         content="+43 680 1610618 - Preiswerte Unterkunft in 4481 Asten nahe Linz. Einzelbetten, Highspeed-WLAN & Parkplätze direkt vorm Haus." />
-
     <meta name="msapplication-config" content="/browserconfig.xml" />
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
     <meta name="theme-color" content="#222222" />
-
     <link rel="canonical" href="https://gaestehaus22.at/" />
     <link rel="preload" href="Logo.webp" as="image" />
     <link rel="service-doc" href="https://www.gaestehaus22.at/">
@@ -21,7 +18,6 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/manifest.json" />
-
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -46,7 +42,6 @@
         "description": "Günstige Monteurzimmer und Arbeiterunterkunft in Asten bei Linz mit Highspeed-Internet und Parkplätzen."
       }
     </script>
-
     <style>
         :root {
             --bg: #f5f5f5;
@@ -452,7 +447,6 @@
         }
     </style>
 </head>
-
 <body id="top">
     <header>
         <div class="top-bar">
@@ -482,7 +476,6 @@
             Practical. Clean. Affordable.
         </p>
     </header>
-
     <main>
         <section class="card">
             <div class="section-label" lang="de">Angebot</div>
@@ -626,7 +619,6 @@
             <div class="gallery-grid" id="gallery-container"></div>
         </section>
     </main>
-
     <footer>
         <div class="footer-nav">
             <span onclick="toggleModal('legal')" lang="de">Impressum</span>
@@ -641,7 +633,6 @@
             by Karl
         </p>
     </footer>
-
     <div id="modal-legal" class="modal" onclick="closeModals(event)">
         <div class="modal-content">
             <span class="close-modal" onclick="toggleModal('legal')">×</span>
@@ -679,7 +670,6 @@
             </div>
         </div>
     </div>
-
     <div id="modal-privacy" class="modal" onclick="closeModals(event)">
         <div class="modal-content">
             <span class="close-modal" onclick="toggleModal('privacy')">×</span>
@@ -699,12 +689,10 @@
             </div>
         </div>
     </div>
-
     <div id="lightbox" onclick="this.style.display = 'none'">
         <span class="close-lightbox">&times;</span>
         <img id="lightbox-img" onclick="event.stopPropagation()" />
     </div>
-
     <script src="https://unpkg.com/lucide@latest" defer></script>
     <script>
         const images = {
@@ -727,7 +715,6 @@
                 },
             ],
         };
-
         function setLang(lang) {
             document.body.classList.toggle("lang-en", lang === "en");
             document
@@ -737,36 +724,30 @@
                 .getElementById("btn-en")
                 .classList.toggle("active", lang === "en");
         }
-
         function toggleModal(id) {
             const m = document.getElementById("modal-" + id);
             m.style.display = m.style.display === "flex" ? "none" : "flex";
         }
-
         function closeModals(e) {
             if (e.target.classList.contains("modal"))
                 e.target.style.display = "none";
         }
-
         document.addEventListener("DOMContentLoaded", () => {
             if ("requestIdleCallback" in window) {
                 requestIdleCallback(() => lucide.createIcons());
             } else {
                 setTimeout(lucide.createIcons, 100);
             }
-
             const container = document.getElementById("gallery-container");
             images.gallery.forEach((img) => {
                 const div = document.createElement("div");
                 div.className = "gallery-item";
-
                 const imageElement = document.createElement("img");
                 imageElement.src = img.thumb;
                 imageElement.alt = img.alt;
                 imageElement.loading = "lazy";
                 imageElement.width = 400;
                 imageElement.height = 300;
-
                 div.addEventListener("click", (e) => {
                     e.stopPropagation();
                     const lightbox = document.getElementById("lightbox");
@@ -775,17 +756,14 @@
                     lightboxImg.src = img.src;
                     lightbox.style.display = "flex";
                 });
-
                 div.appendChild(imageElement);
                 container.appendChild(div);
             });
-
             ["data-as-772", "data-as-772-en"].forEach((id) => {
                 const el = document.getElementById(id);
                 if (el) el.innerText = "rentiehclA lraK";
             });
         });
-
         function openNavigation() {
             const addr = encodeURIComponent(
                 "Gästehaus 22, Eichenstraße 22, 4481 Asten",
@@ -795,22 +773,16 @@
                 : `https://www.google.com/maps/dir/?api=1&destination=${addr}`;
             window.open(url, "_blank");
         }
-
         if ("serviceWorker" in navigator) {
             window.addEventListener("load", () => {
                 navigator.serviceWorker.register("/sw.js").catch(() => { });
             });
         }
-
         let deferredPrompt;
         const installBtn = document.getElementById("install-button");
-
-        // Funktion zum Prüfen, ob die App im Standalone-Modus läuft
         function isInstalled() {
             return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
         }
-
-        // Initialer Check beim Laden
         function updateButtonUI() {
             if (isInstalled()) {
                 // Wenn installiert: Zeige Button immer an, aber ändere Text
@@ -823,19 +795,15 @@
                 if (window.lucide) lucide.createIcons();
             }
         }
-
         window.addEventListener("beforeinstallprompt", (e) => {
             e.preventDefault();
             deferredPrompt = e;
-            // Zeige Button nur, wenn nicht bereits installiert
             if (!isInstalled()) {
                 installBtn.style.display = "flex";
             }
         });
-
         installBtn.addEventListener("click", async () => {
             if (isInstalled()) {
-                // Aktion wenn bereits installiert: z.B. Seite neu laden oder einfach Bestätigung
                 window.location.href = "/"; 
                 return;
             }
@@ -849,19 +817,13 @@
                 deferredPrompt = null;
             }
         });
-
-        // App-Status beim Start prüfen
         updateButtonUI();
-
-        // Erkennt auch, wenn die App während der Sitzung installiert wurde
         window.addEventListener('appinstalled', () => {
             updateButtonUI();
         });
-
         const TARGET = { lat: 48.223023, lon: 14.4182762 };
         const checkDistBtn = document.getElementById("check-dist-btn");
         const distInfo = document.getElementById("dist-info");
-
         function calculateHaversine(lat1, lon1, lat2, lon2) {
             const R = 6371;
             const dLat = ((lat2 - lat1) * Math.PI) / 180;
@@ -874,18 +836,15 @@
                 Math.sin(dLon / 2);
             return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         }
-
         checkDistBtn.addEventListener("click", () => {
             checkDistBtn.disabled = true;
             distInfo.style.display = "block";
             distInfo.innerHTML = "Standort wird ermittelt...";
-
             if (!navigator.geolocation) {
                 distInfo.innerHTML = "Nicht unterstützt.";
                 checkDistBtn.disabled = false;
                 return;
             }
-
             navigator.geolocation.getCurrentPosition(
                 (pos) => {
                     const distance = calculateHaversine(
