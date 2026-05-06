@@ -87,69 +87,14 @@
     </style>
 </head>
 <body id="top">
-    <header>
-        <div class="top-bar">
-            <button id="install-button" class="install-btn-top"><i data-lucide="download-cloud"></i> <span class="text-install" lang="de">App installieren</span> <span class="text-install" lang="en">Install App</span> <span class="text-open" lang="de" style="display:none">App öffnen</span> <span class="text-open" lang="en" style="display:none">Open App</span></button>
-            <div class="lang-switch"><button class="lang-btn active" id="btn-de" onclick='setLang("de");'>DE</button> <button class="lang-btn" id="btn-en" onclick='setLang("en");'>EN</button></div>
-        </div>
-        <img src="Logo.webp" alt="Gästehaus 22 Logo" class="logo-img" width="120" height="120" fetchpriority="high" loading="eager" decoding="sync" />
-        <h1 lang="de">Monteurzimmer in Asten</h1>
-        <h1 lang="en" data-nosnippet>Worker Rooms in Asten</h1>
-        <p class="subtitle" lang="de">Praktisch. Sauber. Günstig.</p>
-        <p class="subtitle" lang="en" data-nosnippet>Practical. Clean. Affordable.</p>
-    </header>
-    <main>
-        <section class="card">
-            <div class="section-label" lang="de">Angebot</div>
-            <div class="section-label" lang="en" data-nosnippet>Offer</div>
-            <div class="price-tag">35 € <span style="font-size:.9rem;font-weight:400" lang="de">/ Nacht pro Person</span> <span style="font-size:.9rem;font-weight:400" lang="en" data-nosnippet>/ night per person</span></div>
-            <ul>
-                <li><i data-lucide="wifi" class="check-icon"></i> <span lang="de">Starlink - Highspeed-Internet</span> <span lang="en" data-nosnippet>Starlink - High-Speed Internet</span></li>
-                <li><i data-lucide="utensils" class="check-icon"></i> <span lang="de">Voll ausgestattete Küche</span> <span lang="en" data-nosnippet>Fully equipped kitchen</span></li>
-                <li><i data-lucide="tv" class="check-icon"></i> <span lang="de">Wohnzimmer mit TV & YouTube Premium</span> <span lang="en" data-nosnippet>Living room with TV & YouTube Premium</span></li>
-                <li><i data-lucide="car" class="check-icon"></i> <span lang="de">Parkplätze direkt vorm Haus</span> <span lang="en" data-nosnippet>Parking right in front of the house</span></li>
-            </ul>
-        </section>
-        <aside style="display:flex;flex-direction:column;gap:1.5rem">
-            <section class="card">
-                <div class="section-label" lang="de">Kontakt</div>
-                <div class="section-label" lang="en" data-nosnippet>Contact</div>
-                <div style="display:flex;flex-direction:column;gap:.8rem;margin-top:.5rem;">
-                    <a href="https://wa.me/436801610618?text=Hallo" class="btn-primary btn-whatsapp" target="_blank"><i data-lucide="message-circle"></i> WhatsApp </a>
-                    <a href="sms:+436801610618" class="btn-primary btn-rcs"><i data-lucide="message-square"></i> RCS Nachricht </a>
-                    <a href="tel:+436801610618" class="btn-primary btn-call"><i data-lucide="phone"></i> +43 680 1610618</a>
-                </div>
-            </section>
-            <section class="card">
-                <div class="section-label" lang="de">Lage</div>
-                <div class="section-label" lang="en" data-nosnippet>Location</div>
-                <p><strong>Gästehaus 22</strong><br />Eichenstraße 22<br />4481 Asten, Austria</p>
-                <button id="check-dist-btn" class="btn-primary" style="background:none;border:2px solid var(--link);color:var(--link);margin-top:1rem;"><i data-lucide="map"></i> <span lang="de">Wie weit?</span><span lang="en">Distance?</span></button>
-                <div id="dist-info"></div>
-                <button onclick="openNavigation();" class="btn-primary btn-nav" style="margin-top:1rem"><i data-lucide="map-pin"></i> <span lang="de">Route</span><span lang="en">Route</span></button>
-            </section>
-        </aside>
-        <section class="gallery-section card" style="grid-column:1/-1">
-            <div class="section-label">Galerie</div>
-            <div class="gallery-grid" id="gallery-container"></div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-nav">
-            <span onclick='toggleModal("legal");' lang="de">Impressum</span>
-            <span onclick='toggleModal("privacy");' lang="de">Datenschutz</span>
-        </div>
-        <p>© 2026 Gästehaus 22 – 4481 Asten</p>
-    </footer>
-
-    <div id="modal-legal" class="modal" onclick="closeModals(event);"><div class="modal-content"><span class="close-modal" onclick='toggleModal("legal");'>×</span><h2>Impressum</h2><div class="modal-body-text"><p>Gästehaus 22, Eichenstraße 22, 4481 Asten</p></div></div></div>
-    <div id="modal-privacy" class="modal" onclick="closeModals(event);"><div class="modal-content"><span class="close-modal" onclick='toggleModal("privacy");'>×</span><h2>Datenschutz</h2><div class="modal-body-text"><p>Keine Cookies.</p></div></div></div>
-    <div id="lightbox" onclick='this.style.display="none";'><span class="close-lightbox">×</span> <img id="lightbox-img" onclick="event.stopPropagation();" /></div>
-
+<header><div class="top-bar"><button id="install-button" class="install-btn-top"><i data-lucide="download-cloud"></i> <span class="text-install" lang="de">App installieren</span> <span class="text-install" lang="en">Install App</span> <span class="text-open" lang="de" style="display:none">App öffnen</span> <span class="text-open" lang="en" style="display:none">Open App</span></button><div class="lang-switch"><button class="lang-btn active" id="btn-de" onclick='setLang("de");'>DE</button> <button class="lang-btn" id="btn-en" onclick='setLang("en");'>EN</button></div></div><img src="Logo.webp" alt="Gästehaus 22 Logo - Monteurunterkunft Asten" class="logo-img" width="120" height="120" fetchpriority="high" loading="eager" decoding="sync"/><h1 lang="de">Monteurzimmer in Asten</h1><h1 lang="en" data-nosnippet>Worker Rooms in Asten</h1><p class="subtitle" lang="de">Praktisch. Sauber. Günstig.</p><p class="subtitle" lang="en" data-nosnippet>Practical. Clean. Affordable.</p></header>
+<main><section class="card"><div class="section-label" lang="de">Angebot</div><div class="section-label" lang="en" data-nosnippet>Offer</div><div class="price-tag">35 € <span style="font-size:.9rem;font-weight:400" lang="de">/ Nacht pro Person</span> <span style="font-size:.9rem;font-weight:400" lang="en" data-nosnippet>/ night per person</span></div><ul><li><i data-lucide="wifi" class="check-icon"></i> <span lang="de">Starlink - Highspeed-Internet</span> <span lang="en" data-nosnippet>Starlink - High-Speed Internet</span></li><li><i data-lucide="utensils" class="check-icon"></i> <span lang="de">Voll ausgestattete Küche</span> <span lang="en" data-nosnippet>Fully equipped kitchen</span></li><li><i data-lucide="tv" class="check-icon"></i> <span lang="de">Wohnzimmer mit TV & YouTube Premium</span> <span lang="en" data-nosnippet>Living room with TV & YouTube Premium</span></li><li><i data-lucide="car" class="check-icon"></i> <span lang="de">Parkplätze direkt vorm Haus</span> <span lang="en" data-nosnippet>Parking right in front of the house</span></li></ul></section><aside style="display:flex;flex-direction:column;gap:1.5rem"><section class="card"><div class="section-label" lang="de">Kontakt</div><div class="section-label" lang="en" data-nosnippet>Contact</div><div style="display:flex;flex-direction:column;gap:.8rem;margin-top:.5rem;"><a href="https://wa.me/436801610618?text=Hallo%2C%20ich%20habe%20eine%20Anfrage%20bezüglich%20eines%20Zimmers." class="btn-primary btn-whatsapp" target="_blank"><i data-lucide="message-circle"></i> WhatsApp </a><a href="sms:+436801610618?body=Hallo%2C%20ich%20habe%20eine%20Anfrage%20bezüglich%20eines%20Zimmers." class="btn-primary btn-rcs"><i data-lucide="message-square"></i> RCS Nachricht </a><a href="tel:+436801610618" class="btn-primary btn-call"><i data-lucide="phone"></i> +43 680 1610618</a></div></section><section class="card"><div class="section-label" lang="de">Lage</div><div class="section-label" lang="en" data-nosnippet>Location</div><p><strong>Gästehaus 22</strong><br/>Eichenstraße 22<br/>4481 Asten, Austria</p><div id="location-wrapper" style="margin-top:1rem"><button id="check-dist-btn" class="btn-primary" style="background:none;border:2px solid var(--link);color:var(--link);font-size:.85rem;width:100%;"><i data-lucide="map"></i> <span lang="de">Wie weit ist es von mir?</span> <span lang="en">How far is it from me?</span></button><div id="dist-info" style="display:none;margin-top:10px;text-align:center;padding:10px;border-radius:8px;"></div><div id="result"></div></div><button onclick="openNavigation();" class="btn-primary btn-nav" style="margin-top:1rem"><i data-lucide="map-pin"></i> <span lang="de">Route anzeigen</span> <span lang="en" data-nosnippet>Get directions</span></button></section></aside><section class="card" style="grid-column:1/-1"><div id="info-de" lang="de"><h2 style="font-size:1.2rem;margin-bottom:.5rem">Wohnung mit Einzelbetten und kompletter Ausstattung für Arbeiter und Berufsreisende!</h2><div style="font-size:.9rem;color:var(--accent-soft)"><p>Das <strong>Gästehaus 22</strong> ist spezialisiert auf die Bedürfnisse von Firmen und deren Mitarbeitern. Durch die Nähe zur Autobahn A1 (Abfahrt Asten/St. Florian) erreichen Sie die Industriegebiete in <strong>Linz, Enns, Steyr und St. Valentin</strong> in wenigen Minuten.</p><p style="margin-top:10px">Unsere Unterkunft bietet alles, was Monteure für einen langfristigen oder kurzen Aufenthalt benötigen: Stabile Einzelbetten, eine voll ausgestattete Gemeinschaftsküche und schnelles WLAN für den Feierabend.</p></div></div><div id="info-en" lang="en" aria-hidden="true" style="display:none"><h2 style="font-size:1.2rem;margin-bottom:.5rem">Apartment with single beds and complete equipment for workers and business travelers!</h2><div style="font-size:.9rem;color:var(--accent-soft)"><p><strong>Gästehaus 22</strong> specializes in the needs of companies and their employees. Thanks to the proximity to the A1 motorway (exit Asten/St. Florian), you can reach the industrial areas in <strong>Linz, Enns, Steyr, and St. Valentin</strong> within a few minutes.</p><p style="margin-top:10px">Our accommodation offers everything workers need for long-term or short-term stays: stable single beds, a fully equipped shared kitchen, and high-speed Wi-Fi for your evening.</p></div></div></section><section class="gallery-section card" style="grid-column:1/-1"><div class="section-label" lang="de">Galerie</div><div class="section-label" lang="en" data-nosnippet>Gallery</div><div class="gallery-grid" id="gallery-container"></div></section></main>
+<footer><div class="footer-nav"><span onclick='toggleModal("legal");' lang="de">Impressum</span> <span onclick='toggleModal("legal");' lang="en" data-nosnippet>Legal Notice</span> <span onclick='toggleModal("privacy");' lang="de">Datenschutz</span> <span onclick='toggleModal("privacy");' lang="en" data-nosnippet>Privacy</span></div><p>© 2026 Gästehaus 22 – 4481 Asten</p><p class="footer-heart">Build with <img class="emoji" alt="heart" height="18" width="18" src="/2764.png"/> by Karl</p></footer>
+<div id="modal-legal" class="modal" onclick="closeModals(event);"><div class="modal-content"><span class="close-modal" onclick='toggleModal("legal");'>×</span><h2 lang="de">Impressum</h2><h2 lang="en" data-nosnippet>Legal Notice</h2><div class="modal-body-text" lang="de"><p><strong>Informationspflicht gemäß § 5 ECG & § 25 Mediengesetz</strong></p><br/><p><strong>Gästehaus 22</strong></p><p>Privatzimmervermietung (Häusliche Nebenbeschäftigung)</p><p>Inhaber: <span id="data-as-772" style="unicode-bidi:bidi-override;direction:rtl"></span></p><p>Eichenstraße 22, 4481 Asten, Österreich</p><br/><p>Tel: +43 680 1610618</p><p>E-Mail: office@gaestehaus22.at</p></div><div class="modal-body-text" lang="en" data-nosnippet><p><strong>Information according to § 5 ECG & § 25 Media Act</strong></p><br/><p><strong>Gästehaus 22</strong></p><p>Owner: <span id="data-as-772-en" style="unicode-bidi:bidi-override;direction:rtl"></span></p><p>Eichenstrasse 22, 4481 Asten, Austria</p><br/><p>Phone: +43 680 1610618</p></div></div></div>
+<div id="modal-privacy" class="modal" onclick="closeModals(event);"><div class="modal-content"><span class="close-modal" onclick='toggleModal("privacy");'>×</span><h2 lang="de">Datenschutz</h2><h2 lang="en" data-nosnippet>Privacy Policy</h2><div class="modal-body-text" lang="de"><p>Wir nutzen keine Tracking-Cookies. Standortdaten dienen nur der Routenberechnung.</p></div><div class="modal-body-text" lang="en" data-nosnippet><p>We do not use tracking cookies. Location data is only used for route calculation.</p></div></div></div>
+<div id="lightbox" onclick='this.style.display="none";'><span class="close-lightbox">&times;</span> <img id="lightbox-img" onclick="event.stopPropagation();"/></div>
     <script src="https://unpkg.com/lucide@latest" defer></script>
     <script>
-        // --- ServiceWorker Integration ---
         if ('serviceWorker' in navigator) {
             const swCode = `
                 const CACHE_NAME = 'gastehaus-v1';
@@ -179,8 +124,6 @@
             const swUrl = URL.createObjectURL(blob);
             navigator.serviceWorker.register(swUrl).then(() => console.log('SW registered via Blob')).catch(err => console.error(err));
         }
-
-        // --- Restliche Logik ---
         const images={gallery:[{src:"bedrooms.webp",thumb:"bedrooms553x737.webp",alt:"Schlafzimmer"},{src:"livingroom.webp",thumb:"livingroom-553x425.webp",alt:"Wohnzimmer"},{src:"kitchen.webp",thumb:"kitchen-553x736.webp",alt:"Küche"},{src:"bathroom.webp",thumb:"bathroom-553x415.webp",alt:"Badezimmer"}]};
         function setLang(lang){document.body.classList.toggle("lang-en",lang==="en");document.getElementById("btn-de").classList.toggle("active",lang==="de");document.getElementById("btn-en").classList.toggle("active",lang==="en")}
         function toggleModal(id){const m=document.getElementById("modal-"+id);m.style.display=m.style.display==="flex"?"none":"flex"}
@@ -198,8 +141,6 @@
             });
         });
         function openNavigation(){window.open("https://maps.google.com/?daddr=Gästehaus+22,+Eichenstraße+22,+4481+Asten","_blank")}
-        
-        // PWA UI Logik
         let deferredPrompt; const installBtn = document.getElementById("install-button");
         window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;installBtn.style.display="flex"});
         installBtn.addEventListener("click",async()=>{if(deferredPrompt){deferredPrompt.prompt();deferredPrompt=null;installBtn.style.display="none"}});
