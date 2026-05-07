@@ -172,13 +172,11 @@
         </div>
     </div>
     <script>
-        
         function setLang(lang) {
             document.body.classList.toggle('lang-en', lang === 'en');
             document.getElementById('btn-de').classList.toggle('active', lang === 'de');
             document.getElementById('btn-en').classList.toggle('active', lang === 'en');
         }
-
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/sw.js').catch(() => {});
