@@ -415,16 +415,32 @@
         </section>
       </aside>
 
-      <section class="card" style="grid-column: 1/-1">
-        <div lang="de">
-          <h2 style="font-size: 1.2rem; margin-bottom: 0.5rem">Wohnung mit Einzelbetten für Arbeiter!</h2>
-          <p style="font-size: 0.9rem; color: var(--accent-soft)">Das Gästehaus 22 ist spezialisiert auf Firmen und Mitarbeiter nahe Linz.</p>
+        <section class="card" style="grid-column:1/-1">
+        <div id="info-de" lang="de">
+            <h2 style="font-size:1.2rem;margin-bottom:.5rem">Wohnung mit Einzelbetten und kompletter Ausstattung für
+                Arbeiter und Berufsreisende!</h2>
+            <div style="font-size:.9rem;color:var(--accent-soft)">
+                <p>Das <strong>Gästehaus 22</strong> ist spezialisiert auf die Bedürfnisse von Firmen und deren
+                    Mitarbeitern. Durch die Nähe zur Autobahn A1 (Abfahrt Asten/St. Florian) erreichen Sie die
+                    Industriegebiete in <strong>Linz, Enns, Steyr und St. Valentin</strong> in wenigen Minuten.</p>
+                <p style="margin-top:10px">Unsere Unterkunft bietet alles, was Monteure für einen langfristigen oder
+                    kurzen Aufenthalt benötigen: Stabile Einzelbetten, eine voll ausgestattete Gemeinschaftsküche
+                    und schnelles WLAN für den Feierabend.</p>
+            </div>
         </div>
-        <div lang="en">
-          <h2 style="font-size: 1.2rem; margin-bottom: 0.5rem">Apartment with single beds for workers!</h2>
-          <p style="font-size: 0.9rem; color: var(--accent-soft)">Gästehaus 22 specializes in companies and employees near Linz.</p>
+        <div id="info-en" lang="en" aria-hidden="true" style="display:none">
+            <h2 style="font-size:1.2rem;margin-bottom:.5rem">Apartment with single beds and complete equipment for
+                workers and business travelers!</h2>
+            <div style="font-size:.9rem;color:var(--accent-soft)">
+                <p><strong>Gästehaus 22</strong> specializes in the needs of companies and their employees. Thanks
+                    to the proximity to the A1 motorway (exit Asten/St. Florian), you can reach the industrial areas
+                    in <strong>Linz, Enns, Steyr, and St. Valentin</strong> within a few minutes.</p>
+                <p style="margin-top:10px">Our accommodation offers everything workers need for long-term or
+                    short-term stays: stable single beds, a fully equipped shared kitchen, and high-speed Wi-Fi for
+                    your evening.</p>
+            </div>
         </div>
-      </section>
+        </section>
 
       <section class="gallery-section card" style="grid-column: 1/-1">
         <div class="section-label" lang="de">Galerie</div>
@@ -434,13 +450,19 @@
     </main>
 
     <footer>
-      <div class="footer-nav">
-        <span onclick="toggleModal('legal')" lang="de">Impressum</span>
-        <span onclick="toggleModal('legal')" lang="en">Legal Notice</span>
-        <span onclick="toggleModal('privacy')" lang="de">Datenschutz</span>
-        <span onclick="toggleModal('privacy')" lang="en">Privacy</span>
-      </div>
-      <p>© 2026 Gästehaus 22 – 4481 Asten</p>
+        <div class="footer-nav">
+            <span onclick='toggleModal("legal");' lang="de">Impressum</span> 
+            <span onclick='toggleModal("legal");' lang="en" data-nosnippet>Legal Notice</span> 
+                <span onclick='toggleModal("privacy");' lang="de">Datenschutz</span> 
+                <span onclick='toggleModal("privacy");'lang="en" data-nosnippet>Privacy</span>
+            </div>
+            <p>© 2026 Gästehaus 22 – 4481 Asten</p>
+            <p class="footer-heart">Build with 
+            <svg class="heart-svg" width="18" height="18">
+                <use href="#lucide-heart"></use>
+            </svg> 
+            by Karl
+        </p>
     </footer>
 
     <!-- Modals (Legal & Privacy) -->
