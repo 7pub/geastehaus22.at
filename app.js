@@ -34,17 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // 3. SPRACHSTEUERUNG
 function setLang(lang) {
-    const elements = document.querySelectorAll('[lang]');
-    elements.forEach(el => {
-        if (el.tagName.toLowerCase() === 'html') return;
-        if (el.getAttribute('lang') === lang) {
-            el.style.display = '';
-            el.removeAttribute('aria-hidden');
-        } else {
-            el.style.display = 'none';
-            el.setAttribute('aria-hidden', 'true');
-        }
-    });
+    // Toggle class on body for CSS-based visibility
+    document.body.classList.remove('lang-en', 'lang-de');
+    document.body.classList.add(`lang-${lang}`);
+    
     document.getElementById('btn-de').classList.toggle('active', lang === 'de');
     document.getElementById('btn-en').classList.toggle('active', lang === 'en');
 }
@@ -94,19 +87,26 @@ function calculateHaversine(lat1, lon1, lat2, lon2) {
 
 if (checkDistBtn) {
     checkDistBtn.addEventListener('click', () => {
+        const originalContent = checkDistBtn.innerHTML;
         checkDistBtn.disabled = true;
-        distInfo.style.display = 'block';
-        distInfo.innerHTML = 'Wird berechnet...';
+        checkDistBtn.innerHTML = '<i data-lucide="loader-2" class="spin"></i> Berechne...';
+        if (window.lucide) lucide.createIcons();
 
         navigator.geolocation.getCurrentPosition(
             (pos) => {
                 const d = calculateHaversine(pos.coords.latitude, pos.coords.longitude, TARGET_COORDS.lat, TARGET_COORDS.lon);
+                distInfo.style.display = 'block';
                 distInfo.innerHTML = `<strong>${d.toFixed(1)} km</strong> entfernt`;
                 checkDistBtn.disabled = false;
+                checkDistBtn.innerHTML = originalContent;
+                if (window.lucide) lucide.createIcons();
             },
             () => {
+                distInfo.style.display = 'block';
                 distInfo.innerHTML = "Standortzugriff nicht möglich.";
                 checkDistBtn.disabled = false;
+                checkDistBtn.innerHTML = originalContent;
+                if (window.lucide) lucide.createIcons();
             },
             { timeout: 8000 }
         );

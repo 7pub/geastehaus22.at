@@ -716,11 +716,6 @@
             if (e.target.classList.contains("modal")) e.target.style.display = "none"
         }
         document.addEventListener("DOMContentLoaded", () => {
-            if ("requestIdleCallback" in window) {
-                requestIdleCallback(() => lucide.createIcons())
-            } else {
-                setTimeout(lucide.createIcons, 100)
-            }
             const container = document.getElementById("gallery-container");
             images.gallery.forEach(img => {
                 const div = document.createElement("div");
