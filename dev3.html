@@ -86,26 +86,17 @@
             transition: background 0.3s;
             -webkit-font-smoothing: antialiased;
         }
-        body [lang='en'] {
-            display: none !important;
-        }
-        body.lang-en [lang='de'] {
-            display: none !important;
-        }
+/* Language Logic */
+[lang="en"] { display: none; }
+body.lang-en [lang="de"] { display: none; }
+body.lang-en [lang="en"] { display: block; }
 
-        body.lang-en [lang='en'] {
-            display: block !important;
-        }
-
-        body.lang-en span[lang='en'],
-        body.lang-en strong[lang='en'],
-        body.lang-en i[lang='en'] {
-            display: inline-block !important;
-        }
-
-        body.lang-en li[lang='en'] {
-            display: flex !important;
-        }
+/* Diese drei brauchst du auf der Hauptseite zusätzlich, 
+damit dein Layout (Listen und Text) auf Englisch nicht kaputt geht: */
+body.lang-en span[lang="en"],
+body.lang-en strong[lang="en"],
+body.lang-en i[lang="en"] { display: inline-block; }
+body.lang-en li[lang="en"] { display: flex; }
 
         .hidden {
             display: none;
@@ -579,8 +570,9 @@
         }];
 function setLang(lang) {
     const body = document.body;
-    const btnDe = document.getElementById('btn-de');
-    const btnEn = document.getElementById('btn-en');
+document.body.classList.toggle('lang-en', lang === 'en');
+    document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
 
     if (lang === 'en') {
         body.classList.add('lang-en');
