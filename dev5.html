@@ -127,20 +127,28 @@
         <aside style="display:flex;flex-direction:column;gap:1.5rem">
             <section class="card">
                 <div class="section-label" lang="de">Kontakt</div>
-                <div class="section-label" lang="en" data-nosnippet>Contact</div>
-                <div style="display:flex;flex-direction:column;gap:.8rem;margin-top:.5rem;">
-                    <a href="https://wa.me/436801610618?text=Hallo" class="btn-primary btn-whatsapp" target="_blank"><i data-lucide="message-circle"></i> WhatsApp </a>
-                    <a href="sms:+436801610618" class="btn-primary btn-rcs"><i data-lucide="message-square"></i> RCS Nachricht </a>
-                    <a href="tel:+436801610618" class="btn-primary btn-call"><i data-lucide="phone"></i> +43 680 1610618</a>
-                </div>
+                <div class="section-label" lang="en">Contact</div>
+                <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-top: 0.5rem"> <a
+                        href="https://wa.me/436801610618?text=Hallo" class="btn-primary btn-whatsapp" target="_blank"
+                        rel="noopener">WhatsApp</a> <a href="sms:+436801610618?body=Hallo"
+                        class="btn-primary btn-rcs"><svg class="btn-icon" style="color:white">
+                            <use href="#icon-message-square"></use>
+                        </svg> RCS Nachricht</a> <a href="tel:+436801610618" class="btn-primary btn-call"><svg
+                            class="btn-icon" style="color:white">
+                            <use href="#icon-phone"></use>
+                        </svg> +43 680 1610618</a> </div>
             </section>
             <section class="card">
                 <div class="section-label" lang="de">Lage</div>
-                <div class="section-label" lang="en" data-nosnippet>Location</div>
+                <div class="section-label" lang="en">Location</div>
                 <p><strong>Gästehaus 22</strong><br />Eichenstraße 22<br />4481 Asten, Austria</p>
-                <button id="check-dist-btn" class="btn-primary" style="background:none;border:2px solid var(--link);color:var(--link);margin-top:1rem;"><i data-lucide="map"></i> <span lang="de">Wie weit?</span><span lang="en">Distance?</span></button>
-                <div id="dist-info"></div>
-                <button onclick="openNavigation();" class="btn-primary btn-nav" style="margin-top:1rem"><i data-lucide="map-pin"></i> <span lang="de">Route</span><span lang="en">Route</span></button>
+                <div id="location-wrapper" style="margin-top: 1rem"> <button id="check-dist-btn" class="btn-primary"
+                        style="background: none; border: 2px solid var(--link); color: var(--link); font-size: 0.85rem;">
+                        <span lang="de">Wie weit ist es von mir?</span><span lang="en">How far is it from me?</span>
+                    </button>
+                    <div id="dist-info"></div>
+                </div> <button onclick="openNavigation()" class="btn-primary btn-nav" style="margin-top: 1rem"> <span
+                        lang="de">Route anzeigen</span><span lang="en">Get directions</span> </button>
             </section>
         </aside>
         <section class="gallery-section card" style="grid-column:1/-1">
