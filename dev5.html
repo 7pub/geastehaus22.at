@@ -149,14 +149,14 @@
         </section>
     </main>
 
+<!--<footer> <div class="footer-nav"> <span onclick='toggleModal("legal");' lang="de">Impressum</span> <span onclick='toggleModal("privacy");' lang="de">Datenschutz</span> </div> <p>© 2026 Gästehaus 22 – 4481 Asten</p> </footer>-->
     <footer>
-        <div class="footer-nav">
-            <span onclick='toggleModal("legal");' lang="de">Impressum</span>
-            <span onclick='toggleModal("privacy");' lang="de">Datenschutz</span>
-        </div>
+        <div class="footer-nav"> <span onclick="toggleModal(&quot;legal&quot;)" lang="de">Impressum</span><span onclick="toggleModal(&quot;legal&quot;)" lang="en">Legal Notice</span> <span onclick="toggleModal(&quot;privacy&quot;)" lang="de">Datenschutz</span><span onclick="toggleModal(&quot;privacy&quot;)" lang="en">Privacy</span> </div>
         <p>© 2026 Gästehaus 22 – 4481 Asten</p>
+        <p style="margin-top: 10px;">Built with <svg class="heart-svg" width="16" height="16">
+                <use href="#icon-heart"></use>
+            </svg> by Karl</p>
     </footer>
-
     <div id="modal-legal" class="modal" onclick="closeModals(event);"><div class="modal-content"><span class="close-modal" onclick='toggleModal("legal");'>×</span><h2>Impressum</h2><div class="modal-body-text"><p>Gästehaus 22, Eichenstraße 22, 4481 Asten</p></div></div></div>
     <div id="modal-privacy" class="modal" onclick="closeModals(event);"><div class="modal-content"><span class="close-modal" onclick='toggleModal("privacy");'>×</span><h2>Datenschutz</h2><div class="modal-body-text"><p>Keine Cookies.</p></div></div></div>
     <div id="lightbox" onclick='this.style.display="none";'><span class="close-lightbox">×</span> <img id="lightbox-img" onclick="event.stopPropagation();" /></div>
