@@ -6,11 +6,13 @@
     <title>Gästehaus 22 Asten | Monteurzimmer & Arbeiterunterkunft Linz</title>
     <meta name="description" content="+43 680 1610618 - Preiswerte Unterkunft in 4481 Asten nahe Linz. Einzelbetten, Highspeed-WLAN & Parkplätze direkt vorm Haus." />
     
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="theme-color" content="#222222" />
+    <link rel="canonical" href="https://gaestehaus22.at/" />
+    <link rel="preload" href="Logo.webp" as="image" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#222222" />
-    <link rel="canonical" href="https://gaestehaus22.at/" />
 
     <script type="application/ld+json">
       {
@@ -47,6 +49,7 @@
         --font-main: system-ui, -apple-system, sans-serif;
         --success: #28a745;
         --whatsapp: #25d366;
+        --rcs-blue: #1a73e8;
         --link: #007bff;
         --overlay: rgba(0, 0, 0, 0.7);
       }
@@ -60,18 +63,31 @@
         line-height: 1.6;
       }
 
-      /* Sprach-Switch Logik verbessert */
+      /* Sprach-Switch Logik (Kein Inline-Display-None mehr nötig) */
       [lang='en'] { display: none !important; }
       body.lang-en [lang='de'] { display: none !important; }
       body.lang-en [lang='en'] { display: block !important; }
       body.lang-en span[lang='en'], 
       body.lang-en i[lang='en'],
-      body.lang-en strong[lang='en'] { display: inline !important; }
+      body.lang-en strong[lang='en'] { display: inline-block !important; }
       body.lang-en li[lang='en'] { display: flex !important; }
 
       .hidden { display: none; }
 
-      /* Header & UI */
+      #lightbox {
+        align-items: center;
+        background: rgba(0, 0, 0, 0.9);
+        display: none;
+        height: 100%;
+        justify-content: center;
+        left: 0;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 4000;
+      }
+      #lightbox img { border-radius: 8px; max-height: 90%; max-width: 90%; }
+
       header {
         background: #fff;
         border-bottom: 1px solid #e3e3e3;
@@ -79,7 +95,6 @@
         position: relative;
         text-align: center;
       }
-
       .top-bar {
         align-items: center;
         display: flex;
@@ -91,32 +106,46 @@
         top: 1.5rem;
         z-index: 100;
       }
-
       .lang-btn {
         background: #fff;
         border: 1px solid #ddd;
         border-radius: 8px;
+        color: var(--accent);
         cursor: pointer;
         font-size: 0.85rem;
         font-weight: 700;
         padding: 0.5rem 0.8rem;
       }
-
       .lang-btn.active {
         background: var(--accent);
         border-color: var(--accent);
         color: #fff;
       }
-
+      .install-btn-top {
+        align-items: center;
+        background: #fff;
+        border: 1px solid var(--link);
+        border-radius: 8px;
+        color: var(--link);
+        cursor: pointer;
+        display: none;
+        font-size: 0.85rem;
+        font-weight: 600;
+        gap: 0.4rem;
+        padding: 0.5rem 0.8rem;
+      }
       .logo-img {
         border-radius: 50%;
         box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        display: inline-block;
         height: 120px;
-        width: 120px;
+        margin-bottom: 1rem;
         object-fit: cover;
+        width: 120px;
       }
+      h1 { font-size: clamp(1.6rem, 5vw, 2.2rem); line-height: 1.2; margin-bottom: 0.5rem; }
+      .subtitle { color: var(--accent-soft); font-size: 1rem; }
 
-      /* Layout */
       main {
         display: grid;
         gap: 1.5rem;
@@ -125,10 +154,7 @@
         max-width: 1040px;
         padding: 0 1.5rem;
       }
-
-      @media (max-width: 850px) {
-        main { grid-template-columns: 1fr; }
-      }
+      @media (max-width: 850px) { main { grid-template-columns: 1fr; } }
 
       .card {
         background: var(--card);
@@ -136,7 +162,6 @@
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
         padding: 1.5rem;
       }
-
       .section-label {
         color: var(--accent-soft);
         font-size: 0.75rem;
@@ -144,16 +169,11 @@
         margin-bottom: 0.5rem;
         text-transform: uppercase;
       }
-
       .price-tag { font-size: 1.8rem; font-weight: 700; margin: 0.5rem 0; }
-
       ul { list-style: none; margin-top: 1rem; }
       li { align-items: center; display: flex; gap: 0.75rem; margin-bottom: 0.8rem; }
 
-      .icon { width: 20px; height: 20px; flex-shrink: 0; }
-      .icon-success { color: var(--success); }
-
-      /* Buttons */
+      .btn-icon { color: var(--success); flex-shrink: 0; height: 20px; width: 20px; }
       .btn-primary {
         align-items: center;
         border: none;
@@ -169,30 +189,30 @@
         transition: 0.2s;
         width: 100%;
       }
-
       .btn-call { background-color: var(--success); }
       .btn-whatsapp { background-color: var(--whatsapp); }
       .btn-nav { background-color: var(--link); }
-      
+      .btn-rcs { background-color: var(--rcs-blue); display: none !important; }
+      @media (max-width: 768px) { .btn-rcs { display: flex !important; } }
+
       #dist-info {
         background: #eef6ff;
         border-radius: 8px;
         color: var(--link);
         display: none;
         font-size: 0.85rem;
+        font-weight: 600;
         margin-top: 0.8rem;
         padding: 0.6rem;
         text-align: center;
       }
 
-      /* Gallery */
       .gallery-grid {
         display: grid;
         gap: 1rem;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         margin-top: 1rem;
       }
-
       .gallery-item img {
         border-radius: 12px;
         cursor: zoom-in;
@@ -202,7 +222,10 @@
         width: 100%;
       }
 
-      /* Modals */
+      footer { color: #444; font-size: 0.9rem; padding: 4rem 1.5rem 3rem; text-align: center; }
+      .footer-nav { display: flex; gap: 1.5rem; justify-content: center; margin-bottom: 1rem; }
+      .footer-nav span { cursor: pointer; font-weight: 600; text-decoration: underline; }
+
       .modal {
         align-items: center;
         backdrop-filter: blur(5px);
@@ -216,45 +239,35 @@
         width: 100%;
         z-index: 3000;
       }
-
       .modal-content {
         background: #fff;
         border-radius: 24px;
         max-width: 550px;
         padding: 2.5rem;
         position: relative;
+        text-align: left;
         width: 90%;
       }
-
-      #lightbox {
-        align-items: center;
-        background: rgba(0, 0, 0, 0.9);
-        display: none;
-        height: 100%;
-        justify-content: center;
-        left: 0;
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 4000;
-      }
-
-      #lightbox img { border-radius: 8px; max-height: 90%; max-width: 90%; }
     </style>
   </head>
 
   <body id="top">
+    <!-- SVG Sprite -->
     <svg width="0" height="0" class="hidden">
+      <symbol viewBox="0 0 24 24" id="icon-download-cloud" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path><path d="M12 12v9"></path><path d="m8 17 4 4 4-4"></path></symbol>
       <symbol viewBox="0 0 24 24" id="icon-car" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><path d="M9 17h6"></path><circle cx="17" cy="17" r="2"></circle></symbol>
       <symbol viewBox="0 0 24 24" id="icon-map" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"></path></symbol>
       <symbol viewBox="0 0 24 24" id="icon-phone" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></symbol>
+      <symbol viewBox="0 0 24 24" id="icon-tv" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="15" x="2" y="7" rx="2"></rect><path d="m17 2-5 5-5-5"></path></symbol>
+      <symbol viewBox="0 0 24 24" id="icon-utensils" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"></path><path d="M7 2v20"></path><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"></path></symbol>
       <symbol viewBox="0 0 24 24" id="icon-wifi" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h.01"></path><path d="M2 8.82a15 15 0 0 1 20 0"></path><path d="M5 12.859a10 10 0 0 1 14 0"></path><path d="M8.5 16.429a5 5 0 0 1 7 0"></path></symbol>
       <symbol viewBox="0 0 24 24" id="icon-heart" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"></path></symbol>
     </svg>
 
     <header>
       <div class="top-bar">
-        <button id="install-button" class="lang-btn" style="display:none; border-color: var(--link); color: var(--link);">
+        <button id="install-button" class="install-btn-top">
+          <svg class="btn-icon"><use href="#icon-download-cloud"></use></svg>
           <span lang="de">App installieren</span>
           <span lang="en">Install App</span>
         </button>
@@ -276,8 +289,10 @@
         <div class="section-label" lang="en">Offer</div>
         <div class="price-tag">35 € <span style="font-size: 0.9rem; font-weight: 400" lang="de">/ Nacht pro Person</span><span style="font-size: 0.9rem; font-weight: 400" lang="en">/ night per person</span></div>
         <ul>
-          <li><svg class="icon icon-success"><use href="#icon-wifi"></use></svg> <span lang="de">Starlink - Highspeed-Internet</span><span lang="en">Starlink - High-Speed Internet</span></li>
-          <li><svg class="icon icon-success"><use href="#icon-car"></use></svg> <span lang="de">Parkplätze direkt vorm Haus</span><span lang="en">Parking right in front</span></li>
+          <li><svg class="btn-icon"><use href="#icon-wifi"></use></svg> <span lang="de">Starlink - Highspeed-Internet</span><span lang="en">Starlink - High-Speed Internet</span></li>
+          <li><svg class="btn-icon"><use href="#icon-utensils"></use></svg> <span lang="de">Voll ausgestattete Küche</span><span lang="en">Fully equipped kitchen</span></li>
+          <li><svg class="btn-icon"><use href="#icon-tv"></use></svg> <span lang="de">TV & YouTube Premium</span><span lang="en">TV & YouTube Premium</span></li>
+          <li><svg class="btn-icon"><use href="#icon-car"></use></svg> <span lang="de">Parkplätze direkt vorm Haus</span><span lang="en">Parking right in front</span></li>
         </ul>
       </section>
 
@@ -287,7 +302,7 @@
           <div class="section-label" lang="en">Contact</div>
           <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-top: 0.5rem">
             <a href="https://wa.me/436801610618?text=Hallo" class="btn-primary btn-whatsapp" target="_blank">WhatsApp</a>
-            <a href="tel:+436801610618" class="btn-primary btn-call"><svg class="icon" style="color:white"><use href="#icon-phone"></use></svg> +43 680 1610618</a>
+            <a href="tel:+436801610618" class="btn-primary btn-call"><svg class="btn-icon" style="color:white"><use href="#icon-phone"></use></svg> +43 680 1610618</a>
           </div>
         </section>
 
@@ -309,14 +324,20 @@
         </section>
       </aside>
 
-      <section class="card" style="grid-column: 1/-1">
+      <section class="card" style="grid-column:1/-1">
         <div lang="de">
-            <h2 style="font-size:1.2rem;margin-bottom:.5rem">Wohnung für Arbeiter und Berufsreisende</h2>
-            <p style="font-size:.9rem;color:var(--accent-soft)">Nähe Autobahn A1. Ideal für Linz, Enns und Steyr.</p>
+            <h2 style="font-size:1.2rem;margin-bottom:.5rem">Unterkunft für Arbeiter und Berufsreisende</h2>
+            <div style="font-size:.9rem;color:var(--accent-soft)">
+                <p>Das <strong>Gästehaus 22</strong> ist spezialisiert auf die Bedürfnisse von Firmen. Nähe Autobahn A1 (Abfahrt Asten/St. Florian). Industriegebiete in <strong>Linz, Enns, Steyr und St. Valentin</strong> sind in wenigen Minuten erreichbar.</p>
+                <p style="margin-top:10px">Stabile Einzelbetten, voll ausgestattete Gemeinschaftsküche und schnelles WLAN.</p>
+            </div>
         </div>
         <div lang="en">
-            <h2 style="font-size:1.2rem;margin-bottom:.5rem">Apartment for workers and business travelers</h2>
-            <p style="font-size:.9rem;color:var(--accent-soft)">Near A1 motorway. Ideal for Linz, Enns and Steyr.</p>
+            <h2 style="font-size:1.2rem;margin-bottom:.5rem">Accommodation for workers and business travelers</h2>
+            <div style="font-size:.9rem;color:var(--accent-soft)">
+                <p><strong>Gästehaus 22</strong> specializes in the needs of companies. Near A1 motorway (exit Asten/St. Florian). Industrial areas in <strong>Linz, Enns, Steyr, and St. Valentin</strong> reachable within minutes.</p>
+                <p style="margin-top:10px">Stable single beds, fully equipped shared kitchen, and high-speed Wi-Fi.</p>
+            </div>
         </div>
       </section>
 
@@ -328,18 +349,29 @@
     </main>
 
     <footer>
+        <div class="footer-nav">
+            <span onclick='toggleModal("legal")' lang="de">Impressum</span> 
+            <span onclick='toggleModal("legal")' lang="en">Legal Notice</span> 
+            <span onclick='toggleModal("privacy")' lang="de">Datenschutz</span> 
+            <span onclick='toggleModal("privacy")' lang="en">Privacy</span>
+        </div>
         <p>© 2026 Gästehaus 22 – 4481 Asten</p>
-        <p style="margin-top: 10px; font-size: 0.8rem; color: #888;">
-          <span onclick='toggleModal("legal")' style="cursor:pointer; text-decoration: underline;">Impressum</span> | 
-          <span onclick='toggleModal("privacy")' style="cursor:pointer; text-decoration: underline;">Datenschutz</span>
-        </p>
     </footer>
 
+    <!-- Modals -->
     <div id="modal-legal" class="modal" onclick="closeModals(event)">
       <div class="modal-content">
         <h2 lang="de">Impressum</h2>
         <h2 lang="en">Legal Notice</h2>
-        <p style="margin-top:1rem">Gästehaus 22<br>Eichenstraße 22, 4481 Asten</p>
+        <p style="margin-top:1rem">Gästehaus 22<br>Eichenstraße 22, 4481 Asten, Österreich</p>
+      </div>
+    </div>
+
+    <div id="modal-privacy" class="modal" onclick="closeModals(event)">
+      <div class="modal-content">
+        <h2 lang="de">Datenschutz</h2>
+        <h2 lang="en">Privacy Policy</h2>
+        <p style="margin-top:1rem">Wir nutzen keine Tracking-Cookies. Die Standortabfrage erfolgt nur auf Ihren Klick hin lokal im Browser.</p>
       </div>
     </div>
 
@@ -348,11 +380,12 @@
     </div>
 
     <script>
-      // Konfiguration
       const TARGET = { lat: 48.223023, lon: 14.4182762 };
       const images = [
-          { src: 'bedrooms.webp', thumb: 'bedrooms553x737.webp', alt: 'Zimmer' },
-          { src: 'kitchen.webp', thumb: 'kitchen-553x736.webp', alt: 'Küche' }
+          { src: 'bedrooms.webp', thumb: 'bedrooms553x737.webp', alt: 'Schlafzimmer' },
+          { src: 'livingroom.webp', thumb: 'livingroom-553x425.webp', alt: 'Wohnzimmer' },
+          { src: 'kitchen.webp', thumb: 'kitchen-553x736.webp', alt: 'Küche' },
+          { src: 'bathroom.webp', thumb: 'bathroom-553x415.webp', alt: 'Badezimmer' }
       ];
 
       function setLang(lang) {
@@ -371,7 +404,6 @@
         if (e.target.classList.contains('modal')) e.target.style.display = 'none';
       }
 
-      // Galerie laden
       document.addEventListener('DOMContentLoaded', () => {
         const container = document.getElementById('gallery-container');
         images.forEach(img => {
@@ -379,54 +411,42 @@
           div.className = 'gallery-item';
           div.innerHTML = `<img src="${img.thumb}" alt="${img.alt}" loading="lazy">`;
           div.onclick = () => {
-            const lb = document.getElementById('lightbox');
             document.getElementById('lightbox-img').src = img.src;
-            lb.style.display = 'flex';
+            document.getElementById('lightbox').style.display = 'flex';
           };
           container.appendChild(div);
         });
       });
 
-      // Navigation
       function openNavigation() {
         const addr = encodeURIComponent('Gästehaus 22, Eichenstraße 22, 4481 Asten');
-        const url = /iPad|iPhone|iPod/.test(navigator.userAgent) 
-                    ? `maps://maps.apple.com/?daddr=${addr}` 
-                    : `https://www.google.com/maps/dir/?api=1&destination=${addr}`;
+        const url = /iPad|iPhone|iPod/.test(navigator.userAgent) ? `maps://maps.apple.com/?daddr=${addr}` : `https://www.google.com/maps/dir/?api=1&destination=${addr}`;
         window.open(url, '_blank');
       }
 
-      // Distanz
       document.getElementById('check-dist-btn').addEventListener('click', function() {
         const info = document.getElementById('dist-info');
         info.style.display = 'block';
-        info.innerText = document.documentElement.lang === 'de' ? 'Suche Standort...' : 'Locating...';
-
+        info.innerText = document.documentElement.lang === 'de' ? 'Ermittle Standort...' : 'Locating...';
+        
         navigator.geolocation.getCurrentPosition(pos => {
           const R = 6371;
           const dLat = (TARGET.lat - pos.coords.latitude) * Math.PI / 180;
           const dLon = (TARGET.lon - pos.coords.longitude) * Math.PI / 180;
           const a = Math.sin(dLat/2)**2 + Math.cos(pos.coords.latitude * Math.PI/180) * Math.cos(TARGET.lat * Math.PI/180) * Math.sin(dLon/2)**2;
           const d = R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-          info.innerHTML = `<strong>${d.toFixed(1)} km</strong> ` + (document.documentElement.lang === 'de' ? 'von dir entfernt' : 'away from you');
-        }, () => {
-          info.innerText = document.documentElement.lang === 'de' ? 'Standort nicht freigegeben' : 'Location error';
-        });
+          info.innerHTML = `<strong>${d.toFixed(1)} km</strong>`;
+        }, () => { info.innerText = 'Standort-Fehler'; });
       });
 
-      // PWA Prompt
       let deferredPrompt;
       window.addEventListener('beforeinstallprompt', e => {
         e.preventDefault();
         deferredPrompt = e;
-        document.getElementById('install-button').style.display = 'block';
+        document.getElementById('install-button').style.display = 'flex';
       });
-
       document.getElementById('install-button').addEventListener('click', () => {
-        if (deferredPrompt) {
-          deferredPrompt.prompt();
-          deferredPrompt = null;
-        }
+        if (deferredPrompt) { deferredPrompt.prompt(); deferredPrompt = null; }
       });
     </script>
   </body>
