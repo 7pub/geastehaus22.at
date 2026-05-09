@@ -124,7 +124,7 @@
                 <li><svg class="btn-icon"> <use href="#icon-car"></use> </svg> <span lang="de">Parkplätze direkt vorm Haus</span><span lang="en">Parking right in front</span></li>
             </ul>
         </section>
-        <aside style="display:flex;flex-direction:column;gap:1.5rem">
+        <!--<aside style="display:flex;flex-direction:column;gap:1.5rem">
             <section class="card">
                 <div class="section-label" lang="de">Kontakt</div>
                 <div class="section-label" lang="en">Contact</div>
@@ -153,8 +153,34 @@
                     <span
                         lang="de">Route anzeigen</span><span lang="en">Get directions</span> </button>
             </section>
-        </aside>
-        <section class="gallery-section card" style="grid-column:1/-1">
+        </aside>-->
+        <aside style="display: flex; flex-direction: column; gap: 1.5rem">
+            <section class="card">
+                <div class="section-label" lang="de">Kontakt</div>
+                <div class="section-label" lang="en">Contact</div>
+                <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-top: 0.5rem"> <a
+                        href="https://wa.me/436801610618?text=Hallo" class="btn-primary btn-whatsapp" target="_blank"
+                        rel="noopener">WhatsApp</a> <a href="sms:+436801610618?body=Hallo"
+                        class="btn-primary btn-rcs"><svg class="btn-icon" style="color:white">
+                            <use href="#icon-message-square"></use>
+                        </svg> RCS Nachricht</a> <a href="tel:+436801610618" class="btn-primary btn-call"><svg
+                            class="btn-icon" style="color:white">
+                            <use href="#icon-phone"></use>
+                        </svg> +43 680 1610618</a> </div>
+            </section>
+            <section class="card">
+                <div class="section-label" lang="de">Lage</div>
+                <div class="section-label" lang="en">Location</div>
+                <p><strong>Gästehaus 22</strong><br />Eichenstraße 22<br />4481 Asten, Austria</p>
+                <div id="location-wrapper" style="margin-top: 1rem"> <button id="check-dist-btn" class="btn-primary"
+                        style="background: none; border: 2px solid var(--link); color: var(--link); font-size: 0.85rem;">
+                        <span lang="de">Wie weit ist es von mir?</span><span lang="en">How far is it from me?</span>
+                    </button>
+                    <div id="dist-info"></div>
+                </div> <button onclick="openNavigation()" class="btn-primary btn-nav" style="margin-top: 1rem"> <span
+                        lang="de">Route anzeigen</span><span lang="en">Get directions</span> </button>
+            </section>
+        </aside><section class="gallery-section card" style="grid-column:1/-1">
             <div class="section-label">Galerie</div>
             <div class="gallery-grid" id="gallery-container"></div>
         </section>
