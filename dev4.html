@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt & Standort</title>
+    <!-- Lucide Icons für das Design -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary-color: #25d366;
+            --bg-card: #ffffff;
+            --text-main: #333;
+            --border-radius: 12px;
+        }
+
+        body { font-family: sans-serif; background-color: #f4f4f9; padding: 20px; }
+
+        .card {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .section-label { font-weight: bold; font-size: 0.9rem; color: #666; text-transform: uppercase; }
+
+        .btn-primary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .btn-whatsapp { background-color: #25d366; color: white; }
+        .btn-rcs { background-color: #1a73e8; color: white; }
+        .btn-call { background-color: #f0f0f0; color: #333; }
+
+        /* Standort-Bereich */
+        #location-container {
+            margin-top: 1rem;
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        input[type="text"] {
+            flex-grow: 1;
+            padding: 0.6rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            outline: none;
+        }
+
+        .status-text { font-size: 0.85rem; color: #666; font-style: italic; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+<aside class="card">
+    <div class="section-label">Kontakt</div>
+    
+    <!-- WhatsApp mit vordefiniertem Text -->
+    <a href="https://wa.me/436801610618?text=Anfrage%20Zimmer" class="btn-primary btn-whatsapp" target="_blank">
+        <i data-lucide="message-circle"></i> WhatsApp
+    </a>
+
+    <!-- RCS/SMS -->
+    <a href="sms:+436801610618?body=Anfrage%20Zimmer" class="btn-primary btn-rcs">
+        <i data-lucide="message-square"></i> RCS Nachricht
+    </a>
+
+    <!-- Telefon -->
+    <a href="tel:+436801610618" class="btn-primary btn-call">
+        <i data-lucide="phone"></i> +43 680 1610618
+    </a>
+
+    <!-- Standort Sektion -->
+    <div id="location-container">
+        <div id="location-loader">
+            <span class="status-text" id="status-msg">Ermittle Standort...</span>
+        </div>
+
+        <!-- Manuelle Eingabe (initial versteckt) -->
+        <div id="manual-location" class="hidden">
+            <span class="status-text">Standort nicht gefunden. Bitte manuell eingeben:</span>
+            <div class="input-group">
+                <input type="text" id="city-input" placeholder="Ort oder PLZ...">
+                <button onclick="handleManualSubmit()" class="btn-primary btn-call" style="padding: 0.6rem 1rem;">OK</button>
+            </div>
+        </div>
+    </div>
+</aside>
+
+<script>
+    // Icons initialisieren
+    lucide.createIcons();
+
+    function initGeolocation() {
+        const statusMsg = document.getElementById('status-msg');
+        const loader = document.getElementById('location-loader');
+        const manualDiv = document.getElementById('manual-location');
+
+        if (!navigator.geolocation) {
+            showManualForm();
+            return;
+        }
+
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                // Erfolg
+                statusMsg.innerText = "Standort erkannt!";
+                console.log("Lat:", position.coords.latitude, "Lon:", position.coords.longitude);
+                // Hier könnte man eine Wetter-API oder Map-API aufrufen
+            },
+            (error) => {
+                // Fehler oder Zeitüberschreitung
+                console.warn("Geolocation Fehler:", error.message);
+                showManualForm();
+            },
+            {
+                enableHighAccuracy: true,
+                timeout: 5000, // 5 Sekunden bis zum Fallback
+                maximumAge: 0
+            }
+        );
+
+        function showManualForm() {
+            loader.classList.add('hidden');
+            manualDiv.classList.remove('hidden');
+        }
+    }
+
+    function handleManualSubmit() {
+        const val = document.getElementById('city-input').value;
+        if (val) {
+            alert("Suche für: " + val);
+            // Hier die Logik zur Verarbeitung des manuellen Standorts
+        }
+    }
+
+    // Starte die Abfrage beim Laden
+    window.onload = initGeolocation;
+</script>
+
+</body>
+</html>
