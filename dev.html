@@ -412,7 +412,8 @@
     </style>
 </head>
 
-<body id="top"> <!-- SVG Icon Bibliothek --> <svg width="0" height="0" class="hidden">
+<body id="top"> <!-- SVG Icon Bibliothek --> 
+    <svg width="0" height="0" class="hidden">
         <symbol viewBox="0 0 24 24" id="icon-download-cloud" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path>
             <path d="M12 12v9"></path>
@@ -457,10 +458,13 @@
         </symbol>
     </svg>
     <header>
-        <div class="top-bar"> <button id="install-button" class="install-btn-top" aria-label="App installieren"> <svg
-                    class="btn-icon" style="color:var(--link)">
-                    <use href="#icon-download-cloud"></use>
-                </svg> <span lang="de">App</span><span lang="en">Install</span> </button>
+        <div class="top-bar"> 
+            <button id="install-button" class="install-btn-top" aria-label="App installieren"> 
+            <svg class="btn-icon" style="color:var(--link)">
+                <use href="#icon-download-cloud"></use>
+            </svg> 
+            <span lang="de">App</span><span lang="en">Install</span> 
+            </button>
             <div class="lang-switch"> <button class="lang-btn active" id="btn-de" onclick="setLang('de')"
                     aria-label="Deutsch">DE</button> <button class="lang-btn" id="btn-en" onclick="setLang('en')"
                     aria-label="English">EN</button> </div>
