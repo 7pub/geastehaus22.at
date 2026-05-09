@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Gästehaus 22 Asten</title>
+    <style>
+        :root {
+            --bg: #f5f5f5;
+            --card: #fff;
+            --accent: #222;
+            --link: #007bff;
+            --font-main: system-ui, -apple-system, sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background: var(--bg);
+            color: #111;
+            font-family: var(--font-main);
+            line-height: 1.6;
+        }
+
+        /* --- SPRACH-LOGIK (KORRIGIERT) --- */
+        
+        /* 1. Verstecke standardmäßig ALLES, was englisch ist */
+        [lang='en'] {
+            display: none !important;
+        }
+
+        /* 2. Wenn der Body die Klasse 'lang-en' hat: */
+        /* Verstecke Deutsch */
+        body.lang-en [lang='de'] {
+            display: none !important;
+        }
+
+        /* Zeige Englisch (Block-Elemente wie h1, p, div) */
+        body.lang-en [lang='en'] {
+            display: block !important;
+        }
+
+        /* Zeige Englisch (Inline-Elemente wie span, strong) */
+        body.lang-en span[lang='en'], 
+        body.lang-en strong[lang='en'], 
+        body.lang-en b[lang='en'] {
+            display: inline !important;
+        }
+
+        /* Zeige Englisch (Listen-Elemente) */
+        body.lang-en li[lang='en'] {
+            display: list-item !important;
+        }
+
+        /* --- STYLING --- */
+        header { background: #fff; padding: 2rem; text-align: center; border-bottom: 1px solid #ddd; }
+        .lang-switch { margin-top: 1rem; }
+        .lang-btn { 
+            padding: 0.5rem 1rem; cursor: pointer; border: 1px solid #ccc; background: #fff; 
+            font-weight: bold; border-radius: 4px;
+        }
+        .lang-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+        .card { background: #fff; margin: 2rem auto; max-width: 600px; padding: 2rem; border-radius: 12px; shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body id="top">
+
+    <header>
+        <div class="lang-switch">
+            <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
+            <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+        </div>
+        
+        <h1 lang="de">Monteurzimmer in Asten</h1>
+        <h1 lang="en">Worker Rooms in Asten</h1>
+    </header>
+
+    <main>
+        <section class="card">
+            <h2 lang="de">Willkommen</h2>
+            <h2 lang="en">Welcome</h2>
+            
+            <p lang="de">Günstige Zimmer für Arbeiter und Monteure.</p>
+            <p lang="en">Affordable rooms for workers and contractors.</p>
+
+            <ul>
+                <li lang="de">Gratis WLAN</li>
+                <li lang="en">Free Wi-Fi</li>
+                <li lang="de">Parkplätze</li>
+                <li lang="en">Parking spots</li>
+            </ul>
+        </section>
+    </main>
+
+    <script>
+        function setLang(lang) {
+            // 1. Setze das lang-Attribut im HTML Tag (gut für SEO/Browser)
+            document.documentElement.lang = lang;
+
+            // 2. Klasse am Body umschalten
+            if (lang === 'en') {
+                document.body.classList.add('lang-en');
+            } else {
+                document.body.classList.remove('lang-en');
+            }
+
+            // 3. Button-Styling aktualisieren
+            document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            
+            console.log("Sprache gewechselt zu: " + lang);
+            console.log("Body Klassen: " + document.body.className);
+        }
+    </script>
+</body>
+</html>
