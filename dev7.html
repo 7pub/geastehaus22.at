@@ -283,6 +283,14 @@
             right: 1.5rem;
             top: 1rem;
         }
+        .email-protected {
+            cursor: pointer;
+            text-decoration: underline;
+            color: var(--link);
+        }
+        .email-protected:hover {
+            opacity: 0.8;
+        }
     </style>
 </head>
 <body id="top">
@@ -478,55 +486,16 @@
                 Inhaber: Karl Achleitner<br />
                 Eichenstraße 22<br />
                 4481 Asten, Österreich</p>
-              <!--<p style="margin-top:1rem">Telefon: 
-                <a href="tel:+436801610618">+43 680 1610618</a><br/>
-                E-Mail: <a href="mailto:office@gaestehaus22.at">office@gaestehaus22.at</a></p>-->
+            <!--<p style="margin-top:1rem">Telefon: 
+                    <a href="tel:+436801610618">+43 680 1610618</a><br/>
+                    E-Mail: <a href="mailto:office@gaestehaus22.at">office@gaestehaus22.at</a></p>-->
                 <!-- Die elegantere Lösung mit CSS+HTML Kombination -->
-<p style="margin-top:1rem">
-    Telefon: <a href="tel:+436801610618">+43 680 1610618</a><br/>
-    E-Mail: 
-    <a href="#" id="email-link" class="email-protected" data-user="info" data-domain="gaestehaus22" data-tld="at">
-        E-Mail anzeigen (klicken)
-    </a>
-</p>
-
-<style>
-    .email-protected {
-        cursor: pointer;
-        text-decoration: underline;
-        color: var(--link);
-    }
-    .email-protected:hover {
-        opacity: 0.8;
-    }
-</style>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const emailLink = document.getElementById('email-link');
-        
-        if (emailLink) {
-            emailLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // Daten aus data-Attributen zusammensetzen
-                const user = this.getAttribute('data-user');
-                const domain = this.getAttribute('data-domain');
-                const tld = this.getAttribute('data-tld');
-                const email = `${user}@${domain}.${tld}`;
-                
-                // E-Mail als Klartext anzeigen und als mailto-Link ersetzen
-                this.textContent = email;
-                this.href = `mailto:${email}`;
-                this.style.cursor = 'auto';
-                this.style.textDecoration = 'none';
-                
-                // Entferne den Event-Listener nach dem ersten Klick
-                this.removeEventListener('click', arguments.callee);
-            });
-        }
-    });
-</script>
+                <p style="margin-top:1rem">
+                    Telefon: <a href="tel:+436801610618">
+                    +43 680 1610618</a><br/>
+                    E-Mail: <a href="#" id="email-link" class="email-protected" data-user="info" data-domain="gaestehaus22" data-tld="at">
+                    E-Mail anzeigen (klicken)</a>
+                </p>
             </div>
         </div>
     </div>
@@ -553,34 +522,28 @@
                 { src: 'bathroom.webp',    thumb: 'bathroom-553x415.webp',   alt: 'Badezimmer'   }
             ]
         };
-
         function setLang(lang) {
             document.body.classList.toggle('lang-en', lang === 'en');
             document.getElementById('btn-de').classList.toggle('active', lang === 'de');
             document.getElementById('btn-en').classList.toggle('active', lang === 'en');
         }
-
         function toggleModal(id) {
             const m = document.getElementById('modal-' + id);
             const isOpen = m.style.display === 'flex';
             m.style.display = isOpen ? 'none' : 'flex';
         }
-
         function closeModals(e) {
             if (e.target.classList.contains('modal')) e.target.style.display = 'none';
         }
-
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
                 document.getElementById('lightbox').style.display = 'none';
             }
         });
-
         function openNavigation() {
             window.open('https://www.google.com/maps/dir/?api=1&destination=Eichenstraße+22,+4481+Asten', '_blank');
         }
-
         document.getElementById('check-dist-btn').addEventListener('click', () => {
             const distInfo = document.getElementById('dist-info');
             if (!navigator.geolocation) {
@@ -609,7 +572,6 @@
                 }
             );
         });
-
         document.addEventListener('DOMContentLoaded', () => {
             const container = document.getElementById('gallery-container');
             const lb  = document.getElementById('lightbox');
@@ -633,7 +595,6 @@
                 container.appendChild(div);
             });
         });
-
         let deferredPrompt;
         const installBtn = document.getElementById('install-button');
         window.addEventListener('beforeinstallprompt', (e) => {
@@ -641,7 +602,6 @@
             deferredPrompt = e;
             installBtn.style.display = 'flex';
         });
-
         installBtn.addEventListener('click', async () => {
             if (deferredPrompt) {
                 deferredPrompt.prompt();
@@ -649,7 +609,6 @@
                 installBtn.style.display = 'none';
             }
         });
-
         window.addEventListener('appinstalled', () => {
             installBtn.style.display = 'none';
         });
@@ -661,6 +620,23 @@
                     .catch(err => console.log('SW Fehler', err));
             });
         }
+            document.addEventListener('DOMContentLoaded', function() {
+                const emailLink = document.getElementById('email-link');
+                if (emailLink) {
+                    emailLink.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const user = this.getAttribute('data-user');
+                        const domain = this.getAttribute('data-domain');
+                        const tld = this.getAttribute('data-tld');
+                        const email = `${user}@${domain}.${tld}`;
+                                        this.textContent = email;
+                                        this.href = `mailto:${email}`;
+                                        this.style.cursor = 'auto';
+                                        this.style.textDecoration = 'none';
+                                        this.removeEventListener('click', arguments.callee);
+                    });
+                }
+            });
     </script>
 </body>
 </html>
