@@ -622,18 +622,13 @@
             const extension = this.getAttribute('data-extension');
             const email = `${contact}@${server}.${extension}`;
             
-            // Öffne Standard-E-Mail-Programm
             window.location.href = `mailto:${email}`;
         });
     });
 
-    // Erweiterte Version mit hexadezimaler Verschlüsselung (korrigierte Telefonnummer)
 (function() {
-    // Hexadezimal kodierte Kontaktdaten
     const encodedData = {
-        // +43 664 2440625
         phone: ['2b', '34', '33', '20', '36', '36', '34', '20', '32', '34', '34', '30', '36', '32', '35'],
-        // info@gaestehaus22.at
         email: {
             user: ['69', '6e', '66', '6f'],
             domain: ['67', '61', '65', '73', '74', '65', '68', '61', '75', '73', '32', '32'],
