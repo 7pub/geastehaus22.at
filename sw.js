@@ -3,10 +3,14 @@ const ASSETS = [
   './',
   './index.html',
   './Logo.webp',
-  encodeURI('./bedrooms.webp'),
-  encodeURI('./livingroom.webp'),
-  encodeURI('./kitchen.webp'),
-  encodeURI('./bathroom.webp')
+  './bedrooms.webp',
+  './livingroom.webp',
+  './kitchen.webp',
+  './bathroom.webp',
+  './bedrooms553x737.webp',
+  './livingroom-553x425.webp',
+  './kitchen-553x736.webp',
+  './bathroom-553x415.webp'
 ];
 
 const MARKDOWN_CONTENT = `# Gästehaus 22 Asten | Monteurzimmer & Arbeiterunterkunft Linz
