@@ -615,57 +615,17 @@
                     .catch(err => console.log('SW Fehler', err));
             });
         }
-        (function() {
-            const encodedData = {
-                phone: ['2b', '34', '33', '20', '36', '36', '34', '20', '32', '34', '34', '30', '36', '32', '35'],
-                email: {
-                    user: ['69', '6e', '66', '6f'],
-                    domain: ['67', '61', '65', '73', '74', '65', '68', '61', '75', '73', '32', '32'],
-                    tld: ['61', '74']
-                }
-            };
-            function decodeHex(arr) {
-                return arr.map(code => String.fromCharCode(parseInt(code, 16))).join('');
-            }
-            function buildPhoneNumber() {
-                return decodeHex(encodedData.phone);
-            }
-            function buildEmail() {
-                const user = decodeHex(encodedData.email.user);
-                const domain = decodeHex(encodedData.email.domain);
-                const tld = decodeHex(encodedData.email.tld);
-                return `${user}@${domain}.${tld}`;
-            }
-            function insertPhone(containerId) {
-                const container = document.getElementById(containerId);
-                if (container) {
-                    const phoneNumber = buildPhoneNumber();
-                    const phoneLink = document.createElement('a');
-                    const cleanPhone = phoneNumber.replace(/\s/g, '');
-                    phoneLink.href = `tel:${cleanPhone}`;
-                    phoneLink.textContent = phoneNumber;
-                    phoneLink.style.color = 'var(--link)';
-                    phoneLink.style.textDecoration = 'underline';
-                    container.appendChild(phoneLink);
-                }
-            }
-            function insertEmail(containerId) {
-                const container = document.getElementById(containerId);
-                if (container) {
-                    const email = buildEmail();
-                    const emailLink = document.createElement('a');
-                    emailLink.href = `mailto:${email}`;
-                    emailLink.textContent = email;
-                    emailLink.style.color = 'var(--link)';
-                    emailLink.style.textDecoration = 'underline';
-                    container.appendChild(emailLink);
-                }
-            }
-            document.addEventListener('DOMContentLoaded', function() {
-                insertPhone('impressum-phone');
-                insertEmail('impressum-email');
-            });
-        })();
+            document.querySelectorAll('.email-obfuscated').forEach(el => {
+        el.addEventListener('click', function() {
+            const contact = this.getAttribute('data-contact');
+            const server = this.getAttribute('data-server');
+            const extension = this.getAttribute('data-extension');
+            const email = `${contact}@${server}.${extension}`;
+            
+            // Öffne Standard-E-Mail-Programm
+            window.location.href = `mailto:${email}`;
+        });
+    });
     </script>
 </body>
 </html>
