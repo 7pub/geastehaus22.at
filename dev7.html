@@ -478,9 +478,55 @@
                 Inhaber: Karl Achleitner<br />
                 Eichenstraße 22<br />
                 4481 Asten, Österreich</p>
-              <p style="margin-top:1rem">Telefon: 
+              <!--<p style="margin-top:1rem">Telefon: 
                 <a href="tel:+436801610618">+43 680 1610618</a><br/>
-                E-Mail: <a href="mailto:office@gaestehaus22.at">office@gaestehaus22.at</a></p>
+                E-Mail: <a href="mailto:office@gaestehaus22.at">office@gaestehaus22.at</a></p>-->
+                <!-- Die elegantere Lösung mit CSS+HTML Kombination -->
+<p style="margin-top:1rem">
+    Telefon: <a href="tel:+436801610618">+43 680 1610618</a><br/>
+    E-Mail: 
+    <a href="#" id="email-link" class="email-protected" data-user="info" data-domain="gaestehaus22" data-tld="at">
+        E-Mail anzeigen (klicken)
+    </a>
+</p>
+
+<style>
+    .email-protected {
+        cursor: pointer;
+        text-decoration: underline;
+        color: var(--link);
+    }
+    .email-protected:hover {
+        opacity: 0.8;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const emailLink = document.getElementById('email-link');
+        
+        if (emailLink) {
+            emailLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Daten aus data-Attributen zusammensetzen
+                const user = this.getAttribute('data-user');
+                const domain = this.getAttribute('data-domain');
+                const tld = this.getAttribute('data-tld');
+                const email = `${user}@${domain}.${tld}`;
+                
+                // E-Mail als Klartext anzeigen und als mailto-Link ersetzen
+                this.textContent = email;
+                this.href = `mailto:${email}`;
+                this.style.cursor = 'auto';
+                this.style.textDecoration = 'none';
+                
+                // Entferne den Event-Listener nach dem ersten Klick
+                this.removeEventListener('click', arguments.callee);
+            });
+        }
+    });
+</script>
             </div>
         </div>
     </div>
