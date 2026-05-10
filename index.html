@@ -45,7 +45,7 @@
             --bg: #f5f5f5;
             --card: #fff;
             --accent: #222;
-            --accent-soft: #666;
+            --accent-soft: #555;
             --font-main: system-ui, -apple-system, sans-serif;
             --success: #28a745;
             --whatsapp: #25d366;
@@ -326,7 +326,7 @@
     <header>
         <div class="top-bar">
             <button id="install-button" class="install-btn-top" aria-label="App installieren">
-                <svg class="btn-icon" style="color:var(--link)" aria-hidden="true">
+                <svg class="btn-icon" style="color:var(--success)" aria-hidden="true">
                     <use href="#icon-download-cloud"></use>
                 </svg>
                 <span lang="de">App</span>
@@ -395,9 +395,7 @@
                         </svg>
                         RCS Nachricht
                     </a>
-                    <a href="tel:+436801610618"
-                       class="btn-primary btn-call"
-                       aria-label="Jetzt anrufen: +43 680 1610618">
+                    <a href="tel:+436801610618" class="btn-primary btn-call" aria-label="Jetzt anrufen: +43 680 1610618">
                         <svg class="btn-icon" style="color:white" aria-hidden="true">
                             <use href="#icon-phone"></use>
                         </svg>
@@ -450,13 +448,19 @@
             <span class="close-modal" onclick="toggleModal('legal')" aria-label="Schließen">×</span>
             <h2 id="legal-title">Impressum</h2>
             <div class="modal-body-text">
-                <!-- FIX: Vollständiges Impressum nach § 5 ECG ergänzen -->
-                <p><strong>Gästehaus 22</strong><br />
+              <p><strong>Gästehaus 22</strong><br />
                 Eichenstraße 22<br />
                 4481 Asten, Österreich</p>
-                <p style="margin-top:1rem">Telefon: <a href="tel:+436801610618">+43 680 1610618</a></p>
-                <!-- Hier: Name des Inhabers, UID, Aufsichtsbehörde etc. ergänzen -->
+              <p>Privatzimmervermietung (Häusliche Nebenbeschäftigung)</p>
+              <p style="margin-top:1rem">Telefon: <a href="tel:+436801610618">+43 680 1610618</a><br>E-Mail: office@gaestehaus22.at</p>
             </div>
+                    <p style="margin-top:10px">
+            Built with
+            <svg class="heart-svg" width="16" height="16" aria-hidden="true">
+                <use href="#icon-heart"></use>
+            </svg>
+            by Karl
+        </p>
         </div>
     </div>
     <div id="modal-privacy" class="modal" onclick="closeModals(event)" role="dialog" aria-modal="true" aria-labelledby="privacy-title">
@@ -464,8 +468,8 @@
             <span class="close-modal" onclick="toggleModal('privacy')" aria-label="Schließen">×</span>
             <h2 id="privacy-title">Datenschutz</h2>
             <div class="modal-body-text">
-                <p>Diese Website setzt keine Cookies und verarbeitet keine personenbezogenen Daten,
-                   außer jenen, die Sie uns im Rahmen einer Kontaktaufnahme freiwillig mitteilen.</p>
+                <p>Diese Website setzt keine Cookies und verarbeitet keine personenbezogenen Daten.
+                   Bei Kontaktaufnahme wird lediglich die von Ihnen mitgeteilte Information verarbeitet.</p>
             </div>
         </div>
     </div>
@@ -475,39 +479,39 @@
         <img id="lightbox-img" onclick="event.stopPropagation()" alt="" />
     </div>
     <script>
-        if ('serviceWorker' in navigator) {
-            const swCode = `
-                const CACHE_NAME = 'gastehaus-v1';
-                const ASSETS = [
-                    './',
-                    './index.html',
-                    './Logo.webp',
-                    './bedrooms.webp',
-                    './livingroom.webp',
-                    './kitchen.webp',
-                    './bathroom.webp'
-                ];
-                self.addEventListener('install', (e) => {
-                    self.skipWaiting();
-                    e.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)));
-                });
-                self.addEventListener('activate', (e) => {
-                    e.waitUntil(
-                        caches.keys().then(keys =>
-                            Promise.all(keys.map(key => key !== CACHE_NAME && caches.delete(key)))
-                        )
-                    );
-                });
-                self.addEventListener('fetch', (e) => {
-                    e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
-                });
-            `;
-            const blob = new Blob([swCode], { type: 'text/javascript' });
-            const swUrl = URL.createObjectURL(blob);
-            navigator.serviceWorker.register(swUrl)
-                .then(() => console.log('SW registered'))
-                .catch(err => console.error('SW error:', err));
-        }
+        //if ('serviceWorker' in navigator) {
+        //    const swCode = `
+        //        const CACHE_NAME = 'gastehaus-v1';
+        //        const ASSETS = [
+        //            './',
+        //            './index.html',
+        //            './Logo.webp',
+        //            './bedrooms.webp',
+        //            './livingroom.webp',
+        //            './kitchen.webp',
+        //            './bathroom.webp'
+        //        ];
+        //        self.addEventListener('install', (e) => {
+        //            self.skipWaiting();
+        //            e.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)));
+        //        });
+        //        self.addEventListener('activate', (e) => {
+        //            e.waitUntil(
+        //                caches.keys().then(keys =>
+        //                    Promise.all(keys.map(key => key !== CACHE_NAME && caches.delete(key)))
+        //                )
+        //            );
+        //        });
+        //        self.addEventListener('fetch', (e) => {
+        //            e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
+        //        });
+        //    `;
+        //    const blob = new Blob([swCode], { type: 'text/javascript' });
+        //    const swUrl = URL.createObjectURL(blob);
+        //    navigator.serviceWorker.register(swUrl)
+        //        .then(() => console.log('SW registered'))
+        //        .catch(err => console.error('SW error:', err));
+        //}
         const images = {
             gallery: [
                 { src: 'bedrooms.webp',    thumb: 'bedrooms553x737.webp',    alt: 'Schlafzimmer' },
@@ -609,6 +613,13 @@
         window.addEventListener('appinstalled', () => {
             installBtn.style.display = 'none';
         });
+        if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js')
+                .then(reg => console.log('SW aktiv'))
+                .catch(err => console.log('SW Fehler', err));
+        });
+    }
     </script>
 </body>
 </html>
