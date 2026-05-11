@@ -2,7 +2,9 @@ const CACHE_NAME = 'gastehaus-v1';
 const ASSETS = [
   './',
   './index.html',
-  './Logo.webp',
+  './logo-gaestehaus22-210x210.webp',
+  './logo-gaestehaus22-288x288.webp',
+  './logo-gaestehaus22.webp',
   './bedrooms.webp',
   './livingroom.webp',
   './kitchen.webp',
