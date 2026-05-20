@@ -184,7 +184,16 @@ installBtn.addEventListener('click', async () => {
     }
 
     if (mode === 'open-as') {
-        alert('Die Seite ist bereits installiert. Öffne sie bitte aus dem Browser-Menü oder vom Startbildschirm als App.');
+        // Try to open via Android Intent (works on Chrome for Android)
+        try {
+            const host = window.location.hostname;
+            const path = window.location.pathname + window.location.search + window.location.hash;
+            const intentUrl = `intent://${host}${path}#Intent;scheme=https;action=android.intent.action.VIEW;end`;
+            window.location.href = intentUrl;
+        } catch (err) {
+            console.warn('Intent navigation failed', err);
+            alert('Öffnen als App nicht möglich.');
+        }
         return;
     }
 
