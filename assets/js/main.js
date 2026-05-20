@@ -5,23 +5,23 @@ if (window.self !== window.top) {
 const images = {
     gallery: [
         {
-            src: 'bedrooms.webp',
-            thumb: 'bedrooms553x737.webp',
+            src: 'assets/images/bedrooms.webp',
+            thumb: 'assets/images/bedrooms553x737.webp',
             alt: 'Schlafzimmer'
         },
         {
-            src: 'livingroom.webp',
-            thumb: 'livingroom-553x425.webp',
+            src: 'assets/images/livingroom.webp',
+            thumb: 'assets/images/livingroom-553x425.webp',
             alt: 'Wohnzimmer'
         },
         {
-            src: 'kitchen.webp',
-            thumb: 'kitchen-553x736.webp',
+            src: 'assets/images/kitchen.webp',
+            thumb: 'assets/images/kitchen-553x736.webp',
             alt: 'Küche'
         },
         {
-            src: 'bathroom.webp',
-            thumb: 'bathroom-553x415.webp',
+            src: 'assets/images/bathroom.webp',
+            thumb: 'assets/images/bathroom-553x415.webp',
             alt: 'Badezimmer'
         }
     ]
