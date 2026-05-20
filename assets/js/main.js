@@ -110,22 +110,97 @@ document.addEventListener('DOMContentLoaded', () => {
 
 let deferredPrompt;
 const installBtn = document.getElementById('install-button');
+const installLabelDe = installBtn.querySelector('.label-de');
+const installLabelEn = installBtn.querySelector('.label-en');
+
+function isPwaDisplayMode() {
+    return window.matchMedia('(display-mode: standalone)').matches ||
+        window.matchMedia('(display-mode: fullscreen)').matches ||
+        window.navigator.standalone === true;
+}
+
+async function isAppInstalled() {
+    if (localStorage.getItem('gaestehaus22-installed') === '1') {
+        return true;
+    }
+    if (navigator.getInstalledRelatedApps) {
+        try {
+            const relatedApps = await navigator.getInstalledRelatedApps();
+            if (relatedApps.length > 0) {
+                localStorage.setItem('gaestehaus22-installed', '1');
+                return true;
+            }
+        } catch (err) {
+            console.warn('getInstalledRelatedApps failed', err);
+        }
+    }
+    return false;
+}
+
+async function updateInstallButton() {
+    const standalone = isPwaDisplayMode();
+    const installed = await isAppInstalled();
+
+    if (standalone) {
+        installBtn.dataset.mode = 'close';
+        installLabelDe.textContent = 'Schließen';
+        installLabelEn.textContent = 'Close';
+    } else if (installed) {
+        installBtn.dataset.mode = 'open-as';
+        installLabelDe.textContent = 'Als App öffnen...';
+        installLabelEn.textContent = 'Open as...';
+    } else {
+        installBtn.dataset.mode = 'install';
+        installLabelDe.textContent = 'App';
+        installLabelEn.textContent = 'Install';
+    }
+
+    installBtn.style.display = 'flex';
+}
+
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
-    installBtn.style.display = 'flex';
+    updateInstallButton();
 });
 
 installBtn.addEventListener('click', async () => {
+    const mode = installBtn.dataset.mode;
+
+    if (mode === 'close') {
+        window.close();
+        return;
+    }
+
+    if (mode === 'open-as') {
+        alert('Die Seite ist bereits installiert. Öffne sie bitte aus dem Browser-Menü oder vom Startbildschirm als App.');
+        return;
+    }
+
     if (deferredPrompt) {
         deferredPrompt.prompt();
+        const choiceResult = await deferredPrompt.userChoice;
         deferredPrompt = null;
-        installBtn.style.display = 'none';
+        if (choiceResult.outcome === 'accepted') {
+            localStorage.setItem('gaestehaus22-installed', '1');
+        }
+        updateInstallButton();
+        return;
     }
+
+    alert('Die App kann über das Browser-Menü oder den Installationsbanner installiert werden.');
 });
 
 window.addEventListener('appinstalled', () => {
-    installBtn.style.display = 'none';
+    localStorage.setItem('gaestehaus22-installed', '1');
+    updateInstallButton();
+});
+
+window.addEventListener('load', updateInstallButton);
+window.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+        updateInstallButton();
+    }
 });
 
 if ('serviceWorker' in navigator) {
