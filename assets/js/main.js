@@ -155,6 +155,17 @@ async function updateInstallButton() {
         installLabelEn.textContent = 'Install';
     }
 
+    // swap icon according to mode
+    try {
+        const useEl = installBtn.querySelector('use');
+        if (useEl) {
+            if (standalone) useEl.setAttribute('href', '#lucide-x');
+            else useEl.setAttribute('href', '#lucide-icon-download-cloud');
+        }
+    } catch (err) {
+        console.warn('Could not swap install button icon', err);
+    }
+
     installBtn.style.display = 'flex';
 }
 
