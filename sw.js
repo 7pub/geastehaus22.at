@@ -1,7 +1,14 @@
-const CACHE_NAME = 'gastehaus-v1';
+const CACHE_NAME = 'gastehaus-v2';
 const ASSETS = [
   './',
   './index.html',
+  './404.html',
+  './offline.html',
+  './manifest.json',
+  './browserconfig.xml',
+  './assets/css/styles.css',
+  './assets/js/main.js',
+  './assets/js/404.js',
   './logo-gaestehaus22-210x210.webp',
   './logo-gaestehaus22-288x288.webp',
   './logo-gaestehaus22.webp',
@@ -12,7 +19,15 @@ const ASSETS = [
   './bedrooms553x737.webp',
   './livingroom-553x425.webp',
   './kitchen-553x736.webp',
-  './bathroom-553x415.webp'
+  './bathroom-553x415.webp',
+  './assets/icons/favicon.ico',
+  './assets/icons/favicon-16x16.png',
+  './assets/icons/favicon-32x32.png',
+  './assets/icons/apple-touch-icon.png',
+  './assets/icons/icon-192x192.png',
+  './assets/icons/icon-512x512.png',
+  './assets/icons/android-chrome-512x512.png',
+  './assets/icons/ms-icon-144x144.png'
 ];
 
 const MARKDOWN_CONTENT = `# Gästehaus 22 Asten | Monteurzimmer & Arbeiterunterkunft Linz
@@ -77,8 +92,16 @@ self.addEventListener('fetch', (e) => {
 
   // 2. Standard Network-First logic for everything else
   e.respondWith(
-    fetch(e.request).catch(() => {
-      return caches.match(e.request);
-    })
+    fetch(e.request)
+      .then((response) => response)
+      .catch(() => {
+        return caches.match(e.request).then((cachedResponse) => {
+          if (cachedResponse) return cachedResponse;
+          if (e.request.mode === 'navigate') {
+            return caches.match('./offline.html');
+          }
+          return null;
+        });
+      })
   );
 });

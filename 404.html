@@ -7,71 +7,12 @@
     <meta name="theme-color" content="#222222">
     <title>Seite nicht gefunden | Gästehaus 22 Asten</title>
     <link rel="manifest" href="/manifest.json">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" href="/favicon-32x32.png">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <style>
-        :root {
-            --bg: #f5f5f5;
-            --card: #ffffff;
-            --accent: #222222;
-            --accent-soft: #555555;
-            --font-main: system-ui, -apple-system, sans-serif;
-            --link: #007bff;
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: var(--font-main); background: var(--bg); color: #111; line-height: 1.6; }
-        [lang="en"] { display: none; }
-        body.lang-en [lang="de"] { display: none; }
-        body.lang-en [lang="en"] { display: block; }
-        
-        header { padding: 5rem 1.5rem 2rem; text-align: center; background: #fff; border-bottom: 1px solid #e3e3e3; position: relative; }
-        .top-bar { position: absolute; top: 1.5rem; left: 1.5rem; right: 1.5rem; display: flex; justify-content: space-between; align-items: center; }
-        
-        .install-btn-top { display: none; padding: 0.5rem 0.8rem; background: white; border: 1px solid var(--link); color: var(--link); border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.85rem; }
-        .lang-switch { display: flex; gap: 0.5rem; }
-        .lang-btn { padding: 0.5rem 0.8rem; border: 1px solid #ddd; background: white; border-radius: 8px; cursor: pointer; font-size: 0.85rem; font-weight: 700; }
-        .lang-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
-        
-        .logo-img { width: 120px; height: 120px; border-radius: 50%; margin-bottom: 1rem; box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
-        h1 { font-size: clamp(1.6rem, 5vw, 2.2rem); line-height: 1.2; }
-        .subtitle { color: var(--accent-soft); }
-        
-        main { display: flex; align-items: center; justify-content: center; min-height: 50vh; padding: 2rem; }
-        .card { background: var(--card); border-radius: 16px; padding: 2rem; box-shadow: 0 10px 25px rgba(0,0,0,0.03); text-align: center; max-width: 500px; width: 100%; }
-        .section-label { font-size: 0.75rem; text-transform: uppercase; color: var(--accent-soft); margin-bottom: 0.5rem; font-weight: 700; }
-        .btn-primary { padding: 0.8rem; color: #fff; border-radius: 12px; text-decoration: none; display: block; font-weight: 600; background-color: var(--link); margin-top: 2rem; }
-        footer { text-align: center; padding: 3rem 1.5rem; color: var(--accent-soft); font-size: 0.9rem; }
-        .modal {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.6);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    padding: 1rem;
-}
-.modal-content {
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    max-width: 600px;
-    width: 100%;
-    position: relative;
-    max-height: 90vh;
-    overflow-y: auto;
-}
-.close-modal {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-    </style>
+    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
-<body>
+<body class="page-404">
         <!-- SVG Sprite -->
     <svg width="0" height="0" class="hidden">
         <symbol xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2"
@@ -245,48 +186,6 @@
             </div>
         </div>
     </div>
-    <script>
-        function setLang(lang) {
-            document.body.classList.toggle('lang-en', lang === 'en');
-            document.getElementById('btn-de').classList.toggle('active', lang === 'de');
-            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-        }
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js').catch(() => {});
-            });
-        }
-        let deferredPrompt;
-        const installBtn = document.getElementById('install-button');
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            installBtn.style.display = 'block';
-        });
-        installBtn.addEventListener('click', async () => {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                if (outcome === 'accepted') installBtn.style.display = 'none';
-                deferredPrompt = null;
-            }
-        });
-                function toggleModal(id) {
-            const m = document.getElementById("modal-" + id);
-            m.style.display = m.style.display === "flex" ? "none" : "flex";
-        }
-        function closeModals(e) {
-            if (e.target.classList.contains("modal"))
-                e.target.style.display = "none";
-        }
-        document.addEventListener("DOMContentLoaded", () => {
-            ["data-as-772", "data-as-772-en"].forEach(id => {
-            const el = document.getElementById(id);
-            if (el) {
-                el.innerText = "rentielhcA lraK";
-            }
-            });
-        });
-    </script>
+    <script src="/assets/js/404.js"></script>
 </body>
 </html>

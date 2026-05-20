@@ -1,0 +1,351 @@
+:root {
+    --bg: #f5f5f5;
+    --card: #fff;
+    --accent: #222;
+    --accent-soft: #535050;
+    --font-main: system-ui, -apple-system, sans-serif;
+    --success: #1e7e34;
+    --whatsapp: #0cbe33;
+    --rcs-blue: #1a73e8;
+    --link: #004499;
+    --overlay: rgba(0, 0, 0, 0.7);
+}
+
+body.page-404 {
+    --accent-soft: #555555;
+    --link: #007bff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--bg);
+    color: #111;
+    font-family: var(--font-main);
+    line-height: 1.6;
+    transition: background 0.3s;
+    -webkit-font-smoothing: antialiased;
+}
+
+[lang='en'] {
+    display: none !important;
+}
+
+body.lang-en [lang='de'] {
+    display: none !important;
+}
+
+body.lang-en [lang='en'] {
+    display: block !important;
+}
+
+body.lang-en span[lang='en'],
+body.lang-en i[lang='en'],
+body.lang-en strong[lang='en'] {
+    display: inline-block !important;
+}
+
+body.lang-en li[lang='en'] {
+    display: flex !important;
+}
+
+.hidden {
+    display: none;
+}
+
+header {
+    background: #fff;
+    border-bottom: 1px solid #e3e3e3;
+    padding: 5rem 1.5rem 2rem;
+    position: relative;
+    text-align: center;
+}
+
+.top-bar {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    left: 0;
+    padding: 0 1.5rem;
+    position: absolute;
+    right: 0;
+    top: 1.5rem;
+    z-index: 100;
+}
+
+.lang-btn {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    color: var(--accent);
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.5rem 0.8rem;
+    transition: 0.2s;
+}
+
+.lang-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+}
+
+.install-btn-top {
+    align-items: center;
+    background: #fff;
+    border: 1px solid var(--link);
+    border-radius: 8px;
+    color: var(--link);
+    cursor: pointer;
+    display: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    gap: 0.4rem;
+    padding: 0.5rem 0.8rem;
+}
+
+.logo-img {
+    border-radius: 50%;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    height: 120px;
+    margin-bottom: 1rem;
+    object-fit: cover;
+    width: 120px;
+}
+
+main {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1.8fr 1.2fr;
+    margin: 2rem auto;
+    max-width: 1040px;
+    padding: 0 1.5rem;
+}
+
+@media (max-width: 850px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    header {
+        padding-top: 6rem;
+    }
+}
+
+.card {
+    background: var(--card);
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
+    padding: 1.5rem;
+}
+
+.section-label {
+    color: var(--accent-soft);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.price-tag {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0.5rem 0;
+}
+
+ul {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+li {
+    align-items: center;
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 0.8rem;
+}
+
+h1 {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    font-size: clamp(1.8rem, 5.5vw, 2.6rem);
+    color: #1e1e1e;
+}
+
+@media (max-width: 850px) {
+    h1 {
+        font-size: clamp(1.8rem, 6vw, 2.4rem);
+    }
+}
+
+.subtitle {
+    color: var(--accent-soft);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.btn-primary,
+.btn-whatsapp,
+.btn-rcs,
+.btn-call,
+.btn-nav {
+    align-items: center;
+    background: var(--link);
+    border-radius: 12px;
+    color: #fff;
+    display: inline-flex;
+    font-weight: 600;
+    justify-content: center;
+    padding: 0.8rem 1rem;
+    text-decoration: none;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.btn-primary:hover,
+.btn-whatsapp:hover,
+.btn-rcs:hover,
+.btn-call:hover,
+.btn-nav:hover,
+.btn-primary:focus-visible,
+.btn-whatsapp:focus-visible,
+.btn-rcs:focus-visible,
+.btn-call:focus-visible,
+.btn-nav:focus-visible {
+    background: #003f7f;
+    outline: none;
+    transform: translateY(-1px);
+}
+
+.btn-icon {
+    display: inline-flex;
+    height: 1.2rem;
+    width: 1.2rem;
+}
+
+.gallery-grid {
+    display: grid;
+    gap: 0.9rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 850px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.gallery-item {
+    overflow: hidden;
+    border-radius: 18px;
+    background: #f7f7f7;
+}
+
+.gallery-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+footer {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    color: var(--accent-soft);
+    font-size: 0.9rem;
+}
+
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.footer-nav span,
+.footer-nav a {
+    cursor: pointer;
+    color: var(--link);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 100%;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+#lightbox {
+    align-items: center;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 4000;
+}
+
+#lightbox img {
+    border-radius: 8px;
+    max-height: 90%;
+    max-width: 90%;
+    object-fit: contain;
+}
+
+.close-lightbox {
+    color: #fff;
+    cursor: pointer;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+    position: absolute;
+    right: 1.5rem;
+    top: 1rem;
+}
+
+.email-protected {
+    cursor: pointer;
+    text-decoration: underline;
+    color: var(--link);
+}
+
+.email-protected:hover {
+    opacity: 0.8;
+}
