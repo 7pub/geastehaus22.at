@@ -5,7 +5,7 @@
 # Direct reporting contact 
 Contact: mailto:security@gaestehaus22.at
 
-# Encryption key link (replace with your actual public PGP key path)
+# Encryption key link
 Encryption: https://gaestehaus22.at
 
 # Canonical link to this file
