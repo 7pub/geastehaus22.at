@@ -2,16 +2,16 @@
 # security.txt for gaestehaus22.at (RFC 9116 Compliance)
 # ====================================================================
 
-# Direct reporting contact 
+# Direct reporting contact:
 Contact: mailto:security@gaestehaus22.at
 
-# Encryption key link
+# Encryption key link:
 Encryption: https://gaestehaus22.at
 
-# Canonical link to this file
+# Canonical link to this file:
 Canonical: https://gaestehaus22.at
 
-# Disclosure policy page or modal link
+# Disclosure policy page:
 Policy: https://gaestehaus22.at
 
 # Security acknowledgements / Hall of Fame
@@ -20,8 +20,7 @@ Acknowledgement: https://gaestehaus22.at
 # Security engineering job openings
 Hiring: https://gaestehaus22.at
 
-# Expiration Date: MUST NOT exceed 1 year from creation. 
-# Format must strictly adhere to ISO 8601 UTC.
+# Expiration Date:
 Expires: 2027-05-20T23:59:59.000Z
 
 # Preferred communication languages
